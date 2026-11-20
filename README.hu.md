@@ -1,6 +1,6 @@
 # Rubedyne Material Dossier — rövid áttekintés
 
-Állapot: **1.0, nyilvános tervezet véleményezésre (tag: v1.0.0-draft.2).**
+Állapot: **1.0, véleményezésre bocsátott nyilvános tervezet (tag: v1.0.0-draft.2).**
 
 ## Mi ez
 
@@ -62,5 +62,5 @@ kötelező `subject` (mit mértek), és pontosan egy értékforma (pont, tartom�
 
 A döntések és a nyitott kérdések: DESIGN-NOTES 8. fejezet és CHANGELOG.
 
-Észrevételt a tervezethez és új szótárkulcsra tett javaslatot a GitHub-tároló issue-űrlapjain lehet beküldeni;
+Észrevételt a tervezethez és új szótárkulcs felvételére tett javaslatot a GitHub-tároló issue-űrlapjain lehet beküldeni;
 a menetet a `CONTRIBUTING.md` írja le (angolul).

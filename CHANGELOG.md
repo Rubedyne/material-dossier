@@ -5,7 +5,7 @@ Within 1.x both only add (SPEC.md sections 13.2 and 13.3).
 
 ## Standard
 
-### 1.0 public draft 2, 2026-11-20
+### 1.0 — public draft 2, 2026-11-20
 
 Tag `v1.0.0-draft.2`, the public draft for feedback. The rules, keys and examples of the standard are unchanged.
 

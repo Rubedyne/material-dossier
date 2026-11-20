@@ -4,7 +4,7 @@ The Rubedyne Material Dossier standard is published under two licences.
 
 | Part | Files | Licence |
 |---|---|---|
-| Specification text and guides | `SPEC.md`, `README.md`, `README.hu.md`, `DESIGN-NOTES.md`, `CHANGELOG.md`, `guides/` | Creative Commons Attribution 4.0 International (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/ |
+| Specification text and guides | `SPEC.md`, `README.md`, `README.hu.md`, `CONTRIBUTING.md`, `DESIGN-NOTES.md`, `CHANGELOG.md`, `guides/` | Creative Commons Attribution 4.0 International (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/ |
 | Schemas, vocabularies, tools, examples, tests, build files | `schema/`, `vocab/`, `tools/`, `examples/`, `tests/`, `requirements*.txt`, `.github/`, `.gitignore` | Apache License, Version 2.0, https://www.apache.org/licenses/LICENSE-2.0 |
 
 Attribution for the CC BY 4.0 parts: "Rubedyne Material Dossier, © Rubedyne, licensed under CC BY 4.0", with a

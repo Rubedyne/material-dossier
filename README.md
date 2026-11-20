@@ -99,7 +99,7 @@ level the dossier actually reaches.
   Consumers store and show it but do not interpret it.
 - Extension keys that prove useful are proposed for the next vocabulary minor version (`vocab_version` 1.1, 1.2, …).
   A proposal names the key, its definition, the value forms and the unit dimension (for property keys) and one real
-  use.
+  use; it is made with the "Vocabulary proposal" issue form (see `CONTRIBUTING.md`).
 - Rubedyne, the standard's owner, decides on proposals and issues the vocabulary versions.
 - Keys are never removed and never change meaning. A superseded key is marked `deprecated` with `replaced_by`.
 - Where an external vocabulary exists it is used instead of a new one: UCUM (units), CosIng (INCI names,
