@@ -1,0 +1,85 @@
+name: Vocabulary proposal
+description: Propose a key for the next vocabulary minor version.
+labels:
+  - vocabulary-proposal
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A proposal for a new key in one of the closed vocabularies (SPEC 13.3). Rubedyne decides on proposals
+        and issues the vocabulary versions. Do not include personal or confidential data. Issue text may be used
+        under the repository's licences (see CONTRIBUTING.md).
+  - type: dropdown
+    id: vocabulary
+    attributes:
+      label: Vocabulary
+      description: The vocabulary the key belongs to (`vocab/index.json`).
+      options:
+        - basis
+        - functions
+        - sensory
+        - endpoints
+        - study-kinds
+        - interaction-effects
+        - interaction-classes
+        - composition-roles
+        - origin-types
+        - product-types
+        - product-forms
+        - process-stages
+        - statement-kinds
+        - document-kinds
+        - attestation-schemes
+        - attestation-statuses
+        - usage-restrictions
+        - condition-keys
+        - units
+        - nominal-codes
+        - test-methods
+        - regions
+        - property-keys
+        - regulated-bases
+    validations:
+      required: true
+  - type: input
+    id: key
+    attributes:
+      label: Proposed key
+      description: The key as it would appear in the vocabulary file.
+    validations:
+      required: true
+  - type: textarea
+    id: definition
+    attributes:
+      label: Definition
+      description: What the key means, in one or two sentences.
+    validations:
+      required: true
+  - type: textarea
+    id: value-forms
+    attributes:
+      label: Value forms
+      description: For property keys, which of exact, range, limit, nominal, text and in_figure apply.
+    validations:
+      required: false
+  - type: input
+    id: unit-dimension
+    attributes:
+      label: Unit dimension
+      description: For property keys only, a dimension from `vocab/units.json`, for example mass_fraction.
+    validations:
+      required: false
+  - type: textarea
+    id: use
+    attributes:
+      label: One real use
+      description: The kind of document the value appears in (for example a TDS or a study report), with no confidential data.
+    validations:
+      required: true
+  - type: input
+    id: extension-key
+    attributes:
+      label: Extension key in use
+      description: The `x-<domain>:<name>` key already used for it (SPEC 13.4), if any.
+    validations:
+      required: false

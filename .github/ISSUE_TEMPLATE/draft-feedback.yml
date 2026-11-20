@@ -1,0 +1,32 @@
+name: Draft feedback
+description: Something in the public draft is unclear or wrong.
+labels:
+  - draft-feedback
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Feedback on the public draft of the Rubedyne Material Dossier 1.0. Do not include personal or
+        confidential data. Issue text may be used under the repository's licences (see CONTRIBUTING.md).
+  - type: input
+    id: section
+    attributes:
+      label: SPEC section
+      description: The section number, for example 5.5.6 or 13.3.
+      placeholder: "7.3"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is unclear or wrong
+      description: Quote the sentence or rule if possible.
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested change
+      description: The wording or rule you would expect instead.
+    validations:
+      required: false

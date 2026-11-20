@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Standard version | 1.0 (draft, 2026-11-14; tag v1.0.0-draft.1) |
+| Standard version | 1.0 (public draft for feedback, 2026-11-20; tag v1.0.0-draft.2) |
 | Vocabulary version | 1.0 |
 | Schema | `schema/dossier.schema.json`, `$id` `https://rubedyne.com/schemas/material-dossier/1.0/dossier.schema.json` |
 | Licence | This text: CC BY 4.0. Schemas, vocabularies and tools: Apache-2.0. See `LICENSE.md`. |

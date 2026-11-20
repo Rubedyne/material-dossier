@@ -5,6 +5,20 @@ Within 1.x both only add (SPEC.md sections 13.2 and 13.3).
 
 ## Standard
 
+### 1.0 public draft 2, 2026-11-20
+
+Tag `v1.0.0-draft.2`, the public draft for feedback. The rules, keys and examples of the standard are unchanged.
+
+- Release builder: `tools/release/build.py` builds, from a clean checkout of a tag, the distribution ZIP, the
+  files served under each schema's `$id` and `SHA256SUMS.txt`, byte for byte the same on every run.
+- `$id` layout: everything of a version is served under `https://rubedyne.com/schemas/material-dossier/1.0/`;
+  the vocabulary `base` in `vocab/index.json` is now `https://rubedyne.com/schemas/material-dossier/1.0/vocab/1.0/`
+  (was `…/material-dossier/vocab/1.0/`).
+- Pinned CI: the GitHub Actions are pinned by commit; CI also builds the release and checks that every commit
+  has the project identity.
+- Contribution route: `CONTRIBUTING.md` and two issue forms, "Draft feedback" and "Vocabulary proposal".
+  Rubedyne decides on proposals (SPEC 13.3 rule 3); pull requests are not merged.
+
 ### 1.0 — draft, 2026-11-14
 
 First version. Published as the draft tag `v1.0.0-draft.1`; not yet released.
