@@ -145,6 +145,26 @@ def check_basis_enum(root: Path) -> int:
     return 1
 
 
+def check_id_layout(root: Path) -> int:
+    prefix = "https://rubedyne.com/schemas/material-dossier/1.0/"
+    problems = []
+    for f in sorted((root / "schema").glob("*.json")):
+        try:
+            sid = json.loads(f.read_text(encoding="utf-8")).get("$id")
+        except ValueError:
+            continue  # reported by the schema check
+        if not isinstance(sid, str) or not sid.startswith(prefix):
+            problems.append(f"{_rel(root, f)}: {sid}")
+    try:
+        index = json.loads((root / "vocab" / "index.json").read_text(encoding="utf-8"))
+        base = index.get("base")
+        if base != f"{prefix}vocab/{index.get('vocab_version')}/":
+            problems.append(f"vocab/index.json: {base}")
+    except (OSError, ValueError):
+        pass  # reported by the vocab index check
+    return _report("$id layout", problems)
+
+
 def load_checker(root: Path):
     path = root / "tools" / "check_dossier.py"
     name = f"check_dossier_{abs(hash(str(path)))}"
@@ -201,7 +221,8 @@ def run(root: Path) -> int:
     root = Path(root).resolve()
     failed = 0
     print("## 1. schemas and vocabularies")
-    for step in (check_schemas, check_vocab_files, check_duplicate_keys, check_vocab_index, check_basis_enum):
+    for step in (check_schemas, check_vocab_files, check_duplicate_keys, check_vocab_index, check_basis_enum,
+                 check_id_layout):
         failed += step(root)
     print("## 2. examples")
     failed += check_examples(root)

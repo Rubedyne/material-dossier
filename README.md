@@ -107,6 +107,17 @@ level the dossier actually reaches.
 Version 1.0 of the vocabularies is reasonably complete for skin care, hair care, sun care and preservation; it is
 not exhaustive. The thinnest areas are decorative cosmetics, oral care and fragrance.
 
+## Releases
+
+Releases are tags (`v1.0.0-draft.2`, ...). From a clean checkout of a tag,
+
+```
+python3 tools/release/build.py --version <version> dist/<version>
+```
+
+builds the ZIP and the files served under each schema's `$id`. Each GitHub release carries the ZIP and
+`SHA256SUMS.txt`, and those assets are canonical.
+
 ## Licence
 
 Specification text and guides: CC BY 4.0. JSON Schemas, vocabularies, tools, examples and tests: Apache-2.0.
