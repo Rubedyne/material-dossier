@@ -15,10 +15,10 @@ jobs:
       matrix:
         python-version: ["3.10", "3.12"]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: ${{ matrix.python-version }}
       - run: pip install -r requirements-dev.txt
@@ -26,13 +26,16 @@ jobs:
         run: python -B tools/conformance/run_all.py
       - name: Run the tests
         run: python -B -m pytest -q tests
+      - name: Build the release
+        run: python -B tools/release/build.py --version 1.0.0-draft.0 "$RUNNER_TEMP/dist"
       - name: Every commit has the project identity
         if: github.event_name == 'push'
         run: |
+          # The log of a public repository is public: report counts and short SHAs, never names or addresses.
           expected='Rubedyne <info@rubedyne.com>|Rubedyne <info@rubedyne.com>'
-          found=$(git log --format='%an <%ae>|%cn <%ce>' | sort -u)
-          if [ "$found" != "$expected" ]; then
-            echo "Unexpected author or committer identities:"
-            echo "$found"
+          bad=$(git log --format="%h %an <%ae>|%cn <%ce>" | grep -vF " $expected" | cut -d' ' -f1 || true)
+          if [ -n "$bad" ]; then
+            echo "$(echo "$bad" | wc -l) commit(s) without the project identity:"
+            echo "$bad"
             exit 1
           fi

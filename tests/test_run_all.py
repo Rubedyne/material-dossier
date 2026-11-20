@@ -114,3 +114,11 @@ def test_id_layout_fails(copy):
     edit(copy / "vocab" / "index.json",
          lambda t: t.replace("https://rubedyne.com/schemas/material-dossier/1.0/vocab/1.0/", "https://example.com/x/"))
     assert_fail(copy, "FAIL $id layout: vocab/index.json: https://example.com/x/")
+
+
+def test_malformed_schema_fails_cleanly(copy):
+    (copy / "schema" / "index.schema.json").write_text("{", encoding="utf-8")
+    r = run(copy)
+    assert r.returncode == 1, r.stdout + r.stderr
+    assert any(l.startswith("FAIL schemas: schema/index.schema.json:") for l in r.stdout.splitlines()), r.stdout
+    assert "Traceback" not in r.stdout and "Traceback" not in r.stderr

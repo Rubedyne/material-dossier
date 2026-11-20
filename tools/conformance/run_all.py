@@ -178,8 +178,13 @@ def load_checker(root: Path):
 def run_checker(root: Path, args: list[str]) -> tuple[int, str]:
     checker = load_checker(root)
     buf = io.StringIO()
-    with contextlib.redirect_stdout(buf):
-        code = checker.main(["--vocab", str(root / "vocab"), "--schema", str(root / "schema"), *args])
+    try:
+        with contextlib.redirect_stdout(buf):
+            code = checker.main(["--vocab", str(root / "vocab"), "--schema", str(root / "schema"), *args])
+    except (OSError, ValueError) as e:  # a schema or vocabulary file that cannot be read or parsed
+        # that file is named by the schemas and vocabularies checks; here the run only has to go on
+        code = 1
+        buf.write(f"checker could not run ({type(e).__name__}: {e})\n")
     out = buf.getvalue()
     print(out, end="")
     return code, out
