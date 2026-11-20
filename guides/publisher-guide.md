@@ -309,8 +309,8 @@ properties, full report restricted. A public element must not point to a restric
 
 ## 8. Conformance checklist
 
-Run `tools/check_dossier.py your-dossier.json`; it reports the level your dossier reaches and what is missing for
-the next one.
+Run `.venv/bin/python tools/check_dossier.py path/to/your-dossier.json` from the repository root (setup: README,
+"Checking a dossier"); it reports the level your dossier reaches and what is missing for the next one.
 
 ### Level 1 — Core
 
