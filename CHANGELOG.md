@@ -11,6 +11,7 @@ Tag `v1.0.0-draft.3`. The rules, keys and examples of the standard are unchanged
 
 - README: prerequisites, the clone step, expected outputs, the test command, how to rebuild a release and compare
   it with the published `SHA256SUMS.txt`, the repository layout.
+- Publisher guide section 8: the checker command with its setup. README.hu.md: the current file list.
 
 ### 1.0 — public draft 2, 2026-11-20
 

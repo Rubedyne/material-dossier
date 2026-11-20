@@ -86,8 +86,8 @@ and test standards are the generic public ones.
 
 ## Checking a dossier
 
-Prerequisites: git, Python 3.9 or newer (CI runs 3.10 and 3.12) and network access for pip. All commands run from
-the repository root.
+Prerequisites: git, Python 3.9 or newer (CI runs 3.10 and 3.12) and network access for pip; the release comparison
+below also uses `curl`, `cmp` and `sha256sum`. All commands run from the repository root.
 
 ```bash
 git clone https://github.com/Rubedyne/material-dossier.git
@@ -102,9 +102,11 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python tools/check_dossier.py --index examples/index.json
 ```
 
-Each call prints one line per file, `OK   01-humectant-active.json  route=manufacturer claimed=L3 computed=L3 …`,
-and exits 0. On errors it prints `FAIL`, one `error` line per problem with its JSON pointer, and exits 1 (2 for a
-wrong call). `warning` lines do not change the exit status. `--usage-view` prints the usage view as JSON.
+A dossier check prints one line per file,
+`OK   01-humectant-active.json  route=manufacturer claimed=L3 computed=L3 …`, and exits 0; the index check prints
+`OK   index.json  index`. On errors the checker prints `FAIL`, one `error` line per problem with its JSON pointer,
+and exits 1 (2 for a wrong call). `warning` lines do not change the exit status. `--usage-view` prints the usage
+view as JSON instead of the `OK` line.
 
 To check your own dossier, give its path; it can be anywhere:
 
