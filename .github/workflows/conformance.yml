@@ -30,12 +30,4 @@ jobs:
         run: python -B tools/release/build.py --version 1.0.0-draft.0 "$RUNNER_TEMP/dist"
       - name: Every commit has the project identity
         if: github.event_name == 'push'
-        run: |
-          # The log of a public repository is public: report counts and short SHAs, never names or addresses.
-          expected='Rubedyne <info@rubedyne.com>|Rubedyne <info@rubedyne.com>'
-          bad=$(git log --format="%h %an <%ae>|%cn <%ce>" | grep -vF " $expected" | cut -d' ' -f1 || true)
-          if [ -n "$bad" ]; then
-            echo "$(echo "$bad" | wc -l) commit(s) without the project identity:"
-            echo "$bad"
-            exit 1
-          fi
+        run: python -B tools/conformance/check_identity.py
