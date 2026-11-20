@@ -108,3 +108,9 @@ def test_broken_conformance_case_fails(copy):
     first["expect"] = (not first["expect"]) if isinstance(first["expect"], bool) else "x" + str(first["expect"])
     p.write_text(json.dumps(d, indent=2, ensure_ascii=False), encoding="utf-8")
     assert_fail(copy, "FAIL conformance cases")
+
+
+def test_id_layout_fails(copy):
+    edit(copy / "vocab" / "index.json",
+         lambda t: t.replace("https://rubedyne.com/schemas/material-dossier/1.0/vocab/1.0/", "https://example.com/x/"))
+    assert_fail(copy, "FAIL $id layout: vocab/index.json: https://example.com/x/")

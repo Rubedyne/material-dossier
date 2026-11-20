@@ -2,7 +2,7 @@
   "vocab_version": "1.0",
   "issued": "2026-11-14",
   "license": "Apache-2.0",
-  "base": "https://rubedyne.com/schemas/material-dossier/vocab/1.0/",
+  "base": "https://rubedyne.com/schemas/material-dossier/1.0/vocab/1.0/",
   "vocabularies": [
     {
       "vocab": "basis",
