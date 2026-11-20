@@ -1,6 +1,6 @@
 # Rubedyne Material Dossier — rövid áttekintés
 
-Állapot: **1.0 tervezet (2026-11-14).** Tervezet-tag: v1.0.0-draft.1; még nincs kiadva.
+Állapot: **1.0, nyilvános tervezet véleményezésre (tag: v1.0.0-draft.2).**
 
 ## Mi ez
 
@@ -61,3 +61,6 @@ kötelező `subject` (mit mértek), és pontosan egy értékforma (pont, tartom�
   adott.
 
 A döntések és a nyitott kérdések: DESIGN-NOTES 8. fejezet és CHANGELOG.
+
+Észrevételt a tervezethez és új szótárkulcsra tett javaslatot a GitHub-tároló issue-űrlapjain lehet beküldeni;
+a menetet a `CONTRIBUTING.md` írja le (angolul).

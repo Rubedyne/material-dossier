@@ -7,7 +7,8 @@ use, functions, studies, interactions, starting formulations, stability, safety,
 figures. Formulation software, PIF tools and distributors read it directly. The brochure, the technical data sheet
 and the PDF attachments stop being the carrier of the data.
 
-Status: **1.0, draft (2026-11-14).** Published as the draft tag v1.0.0-draft.1; not yet released.
+Status: **1.0, public draft for feedback (tag v1.0.0-draft.2).** Landing page:
+[rubedyne.com/material-dossier](https://rubedyne.com/material-dossier).
 
 ## Who it is for
 
@@ -37,7 +38,7 @@ Status: **1.0, draft (2026-11-14).** Published as the draft tag v1.0.0-draft.1; 
 | Path | Content |
 |---|---|
 | `SPEC.md` | The normative specification. |
-| `schema/dossier.schema.json` | JSON Schema (draft 2020-12) of a dossier. |
+| `schema/dossier.schema.json` | JSON Schema, draft 2020-12, of a dossier. |
 | `schema/index.schema.json` | JSON Schema of a publisher's endpoint index. |
 | `schema/vocab.schema.json` | JSON Schema of a vocabulary file. |
 | `vocab/*.json` | The vocabularies, version 1.0; `vocab/index.json` lists them. |
@@ -50,8 +51,9 @@ Status: **1.0, draft (2026-11-14).** Published as the draft tag v1.0.0-draft.1; 
 | `CHANGELOG.md`, `LICENSE.md` | |
 | `LICENSE-CC-BY-4.0.txt`, `LICENSE-APACHE-2.0.txt` | The full licence texts. |
 | `README.hu.md` | Short Hungarian overview. |
-| `requirements.txt`, `requirements-dev.txt` | Python dependencies: `jsonschema` for the checker and the runner; the dev file adds pytest for the tests. |
+| `requirements.txt`, `requirements-dev.txt` | Python dependencies: `jsonschema` for the checker and the runner; the dev file adds pytest and PyYAML for the tests. |
 | `.github/workflows/conformance.yml` | CI: runs `run_all.py` and the tests on every push. |
+| `CONTRIBUTING.md`, `.github/ISSUE_TEMPLATE/` | How to give feedback and propose vocabulary keys; the issue forms. |
 
 ## Examples
 
@@ -106,6 +108,12 @@ level the dossier actually reaches.
 
 Version 1.0 of the vocabularies is reasonably complete for skin care, hair care, sun care and preservation; it is
 not exhaustive. The thinnest areas are decorative cosmetics, oral care and fragrance.
+
+## Contributing
+
+Feedback on the draft and proposals for vocabulary keys go through the issue forms of this repository.
+Pull requests are not merged; Rubedyne writes every change and, if asked, credits the proposer in the CHANGELOG.
+See `CONTRIBUTING.md` for the route, the licence of contributions and what not to post.
 
 ## Releases
 
