@@ -1,0 +1,19 @@
+{
+  "vocab": "regulated-bases",
+  "vocab_version": "1.0",
+  "issued": "2026-11-16",
+  "title": "Regulated bases: the element or named substance in which a regulatory limit is expressed (analyte of composition.regulated_basis_content)",
+  "license": "Apache-2.0",
+  "note": "A code names the basis of a limit that stoichiometry cannot compute from the material's composition (zeolites, glasses, ferments, silver chloride on titanium dioxide, blends), so the manufacturer states the content. An element code means the total of that element in the material as supplied, from all sources; narrowing it to a species (for example water-soluble zinc salts) is the job of the calculation that applies the limit. `symbol` is matched case-sensitively as a whole word and `aliases` (lower case) as whole words by the evidence check (SPEC 7.3 rule 6). `annex_examples` lists entries of Regulation (EC) No 1223/2009 (annex/reference number) that state a limit on that basis. Left out on purpose: the relative forms ('as acid', '(acid)', 'as free base', 'as base', 'as hydrochloride', 'as sulphate', 'as phenol', 'anhydrous substance', hydroxides as sodium hydroxide, 'H2O2 present or released', 'Retinol Equivalent' and the like), which a consumer computes from the molecular formula of a defined compound; III/89 and III/173 ('of which methyl octine carbonate shall not be more than ...'), a sub-limit on a component, not a basis; III/52 ('as a % of ethanol and isopropyl alcohol'), a limit on another denominator; III/135 to III/152 ('of free allyl alcohol in the ester'), a purity criterion.",
+  "terms": [
+    {"key": "element.ag", "label": "Silver (as Ag)", "kind": "element", "symbol": "Ag", "aliases": ["silver"], "definition": "Total silver in the material as supplied, from all sources.", "annex_examples": ["V/59"]},
+    {"key": "element.al", "label": "Aluminium (as Al)", "kind": "element", "symbol": "Al", "aliases": ["aluminium", "aluminum"], "definition": "Total aluminium in the material as supplied, from all sources.", "annex_examples": ["III/381"]},
+    {"key": "element.f", "label": "Fluorine (as F)", "kind": "element", "symbol": "F", "aliases": ["fluorine", "fluoride"], "definition": "Total fluorine in the material as supplied, from all sources.", "annex_examples": ["III/26-43", "III/47", "III/56"]},
+    {"key": "element.hg", "label": "Mercury (as Hg)", "kind": "element", "symbol": "Hg", "aliases": ["mercury"], "definition": "Total mercury in the material as supplied, from all sources.", "annex_examples": ["V/16", "V/17"]},
+    {"key": "element.s", "label": "Sulphur (as S)", "kind": "element", "symbol": "S", "aliases": ["sulphur", "sulfur"], "definition": "Total sulphur in the material as supplied, from all sources, sulphates included. Narrowing to a species, for example sulphide (III/23), is the calculation's job.", "annex_examples": ["III/23"]},
+    {"key": "element.sr", "label": "Strontium (as Sr)", "kind": "element", "symbol": "Sr", "aliases": ["strontium"], "definition": "Total strontium in the material as supplied, from all sources.", "annex_examples": ["III/57", "III/58", "III/63", "III/64"]},
+    {"key": "element.zn", "label": "Zinc (as Zn)", "kind": "element", "symbol": "Zn", "aliases": ["zinc"], "definition": "Total zinc in the material as supplied, from all sources. Narrowing to water-soluble zinc (III/24) is the calculation's job.", "annex_examples": ["III/24"]},
+    {"key": "element.zr", "label": "Zirconium (as Zr)", "kind": "element", "symbol": "Zr", "aliases": ["zirconium"], "definition": "Total zirconium in the material as supplied, from all sources.", "annex_examples": ["III/50"]},
+    {"key": "substance.silver_chloride", "label": "Silver chloride (as AgCl)", "kind": "substance", "symbol": "AgCl", "cas": "7783-90-6", "aliases": ["silver chloride"], "definition": "Silver chloride (CAS 7783-90-6) as a phase of the material, for example deposited on titanium dioxide.", "annex_examples": ["V/52"]}
+  ]
+}

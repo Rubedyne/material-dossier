@@ -1,0 +1,96 @@
+{
+  "$schema": "https://rubedyne.com/schemas/material-dossier/1.0/index.schema.json",
+  "standard": "rubedyne-material-dossier",
+  "standard_versions": [
+    "1.0"
+  ],
+  "publisher": {
+    "name": "Example Ingredients Ltd.",
+    "domain": "example.com",
+    "role": "manufacturer",
+    "country": "IE",
+    "contact": "regulatory@example.com"
+  },
+  "updated": "2026-11-02T09:00:00Z",
+  "authorized_publishers": [
+    {
+      "domain": "distributor.example.net",
+      "name": "Example Distribution GmbH",
+      "since": "2025-01-01"
+    }
+  ],
+  "restricted_access": {
+    "scheme": "bearer",
+    "info_url": "https://example.com/partners"
+  },
+  "dossiers": [
+    {
+      "dossier_id": "example.com:exahydrate-l30",
+      "product_code": "EX-1030",
+      "trade_name": "Exahydrate L30",
+      "version": 3,
+      "updated": "2026-11-02T09:00:00Z",
+      "status": "active",
+      "route": "manufacturer",
+      "conformance_level": "L3",
+      "standard_version": "1.0",
+      "vocab_version": "1.0",
+      "public": {
+        "url": "https://example.com/material-dossier/01-humectant-active.json",
+        "hash": "sha256:042d9ae1492ed70c9da79143b1d8f2342789c2ce13f187f32ba453522f50a14c",
+        "bytes": 31396
+      },
+      "restricted": {
+        "url": "https://example.com/material-dossier/01-humectant-active.restricted.json",
+        "hash": "sha256:d5b06e167e078d44839d78c2061935af4e9bcc9b4bc63baea3fe6b9d59250135",
+        "bytes": 34029
+      }
+    },
+    {
+      "dossier_id": "example.com:exagel-r200",
+      "product_code": "EX-2200",
+      "trade_name": "Exagel R200",
+      "version": 1,
+      "updated": "2026-11-02T09:00:00Z",
+      "status": "active",
+      "route": "manufacturer",
+      "conformance_level": "L3",
+      "standard_version": "1.0",
+      "vocab_version": "1.0",
+      "public": {
+        "url": "https://example.com/material-dossier/02-rheology-modifier.json",
+        "hash": "sha256:c0c063a963c68021eac55be5cbc9a26bd43a09c952e86fa88437afc328657264",
+        "bytes": 29112
+      }
+    },
+    {
+      "dossier_id": "example.com:exasol-uv-t",
+      "product_code": "EX-3310",
+      "trade_name": "Exasol UV-T",
+      "version": 2,
+      "updated": "2026-11-02T09:00:00Z",
+      "status": "active",
+      "route": "manufacturer",
+      "conformance_level": "L2",
+      "standard_version": "1.0",
+      "vocab_version": "1.0",
+      "public": {
+        "url": "https://example.com/material-dossier/03-uv-filter.json",
+        "hash": "sha256:0c2f8f2199ab3e696db4d252bfb5c34812ac9874918991016d8686e3d03fce1c",
+        "bytes": 23192
+      }
+    },
+    {
+      "dossier_id": "example.com:exagel-r100",
+      "product_code": "EX-2100",
+      "trade_name": "Exagel R100",
+      "version": 4,
+      "updated": "2026-08-20T12:00:00Z",
+      "status": "withdrawn",
+      "withdrawn_reason": "Grade discontinued",
+      "route": "manufacturer",
+      "standard_version": "1.0",
+      "vocab_version": "1.0"
+    }
+  ]
+}

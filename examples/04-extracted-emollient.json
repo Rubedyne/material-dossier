@@ -1,0 +1,567 @@
+{
+  "$schema": "https://rubedyne.com/schemas/material-dossier/1.0/dossier.schema.json",
+  "standard_version": "1.0",
+  "vocab_version": "1.0",
+  "dossier_id": "extractor.example.org:example-ingredients-ex-4410",
+  "version": 1,
+  "issued": "2026-11-02T09:00:00Z",
+  "representation": "public",
+  "completeness": "partial",
+  "conformance_level": "L1",
+  "default_language": "en",
+  "languages": [
+    "en"
+  ],
+  "source": {
+    "route": "extracted",
+    "publisher": {
+      "name": "Example Extraction Service",
+      "domain": "extractor.example.org"
+    },
+    "extraction": {
+      "tool": "example-extractor 2.3",
+      "completed": "2026-11-10",
+      "sources": [
+        "doc-tds"
+      ]
+    }
+  },
+  "identity": {
+    "trade_name": "Exaester GC",
+    "product_code": "EX-4410",
+    "manufacturer": {
+      "name": "Example Ingredients Ltd."
+    },
+    "inci": [
+      "Caprylic/Capric Triglyceride"
+    ],
+    "cas": [
+      "73398-61-5"
+    ],
+    "ec": [
+      "277-452-2"
+    ],
+    "as_of": "2025-03-10",
+    "evidence": [
+      {
+        "source": "doc-tds",
+        "page": 1,
+        "quote": "EXAESTER GC",
+        "supports": [
+          "/trade_name"
+        ]
+      },
+      {
+        "source": "doc-tds",
+        "page": 1,
+        "quote": "Product code: EX-4410",
+        "supports": [
+          "/product_code"
+        ]
+      },
+      {
+        "source": "doc-tds",
+        "page": 1,
+        "quote": "Example Ingredients Ltd.",
+        "supports": [
+          "/manufacturer"
+        ]
+      },
+      {
+        "source": "doc-tds",
+        "page": 1,
+        "quote": "INCI name: Caprylic/Capric Triglyceride",
+        "supports": [
+          "/inci"
+        ]
+      },
+      {
+        "source": "doc-tds",
+        "page": 1,
+        "quote": "CAS No.: 73398-61-5",
+        "supports": [
+          "/cas"
+        ]
+      },
+      {
+        "source": "doc-tds",
+        "page": 1,
+        "quote": "EC No.: 277-452-2",
+        "supports": [
+          "/ec"
+        ]
+      }
+    ]
+  },
+  "properties": [
+    {
+      "id": "use-level",
+      "as_of": "2025-03-10",
+      "key": "use.level",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "range": {
+          "min": 1,
+          "max": 20
+        }
+      },
+      "unit": "%",
+      "as_written": "1 - 20 %",
+      "evidence": [
+        {
+          "source": "doc-tds",
+          "page": 2,
+          "quote": "Recommended use level: 1 - 20 %.",
+          "supports": [
+            "/value",
+            "/unit"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "use-phase",
+      "as_of": "2025-03-10",
+      "key": "use.phase",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "oil_phase"
+      },
+      "evidence": [
+        {
+          "source": "doc-tds",
+          "page": 2,
+          "quote": "Exaester GC is added to the oil phase.",
+          "supports": [
+            "/value"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "use-temp",
+      "as_of": "2025-03-10",
+      "key": "use.process_temperature_max",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "limit": {
+          "op": "<=",
+          "value": 80
+        }
+      },
+      "unit": "Cel",
+      "as_written": "up to 80 °C",
+      "evidence": [
+        {
+          "source": "doc-tds",
+          "page": 2,
+          "quote": "can be heated up to 80 °C during processing",
+          "supports": [
+            "/value",
+            "/unit"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spec-appearance",
+      "as_of": "2025-03-10",
+      "key": "physchem.appearance",
+      "basis": "specification",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "text": {
+          "en": "clear, colourless liquid"
+        }
+      },
+      "conditions": [
+        {
+          "key": "temperature",
+          "value": 20,
+          "unit": "Cel"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "doc-tds",
+          "page": 1,
+          "quote": "Appearance (20 °C)             clear, colourless liquid",
+          "supports": [
+            "/value",
+            "/conditions"
+          ]
+        },
+        {
+          "source": "doc-tds",
+          "page": 1,
+          "quote": "Specification",
+          "supports": [
+            "/value"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spec-acid",
+      "as_of": "2025-03-10",
+      "key": "physchem.acid_value",
+      "basis": "specification",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "limit": {
+          "op": "<=",
+          "value": 0.1
+        }
+      },
+      "unit": "mg{KOH}/g",
+      "as_written": "max. 0.1 mg KOH/g",
+      "evidence": [
+        {
+          "source": "doc-tds",
+          "page": 1,
+          "quote": "Acid value                     max. 0.1 mg KOH/g",
+          "supports": [
+            "/value",
+            "/unit"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spec-sap",
+      "as_of": "2025-03-10",
+      "key": "physchem.saponification_value",
+      "basis": "specification",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "range": {
+          "min": 325,
+          "max": 345
+        }
+      },
+      "unit": "mg{KOH}/g",
+      "as_written": "325 - 345 mg KOH/g",
+      "evidence": [
+        {
+          "source": "doc-tds",
+          "page": 1,
+          "quote": "Saponification value           325 - 345 mg KOH/g",
+          "supports": [
+            "/value",
+            "/unit"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spec-water",
+      "as_of": "2025-03-10",
+      "key": "physchem.water_content",
+      "basis": "specification",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "limit": {
+          "op": "<=",
+          "value": 0.1
+        }
+      },
+      "unit": "%",
+      "as_written": "max. 0,1 %",
+      "evidence": [
+        {
+          "source": "doc-tds",
+          "page": 1,
+          "quote": "Water content                  max. 0,1 %",
+          "supports": [
+            "/value",
+            "/unit"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "typ-density",
+      "as_of": "2025-03-10",
+      "key": "physchem.density",
+      "basis": "typical",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "exact": 0.945
+      },
+      "unit": "g/cm3",
+      "as_written": "0,945 g/cm³",
+      "conditions": [
+        {
+          "key": "temperature",
+          "value": 20,
+          "unit": "Cel"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "doc-tds",
+          "page": 1,
+          "quote": "Density (20 °C)                0,945 g/cm³",
+          "supports": [
+            "/value",
+            "/unit",
+            "/conditions"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "typ-visc",
+      "as_of": "2025-03-10",
+      "key": "rheology.viscosity",
+      "basis": "typical",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "range": {
+          "min": 25,
+          "max": 33
+        }
+      },
+      "unit": "mPa.s",
+      "as_written": "25 - 33 mPa·s",
+      "conditions": [
+        {
+          "key": "temperature",
+          "value": 20,
+          "unit": "Cel"
+        }
+      ],
+      "evidence": [
+        {
+          "source": "doc-tds",
+          "page": 1,
+          "quote": "Viscosity (20 °C)              25 - 33 mPa·s",
+          "supports": [
+            "/value",
+            "/unit",
+            "/conditions"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "typ-spread",
+      "as_of": "2025-03-10",
+      "key": "sensory.spreading_value",
+      "basis": "typical",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "exact": 550
+      },
+      "unit": "mm2/(10.min)",
+      "as_written": "approx. 550 mm²/10 min",
+      "evidence": [
+        {
+          "source": "doc-tds",
+          "page": 1,
+          "quote": "Spreading value                approx. 550 mm²/10 min",
+          "supports": [
+            "/value",
+            "/unit"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shelf",
+      "as_of": "2025-03-10",
+      "key": "stability.shelf_life",
+      "basis": "specification",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "exact": 24
+      },
+      "unit": "mo",
+      "as_written": "24 months",
+      "evidence": [
+        {
+          "source": "doc-tds",
+          "page": 2,
+          "quote": "Shelf life: 24 months from the date of manufacture.",
+          "supports": [
+            "/value",
+            "/unit"
+          ]
+        }
+      ]
+    }
+  ],
+  "datasets": [
+    {
+      "id": "ds-spreading",
+      "as_of": "2025-03-10",
+      "title": {
+        "en": "Spreading value of Exaester GC compared with two reference emollients"
+      },
+      "basis": "measured",
+      "points_origin": "none",
+      "figure": "fig-1",
+      "subject": {
+        "kind": "neat"
+      },
+      "axes": [
+        {
+          "key": "compared_material",
+          "type": "category",
+          "role": "independent",
+          "legend": [
+            {
+              "code": "subject"
+            },
+            {
+              "code": "reference_1"
+            },
+            {
+              "code": "reference_2"
+            }
+          ]
+        },
+        {
+          "key": "sensory.spreading_value",
+          "type": "numeric",
+          "unit": "mm2/(10.min)",
+          "scale": "lin",
+          "role": "dependent"
+        }
+      ],
+      "series": [
+        {
+          "id": "ser-1",
+          "label": {
+            "en": "Exaester GC"
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "source": "doc-tds",
+          "page": 2,
+          "quote": "Figure 1: Spreading value (mm²/10 min) of Exaester GC compared with two reference emollients.",
+          "supports": [
+            "/title",
+            "/axes",
+            "/series"
+          ]
+        }
+      ]
+    }
+  ],
+  "statements": [
+    {
+      "id": "s-desc",
+      "as_of": "2025-03-10",
+      "kind": "description",
+      "text": {
+        "en": "Exaester GC is a clear, colourless, odourless oil of medium polarity."
+      },
+      "evidence": [
+        {
+          "source": "doc-tds",
+          "page": 1,
+          "quote": "Exaester GC is a clear, colourless, odourless oil of medium polarity.",
+          "supports": [
+            "/text"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s-storage",
+      "as_of": "2025-03-10",
+      "kind": "storage",
+      "text": {
+        "en": "Store in the unopened original container, protected from light."
+      },
+      "evidence": [
+        {
+          "source": "doc-tds",
+          "page": 2,
+          "quote": "Store in the unopened original container, protected from light.",
+          "supports": [
+            "/text"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s-check-1",
+      "as_of": "2026-11-10",
+      "kind": "checklist",
+      "text": {
+        "en": "Is the material placed in the oil phase?"
+      },
+      "curated": true,
+      "note": "Written by the curator; not taken from the source document."
+    }
+  ],
+  "media": [
+    {
+      "id": "doc-tds",
+      "as_of": "2025-03-10",
+      "kind": "source_document",
+      "sha256": "dbe4467471b3df50213906754390e1b62c0c58903f89b512d69af388b733b454",
+      "mime": "application/pdf",
+      "title": {
+        "en": "Technical data sheet, Exaester GC, revision 4"
+      },
+      "license": {
+        "id": "unknown",
+        "redistribution": "none"
+      },
+      "document": {
+        "kind": "tds",
+        "doc_version": "Revision 4",
+        "issued": "2025-03-10",
+        "language": "en",
+        "pages": 2,
+        "issuer": "Example Ingredients Ltd."
+      }
+    },
+    {
+      "id": "fig-1",
+      "as_of": "2025-03-10",
+      "kind": "figure",
+      "url": "https://extractor.example.org/media/ex-4410-fig-1.png",
+      "sha256": "22b5f8ddc5aa336fe79a58968862a6ba7b44f3549785fdd99ef0e061111f3b7f",
+      "mime": "image/png",
+      "caption": {
+        "en": "Figure 1 of the technical data sheet (page 2)."
+      },
+      "license": {
+        "id": "unknown",
+        "holder": "Example Ingredients Ltd.",
+        "redistribution": "none"
+      }
+    }
+  ]
+}

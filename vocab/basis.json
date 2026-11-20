@@ -1,0 +1,16 @@
+{
+  "vocab": "basis",
+  "vocab_version": "1.0",
+  "issued": "2026-11-14",
+  "title": "Basis of a property value (structural enumeration, mirrored in the JSON Schema)",
+  "license": "Apache-2.0",
+  "terms": [
+    {"key": "specification", "label": "Specification", "definition": "A release limit the publisher guarantees for every batch."},
+    {"key": "typical", "label": "Typical", "definition": "A typical value; not guaranteed, not part of the specification."},
+    {"key": "measured", "label": "Measured", "definition": "The result of a specific test or study."},
+    {"key": "recommended", "label": "Recommended", "definition": "The publisher's recommendation for use (for example a use level)."},
+    {"key": "regulatory_limit", "label": "Regulatory limit", "definition": "A limit set by a regulator or a standard-setting body; requires scope.region and its own as_of."},
+    {"key": "calculated", "label": "Calculated", "definition": "Derived by calculation or simulation, not measured."},
+    {"key": "declared", "label": "Declared", "definition": "A declaration by the publisher without a test behind it (for example a function)."}
+  ]
+}

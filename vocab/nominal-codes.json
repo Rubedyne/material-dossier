@@ -1,0 +1,25 @@
+{
+  "vocab": "nominal-codes",
+  "vocab_version": "1.0",
+  "issued": "2026-11-14",
+  "title": "Nominal code sets for value.nominal",
+  "license": "Apache-2.0",
+  "note": "A property key names its set in property-keys.json (`nominal_set`). A set name that equals another vocabulary (functions, sensory, process-stages, product-types) refers to that vocabulary's terms.",
+  "terms": [
+    {"key": "physical_form", "label": "Physical form", "codes": ["liquid", "viscous_liquid", "paste", "gel", "wax", "flakes", "pellets", "pastilles", "powder", "granules", "crystals", "solid", "emulsion", "dispersion", "solution"]},
+    {"key": "solubility_class", "label": "Solubility class", "codes": ["soluble", "miscible", "partially_soluble", "dispersible", "swellable", "insoluble"]},
+    {"key": "ionic_character", "label": "Ionic character", "codes": ["anionic", "cationic", "nonionic", "amphoteric"]},
+    {"key": "emulsion_type", "label": "Emulsion type", "codes": ["o_w", "w_o", "w_si", "si_w", "multiple"]},
+    {"key": "conformity", "label": "Conformity", "codes": ["conforms", "does_not_conform", "pass", "fail", "absent", "present", "not_detected"]},
+    {"key": "irritation_class", "label": "Irritation class", "codes": ["not_irritant", "slightly_irritant", "moderately_irritant", "irritant", "severely_irritant", "corrosive"]},
+    {"key": "sensitization_class", "label": "Sensitization class", "codes": ["not_sensitizer", "weak_sensitizer", "sensitizer", "strong_sensitizer"]},
+    {"key": "tox_binary", "label": "Tox binary", "codes": ["negative", "positive", "equivocal"]},
+    {"key": "phototoxicity_class", "label": "Phototoxicity class", "codes": ["not_phototoxic", "phototoxic"]},
+    {"key": "comedogenicity_class", "label": "Comedogenicity class", "codes": ["non_comedogenic", "slightly_comedogenic", "comedogenic"]},
+    {"key": "flow_behavior", "label": "Flow behavior", "codes": ["newtonian", "shear_thinning", "shear_thickening", "thixotropic", "yield_stress_fluid"]},
+    {"key": "stability_observation", "label": "Stability observation", "codes": ["stable", "slight_change", "discoloration", "phase_separation", "viscosity_loss", "viscosity_increase", "precipitation", "crystallization", "odor_change", "unstable"]},
+    {"key": "challenge_result", "label": "Challenge result", "codes": ["criteria_a", "criteria_b", "pass", "fail"]},
+    {"key": "biodegradability_class", "label": "Biodegradability class", "codes": ["readily_biodegradable", "inherently_biodegradable", "not_readily_biodegradable"]},
+    {"key": "yes_no", "label": "Yes no", "codes": ["yes", "no"]}
+  ]
+}

@@ -1,0 +1,1332 @@
+{
+  "$schema": "https://rubedyne.com/schemas/material-dossier/1.0/dossier.schema.json",
+  "standard_version": "1.0",
+  "vocab_version": "1.0",
+  "dossier_id": "example.com:exagel-r200",
+  "version": 1,
+  "issued": "2026-11-02T09:00:00Z",
+  "representation": "public",
+  "completeness": "full",
+  "conformance_level": "L3",
+  "default_language": "en",
+  "languages": [
+    "en"
+  ],
+  "source": {
+    "route": "manufacturer",
+    "publisher": {
+      "name": "Example Ingredients Ltd.",
+      "domain": "example.com",
+      "country": "IE"
+    }
+  },
+  "declarations": {
+    "negative_results_included": true,
+    "batch_data_excluded": true
+  },
+  "x-example.com:portfolio_group": "Rheology",
+  "identity": {
+    "trade_name": "Exagel R200",
+    "product_code": "EX-2200",
+    "grade": "Powder, medium viscosity",
+    "family": {
+      "name": "Exagel R"
+    },
+    "manufacturer": {
+      "name": "Example Ingredients Ltd.",
+      "domain": "example.com",
+      "country": "IE"
+    },
+    "inci": [
+      "Acrylates/C10-30 Alkyl Acrylate Crosspolymer"
+    ],
+    "as_of": "2026-05"
+  },
+  "composition": {
+    "as_of": "2026-05",
+    "basis": "w/w_as_supplied",
+    "complete": true,
+    "components": [
+      {
+        "id": "c-polymer",
+        "inci": "Acrylates/C10-30 Alkyl Acrylate Crosspolymer",
+        "role": "active",
+        "content": {
+          "limit": {
+            "op": ">=",
+            "value": 98
+          }
+        },
+        "origin": {
+          "type": "synthetic"
+        }
+      },
+      {
+        "id": "c-moisture",
+        "name": "Water (residual moisture)",
+        "inci": "Aqua",
+        "role": "residual",
+        "content": {
+          "limit": {
+            "op": "<=",
+            "value": 2
+          }
+        }
+      }
+    ]
+  },
+  "properties": [
+    {
+      "id": "use-level",
+      "as_of": "2026-05",
+      "key": "use.level",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "range": {
+          "min": 0.1,
+          "max": 1.0
+        }
+      },
+      "unit": "%"
+    },
+    {
+      "id": "use-typical",
+      "as_of": "2026-05",
+      "key": "use.level_typical",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "exact": 0.4
+      },
+      "unit": "%"
+    },
+    {
+      "id": "use-phase-a",
+      "as_of": "2026-05",
+      "key": "use.phase",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "water_phase"
+      }
+    },
+    {
+      "id": "use-phase-pre",
+      "as_of": "2026-05",
+      "key": "use.phase",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "pre_dispersion"
+      }
+    },
+    {
+      "id": "use-ph",
+      "as_of": "2026-05",
+      "key": "use.ph_window",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "range": {
+          "min": 5,
+          "max": 9
+        }
+      },
+      "unit": "[pH]"
+    },
+    {
+      "id": "use-temp",
+      "as_of": "2026-05",
+      "key": "use.process_temperature_max",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "limit": {
+          "op": "<=",
+          "value": 85
+        }
+      },
+      "unit": "Cel"
+    },
+    {
+      "id": "use-neutral",
+      "as_of": "2026-05",
+      "key": "use.neutralization_ph",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "range": {
+          "min": 5.5,
+          "max": 7.5
+        }
+      },
+      "unit": "[pH]"
+    },
+    {
+      "id": "use-salt",
+      "as_of": "2026-05",
+      "key": "use.electrolyte_tolerance",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "limit": {
+          "op": "<=",
+          "value": 0.5
+        }
+      },
+      "unit": "%",
+      "conditions": [
+        {
+          "key": "electrolyte",
+          "text": "Sodium Chloride"
+        }
+      ]
+    },
+    {
+      "id": "use-hydration",
+      "as_of": "2026-05",
+      "key": "use.hydration_time",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "range": {
+          "min": 20,
+          "max": 30
+        }
+      },
+      "unit": "min"
+    },
+    {
+      "id": "fn-visc",
+      "as_of": "2026-05",
+      "key": "profile.function",
+      "basis": "declared",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "viscosity_controlling"
+      }
+    },
+    {
+      "id": "fn-stab",
+      "as_of": "2026-05",
+      "key": "profile.function",
+      "basis": "declared",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "emulsion_stabilising"
+      }
+    },
+    {
+      "id": "form",
+      "as_of": "2026-05",
+      "key": "profile.physical_form",
+      "basis": "declared",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "powder"
+      }
+    },
+    {
+      "id": "ionic",
+      "as_of": "2026-05",
+      "key": "profile.ionic_character",
+      "basis": "declared",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "anionic"
+      }
+    },
+    {
+      "id": "flow",
+      "as_of": "2026-05",
+      "key": "profile.flow_behavior",
+      "basis": "typical",
+      "subject": {
+        "kind": "dilution",
+        "medium": "deionized water, neutralized with sodium hydroxide to pH 6.5",
+        "material_conc": {
+          "value": 0.5,
+          "unit": "%",
+          "basis": "as_supplied"
+        }
+      },
+      "value": {
+        "nominal": "shear_thinning"
+      }
+    },
+    {
+      "id": "sol-water",
+      "as_of": "2026-05",
+      "key": "solubility.water",
+      "basis": "typical",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "swellable"
+      }
+    },
+    {
+      "id": "spec-appearance",
+      "as_of": "2026-05",
+      "key": "physchem.appearance",
+      "basis": "specification",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "text": {
+          "en": "White, fluffy powder"
+        }
+      }
+    },
+    {
+      "id": "spec-visc",
+      "as_of": "2026-05",
+      "key": "rheology.viscosity",
+      "basis": "specification",
+      "subject": {
+        "kind": "dilution",
+        "medium": "deionized water, neutralized with sodium hydroxide to pH 6.5",
+        "material_conc": {
+          "value": 0.5,
+          "unit": "%",
+          "basis": "as_supplied"
+        }
+      },
+      "value": {
+        "range": {
+          "min": 40000,
+          "max": 60000
+        }
+      },
+      "unit": "mPa.s",
+      "method": {
+        "standard": "iso:2555",
+        "instrument": "Rotational viscometer",
+        "settings": [
+          {
+            "key": "rotation_speed",
+            "value": 20,
+            "unit": "{rpm}"
+          },
+          {
+            "key": "spindle",
+            "text": "RV 6 or RV 7"
+          }
+        ]
+      },
+      "conditions": [
+        {
+          "key": "temperature",
+          "value": 25,
+          "unit": "Cel"
+        }
+      ],
+      "as_written": "40 000 - 60 000 mPa.s"
+    },
+    {
+      "id": "spec-ph",
+      "as_of": "2026-05",
+      "key": "physchem.ph",
+      "basis": "specification",
+      "subject": {
+        "kind": "dilution",
+        "medium": "deionized water",
+        "material_conc": {
+          "value": 0.5,
+          "unit": "%",
+          "basis": "as_supplied"
+        }
+      },
+      "value": {
+        "range": {
+          "min": 2.5,
+          "max": 3.5
+        }
+      },
+      "unit": "[pH]",
+      "conditions": [
+        {
+          "key": "temperature",
+          "value": 25,
+          "unit": "Cel"
+        }
+      ]
+    },
+    {
+      "id": "spec-lod",
+      "as_of": "2026-05",
+      "key": "physchem.loss_on_drying",
+      "basis": "specification",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "limit": {
+          "op": "<=",
+          "value": 2
+        }
+      },
+      "unit": "%",
+      "method": {
+        "standard": "ph-eur:2.2.32"
+      }
+    },
+    {
+      "id": "spec-monomer",
+      "as_of": "2026-05",
+      "key": "purity.residual_monomer",
+      "basis": "specification",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "limit": {
+          "op": "<",
+          "value": 0.1
+        }
+      },
+      "unit": "%",
+      "conditions": [
+        {
+          "key": "medium",
+          "text": "Acrylic acid"
+        }
+      ]
+    },
+    {
+      "id": "typ-yield",
+      "as_of": "2026-05",
+      "key": "rheology.yield_stress",
+      "basis": "typical",
+      "subject": {
+        "kind": "dilution",
+        "medium": "deionized water, neutralized with sodium hydroxide to pH 6.5",
+        "material_conc": {
+          "value": 0.5,
+          "unit": "%",
+          "basis": "as_supplied"
+        }
+      },
+      "value": {
+        "exact": 18
+      },
+      "unit": "Pa",
+      "conditions": [
+        {
+          "key": "temperature",
+          "value": 25,
+          "unit": "Cel"
+        }
+      ],
+      "method": {
+        "instrument": "Controlled-stress rheometer, cone and plate"
+      }
+    },
+    {
+      "id": "typ-bulk",
+      "as_of": "2026-05",
+      "key": "physchem.bulk_density",
+      "basis": "typical",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "exact": 210
+      },
+      "unit": "g/L"
+    },
+    {
+      "id": "shelf",
+      "as_of": "2026-05",
+      "key": "stability.shelf_life",
+      "basis": "specification",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "exact": 24
+      },
+      "unit": "mo"
+    },
+    {
+      "id": "stab-ph",
+      "as_of": "2026-05",
+      "key": "stability.ph_range",
+      "basis": "typical",
+      "subject": {
+        "kind": "dilution",
+        "medium": "deionized water, neutralized with sodium hydroxide to pH 6.5",
+        "material_conc": {
+          "value": 0.5,
+          "unit": "%",
+          "basis": "as_supplied"
+        }
+      },
+      "value": {
+        "range": {
+          "min": 4,
+          "max": 10
+        }
+      },
+      "unit": "[pH]"
+    },
+    {
+      "id": "salt-loss",
+      "as_of": "2026-05",
+      "key": "rheology.viscosity_change",
+      "basis": "measured",
+      "subject": {
+        "kind": "dilution",
+        "medium": "deionized water, neutralized with sodium hydroxide to pH 6.5",
+        "material_conc": {
+          "value": 0.5,
+          "unit": "%",
+          "basis": "as_supplied"
+        }
+      },
+      "value": {
+        "exact": -62
+      },
+      "unit": "%",
+      "method": {
+        "standard": "iso:2555",
+        "instrument": "Rotational viscometer",
+        "settings": [
+          {
+            "key": "rotation_speed",
+            "value": 20,
+            "unit": "{rpm}"
+          },
+          {
+            "key": "spindle",
+            "text": "RV 6 or RV 7"
+          }
+        ]
+      },
+      "conditions": [
+        {
+          "key": "temperature",
+          "value": 25,
+          "unit": "Cel"
+        },
+        {
+          "key": "electrolyte",
+          "text": "Sodium Chloride"
+        },
+        {
+          "key": "electrolyte_concentration",
+          "value": 0.5,
+          "unit": "%"
+        }
+      ],
+      "comparison": {
+        "vs": "untreated",
+        "change": "relative"
+      }
+    },
+    {
+      "id": "tox-irr",
+      "as_of": "2021-03",
+      "key": "tox.skin_irritation",
+      "basis": "measured",
+      "subject": {
+        "kind": "dilution",
+        "medium": "deionized water, neutralized with sodium hydroxide to pH 6.5",
+        "material_conc": {
+          "value": 1.0,
+          "unit": "%",
+          "basis": "as_supplied"
+        }
+      },
+      "value": {
+        "nominal": "not_irritant"
+      },
+      "method": {
+        "standard": "oecd:439"
+      }
+    },
+    {
+      "id": "sf-visc",
+      "as_of": "2026-05",
+      "key": "rheology.viscosity",
+      "basis": "measured",
+      "subject": {
+        "kind": "formulation",
+        "formulation": "f-gelcream"
+      },
+      "value": {
+        "exact": 38000
+      },
+      "unit": "mPa.s",
+      "method": {
+        "standard": "iso:2555",
+        "instrument": "Rotational viscometer",
+        "settings": [
+          {
+            "key": "rotation_speed",
+            "value": 20,
+            "unit": "{rpm}"
+          },
+          {
+            "key": "spindle",
+            "text": "RV 6 or RV 7"
+          }
+        ]
+      },
+      "conditions": [
+        {
+          "key": "temperature",
+          "value": 25,
+          "unit": "Cel"
+        }
+      ]
+    },
+    {
+      "id": "sf-ph",
+      "as_of": "2026-05",
+      "key": "physchem.ph",
+      "basis": "measured",
+      "subject": {
+        "kind": "formulation",
+        "formulation": "f-gelcream"
+      },
+      "value": {
+        "range": {
+          "min": 6.0,
+          "max": 6.5
+        }
+      },
+      "unit": "[pH]",
+      "conditions": [
+        {
+          "key": "temperature",
+          "value": 25,
+          "unit": "Cel"
+        }
+      ]
+    },
+    {
+      "id": "sf-stab-40",
+      "as_of": "2026-05",
+      "key": "stability.observation",
+      "basis": "measured",
+      "subject": {
+        "kind": "formulation",
+        "formulation": "f-gelcream"
+      },
+      "value": {
+        "nominal": "stable"
+      },
+      "study": "st-stability",
+      "conditions": [
+        {
+          "key": "temperature",
+          "value": 40,
+          "unit": "Cel"
+        },
+        {
+          "key": "storage_time",
+          "value": 3,
+          "unit": "mo"
+        }
+      ]
+    },
+    {
+      "id": "sf-stab-ft",
+      "as_of": "2026-05",
+      "key": "stability.observation",
+      "basis": "measured",
+      "subject": {
+        "kind": "formulation",
+        "formulation": "f-gelcream"
+      },
+      "value": {
+        "nominal": "stable"
+      },
+      "study": "st-stability",
+      "conditions": [
+        {
+          "key": "freeze_thaw_cycles",
+          "value": 3,
+          "unit": "1"
+        }
+      ]
+    }
+  ],
+  "datasets": [
+    {
+      "id": "ds-visc-conc",
+      "as_of": "2026-05",
+      "title": {
+        "en": "Viscosity against polymer concentration"
+      },
+      "basis": "typical",
+      "points_origin": "publisher_raw",
+      "figure": "fig-visc-conc",
+      "subject": {
+        "kind": "dilution",
+        "medium": "deionized water, neutralized with sodium hydroxide to pH 6.5"
+      },
+      "method": {
+        "standard": "iso:2555",
+        "instrument": "Rotational viscometer",
+        "settings": [
+          {
+            "key": "rotation_speed",
+            "value": 20,
+            "unit": "{rpm}"
+          },
+          {
+            "key": "spindle",
+            "text": "RV 6 or RV 7"
+          }
+        ]
+      },
+      "conditions": [
+        {
+          "key": "temperature",
+          "value": 25,
+          "unit": "Cel"
+        }
+      ],
+      "axes": [
+        {
+          "key": "material_concentration",
+          "type": "numeric",
+          "unit": "%",
+          "scale": "lin",
+          "role": "independent"
+        },
+        {
+          "key": "rheology.viscosity",
+          "type": "numeric",
+          "unit": "mPa.s",
+          "scale": "log",
+          "role": "dependent"
+        }
+      ],
+      "series": [
+        {
+          "id": "ser-conc",
+          "label": {
+            "en": "Exagel R200, pH 6.5, 25 Cel"
+          },
+          "points": [
+            [
+              0.1,
+              1200
+            ],
+            [
+              0.2,
+              9500
+            ],
+            [
+              0.3,
+              24000
+            ],
+            [
+              0.5,
+              51000
+            ],
+            [
+              0.75,
+              68000
+            ],
+            [
+              1.0,
+              79000
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds-visc-ph",
+      "as_of": "2026-05",
+      "title": {
+        "en": "Viscosity against pH at 0.5 %"
+      },
+      "basis": "typical",
+      "points_origin": "publisher_raw",
+      "figure": "fig-visc-ph",
+      "subject": {
+        "kind": "dilution",
+        "medium": "deionized water, pH adjusted with sodium hydroxide",
+        "material_conc": {
+          "value": 0.5,
+          "unit": "%",
+          "basis": "as_supplied"
+        }
+      },
+      "method": {
+        "standard": "iso:2555",
+        "instrument": "Rotational viscometer",
+        "settings": [
+          {
+            "key": "rotation_speed",
+            "value": 20,
+            "unit": "{rpm}"
+          },
+          {
+            "key": "spindle",
+            "text": "RV 6 or RV 7"
+          }
+        ]
+      },
+      "conditions": [
+        {
+          "key": "temperature",
+          "value": 25,
+          "unit": "Cel"
+        }
+      ],
+      "axes": [
+        {
+          "key": "ph",
+          "type": "numeric",
+          "unit": "[pH]",
+          "scale": "lin",
+          "role": "independent"
+        },
+        {
+          "key": "rheology.viscosity",
+          "type": "numeric",
+          "unit": "mPa.s",
+          "scale": "log",
+          "role": "dependent"
+        }
+      ],
+      "series": [
+        {
+          "id": "ser-ph",
+          "label": {
+            "en": "0.5 % Exagel R200, 25 Cel"
+          },
+          "points": [
+            [
+              3,
+              45
+            ],
+            [
+              4,
+              2100
+            ],
+            [
+              5,
+              31000
+            ],
+            [
+              6,
+              49000
+            ],
+            [
+              7,
+              52000
+            ],
+            [
+              8,
+              50500
+            ],
+            [
+              9,
+              44000
+            ],
+            [
+              10,
+              29000
+            ],
+            [
+              11,
+              8200
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ds-compat",
+      "as_of": "2026-05",
+      "title": {
+        "en": "Clarity of 0.5 % gels with common additives"
+      },
+      "basis": "measured",
+      "points_origin": "publisher_raw",
+      "subject": {
+        "kind": "dilution",
+        "medium": "deionized water, neutralized with sodium hydroxide to pH 6.5",
+        "material_conc": {
+          "value": 0.5,
+          "unit": "%",
+          "basis": "as_supplied"
+        }
+      },
+      "axes": [
+        {
+          "key": "compared_material",
+          "type": "category",
+          "role": "independent",
+          "legend": [
+            {
+              "code": "glycerin_10",
+              "label": {
+                "en": "10 % Glycerin"
+              }
+            },
+            {
+              "code": "ethanol_20",
+              "label": {
+                "en": "20 % Alcohol"
+              }
+            },
+            {
+              "code": "nacl_05",
+              "label": {
+                "en": "0.5 % Sodium Chloride"
+              }
+            }
+          ]
+        },
+        {
+          "key": "physchem.turbidity",
+          "type": "ordinal",
+          "role": "dependent",
+          "legend": [
+            {
+              "code": "clear",
+              "rank": 3,
+              "label": {
+                "en": "Clear"
+              }
+            },
+            {
+              "code": "hazy",
+              "rank": 2,
+              "label": {
+                "en": "Slightly hazy"
+              }
+            },
+            {
+              "code": "turbid",
+              "rank": 1,
+              "label": {
+                "en": "Turbid"
+              }
+            }
+          ]
+        }
+      ],
+      "series": [
+        {
+          "id": "ser-compat",
+          "label": {
+            "en": "0.5 % Exagel R200, pH 6.5"
+          },
+          "points": [
+            [
+              "glycerin_10",
+              "clear"
+            ],
+            [
+              "ethanol_20",
+              "clear"
+            ],
+            [
+              "nacl_05",
+              "hazy"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "formulations": [
+    {
+      "id": "f-gelcream",
+      "as_of": "2026-05",
+      "role": "starting_formula",
+      "name": {
+        "en": "Light gel-cream"
+      },
+      "code": "EX-SF-2203",
+      "product_type": "face_care",
+      "product_form": "gel_cream",
+      "disclosure": "full",
+      "lines": [
+        {
+          "phase": "A",
+          "inci": "Aqua",
+          "qs": true
+        },
+        {
+          "phase": "A",
+          "inci": "Glycerin",
+          "percent": 4,
+          "function": "humectant"
+        },
+        {
+          "phase": "A",
+          "inci": "Disodium EDTA",
+          "percent": 0.05,
+          "function": "chelating"
+        },
+        {
+          "phase": "A",
+          "inci": "Acrylates/C10-30 Alkyl Acrylate Crosspolymer",
+          "percent": 0.4,
+          "trade_name": "Exagel R200",
+          "supplier": "Example Ingredients Ltd.",
+          "function": "viscosity_controlling",
+          "is_subject": true
+        },
+        {
+          "phase": "B",
+          "inci": "Caprylic/Capric Triglyceride",
+          "percent": 6,
+          "function": "emollient"
+        },
+        {
+          "phase": "B",
+          "inci": "Dimethicone",
+          "percent": 2,
+          "function": "emollient"
+        },
+        {
+          "phase": "B",
+          "inci": "Tocopheryl Acetate",
+          "percent": 0.5,
+          "function": "antioxidant"
+        },
+        {
+          "phase": "C",
+          "inci": "Sodium Hydroxide",
+          "percent": 0.16,
+          "function": "buffering"
+        },
+        {
+          "phase": "D",
+          "inci": "Phenoxyethanol",
+          "percent": 0.9,
+          "function": "preservative"
+        },
+        {
+          "phase": "D",
+          "inci": "Ethylhexylglycerin",
+          "percent": 0.1,
+          "function": "skin_conditioning"
+        }
+      ],
+      "procedure": [
+        {
+          "en": "Sprinkle Exagel R200 onto the water of phase A while stirring; let it hydrate for 20 to 30 minutes, then add the rest of phase A."
+        },
+        {
+          "en": "Heat A and B separately to 70 Cel. Add B to A under homogenization for 2 minutes."
+        },
+        {
+          "en": "Neutralize with phase C to pH 6.0 to 6.5 under slow stirring."
+        },
+        {
+          "en": "Cool to below 40 Cel and add phase D."
+        }
+      ]
+    }
+  ],
+  "studies": [
+    {
+      "id": "st-stability",
+      "as_of": "2026-05",
+      "kind": "stability",
+      "title": {
+        "en": "Storage stability of the starting formulation"
+      },
+      "duration": {
+        "value": 3,
+        "unit": "mo"
+      },
+      "arms": [
+        {
+          "role": "test",
+          "formulation": "f-gelcream"
+        }
+      ],
+      "lab": {
+        "type": "in_house"
+      },
+      "all_endpoints_reported": true
+    }
+  ],
+  "relations": [
+    {
+      "id": "rel-salt",
+      "as_of": "2026-05",
+      "with": {
+        "class": "electrolytes"
+      },
+      "effect": "thins",
+      "basis": "measured",
+      "conditions": [
+        {
+          "key": "electrolyte_concentration",
+          "value": 0.5,
+          "unit": "%"
+        }
+      ],
+      "support": [
+        "salt-loss",
+        "ds-compat"
+      ]
+    },
+    {
+      "id": "rel-cationic",
+      "as_of": "2026-05",
+      "with": {
+        "class": "cationic_surfactants"
+      },
+      "effect": "incompatible",
+      "basis": "declared",
+      "text": {
+        "en": "Forms insoluble complexes with cationic surfactants and cationic polymers."
+      }
+    },
+    {
+      "id": "rel-catpoly",
+      "as_of": "2026-05",
+      "with": {
+        "class": "cationic_polymers"
+      },
+      "effect": "precipitates",
+      "basis": "declared"
+    },
+    {
+      "id": "rel-base",
+      "as_of": "2026-05",
+      "with": {
+        "inci": "Sodium Hydroxide"
+      },
+      "effect": "requires",
+      "basis": "recommended",
+      "text": {
+        "en": "Thickens only after neutralization; triethanolamine or aminomethyl propanol can be used instead."
+      }
+    },
+    {
+      "id": "rel-ethanol",
+      "as_of": "2026-05",
+      "with": {
+        "class": "ethanol"
+      },
+      "effect": "compatible",
+      "basis": "measured",
+      "conditions": [
+        {
+          "key": "ethanol_content",
+          "value": 20,
+          "unit": "%"
+        }
+      ],
+      "support": [
+        "ds-compat"
+      ]
+    }
+  ],
+  "attestations": [
+    {
+      "id": "att-eu",
+      "as_of": "2026-03",
+      "scheme": "eu_cosmetics_regulation",
+      "status": "permitted",
+      "scope": {
+        "region": [
+          "EU"
+        ]
+      }
+    },
+    {
+      "id": "att-reach",
+      "as_of": "2026-03",
+      "scheme": "eu_reach",
+      "status": "registered",
+      "scope": {
+        "region": [
+          "EU"
+        ]
+      }
+    },
+    {
+      "id": "att-iecic",
+      "as_of": "2026-03",
+      "scheme": "cn_iecic",
+      "status": "listed",
+      "scope": {
+        "region": [
+          "CN"
+        ]
+      },
+      "edition": "IECIC 2021"
+    },
+    {
+      "id": "att-nano",
+      "as_of": "2026-05",
+      "scheme": "nano_status",
+      "status": "not_nano",
+      "scope": {
+        "region": [
+          "EU"
+        ]
+      }
+    },
+    {
+      "id": "att-vegan",
+      "as_of": "2026-05",
+      "scheme": "vegan",
+      "status": "compliant"
+    },
+    {
+      "id": "att-micro",
+      "as_of": "2026-05",
+      "scheme": "microplastic_free",
+      "status": "not_compliant",
+      "scope": {
+        "region": [
+          "EU"
+        ]
+      },
+      "note": "Falls under the EU definition of synthetic polymer microparticles; see the regulatory statement."
+    }
+  ],
+  "statements": [
+    {
+      "id": "s-desc",
+      "as_of": "2026-05",
+      "kind": "description",
+      "text": {
+        "en": "Exagel R200 is a cross-linked acrylic polymer that gives clear, shear-thinning gels and stabilizes emulsions at low use levels."
+      }
+    },
+    {
+      "id": "s-guid-1",
+      "as_of": "2026-05",
+      "kind": "guidance",
+      "text": {
+        "en": "Disperse into the water phase before any electrolyte or neutralizer is added; allow 20 to 30 minutes to hydrate."
+      }
+    },
+    {
+      "id": "s-guid-2",
+      "as_of": "2026-05",
+      "kind": "guidance",
+      "text": {
+        "en": "Neutralize to pH 5.5 to 7.5 to develop viscosity; below pH 5 the gel stays thin."
+      }
+    },
+    {
+      "id": "s-check-1",
+      "as_of": "2026-05",
+      "kind": "checklist",
+      "text": {
+        "en": "Is a neutralizer (for example sodium hydroxide or an amine) present in the formula?"
+      }
+    },
+    {
+      "id": "s-check-2",
+      "as_of": "2026-05",
+      "kind": "checklist",
+      "text": {
+        "en": "Are cationic surfactants or cationic polymers absent?"
+      }
+    },
+    {
+      "id": "s-handling",
+      "as_of": "2026-05",
+      "kind": "handling",
+      "text": {
+        "en": "Avoid dust formation when weighing; the powder is hygroscopic, close containers after use."
+      }
+    }
+  ],
+  "media": [
+    {
+      "id": "fig-visc-conc",
+      "as_of": "2026-05",
+      "kind": "figure",
+      "url": "https://example.com/material-dossier/media/exagel-r200-viscosity-concentration.png",
+      "sha256": "3d125c6aa4837d0d28adc3e87bb99371b9b098b46e2f48fd4903d6e4dbba49d3",
+      "mime": "image/png",
+      "caption": {
+        "en": "Viscosity against concentration, pH 6.5, 25 Cel, 20 rpm."
+      },
+      "license": {
+        "id": "proprietary",
+        "holder": "Example Ingredients Ltd.",
+        "redistribution": "consumer_display"
+      }
+    },
+    {
+      "id": "fig-visc-ph",
+      "as_of": "2026-05",
+      "kind": "figure",
+      "url": "https://example.com/material-dossier/media/exagel-r200-viscosity-ph.png",
+      "sha256": "54c04135bbc93bc05db71ff3da0a2263d37d1070f108f5ab1e41090ed3bf94a5",
+      "mime": "image/png",
+      "caption": {
+        "en": "Viscosity of a 0.5 % dispersion against pH, 25 Cel, 20 rpm."
+      },
+      "license": {
+        "id": "proprietary",
+        "holder": "Example Ingredients Ltd.",
+        "redistribution": "consumer_display"
+      }
+    },
+    {
+      "id": "doc-sds",
+      "as_of": "2026-01-15",
+      "kind": "source_document",
+      "url": "https://example.com/material-dossier/docs/exagel-r200-sds.pdf",
+      "sha256": "3f3def7f4554e4a21780bb5034fa91bbac2db8e848a7832d355a4a6483fabd8a",
+      "mime": "application/pdf",
+      "title": {
+        "en": "Safety data sheet, Exagel R200"
+      },
+      "license": {
+        "id": "proprietary",
+        "holder": "Example Ingredients Ltd.",
+        "redistribution": "consumer_display"
+      },
+      "document": {
+        "kind": "sds",
+        "issued": "2026-01-15",
+        "language": "en",
+        "pages": 12
+      }
+    }
+  ]
+}

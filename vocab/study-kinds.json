@@ -1,0 +1,22 @@
+{
+  "vocab": "study-kinds",
+  "vocab_version": "1.0",
+  "issued": "2026-11-14",
+  "title": "Study kinds",
+  "license": "Apache-2.0",
+  "note": "evidence_rank is an informative ordering for display only (higher = closer to use conditions); it is not a quality score.",
+  "terms": [
+    {"key": "in_vivo", "label": "In vivo (instrumental or expert-graded, on human subjects)", "evidence_rank": 5},
+    {"key": "consumer_perception", "label": "Consumer perception (self-assessment by users)", "definition": "Never to be mixed with instrumental measurement; market surveys are not studies.", "evidence_rank": 3},
+    {"key": "sensory_panel", "label": "Sensory panel (trained or expert panel)", "evidence_rank": 3},
+    {"key": "ex_vivo", "label": "Ex vivo (explants, hair tresses, excised tissue)", "evidence_rank": 3},
+    {"key": "in_vitro", "label": "In vitro (cell culture, reconstructed tissue, substrate plates)", "evidence_rank": 2},
+    {"key": "in_chemico", "label": "In chemico (cell-free chemical assay)", "evidence_rank": 2},
+    {"key": "in_silico", "label": "In silico (modelling, simulation, docking)", "evidence_rank": 1},
+    {"key": "microbiological", "label": "Microbiological (MIC, challenge test)", "evidence_rank": 4},
+    {"key": "toxicological", "label": "Toxicological", "evidence_rank": 4},
+    {"key": "stability", "label": "Stability (of the material or of a formulation)", "evidence_rank": 4},
+    {"key": "physicochemical", "label": "Physico-chemical or rheological characterisation", "evidence_rank": 4},
+    {"key": "ecotoxicological", "label": "Ecotoxicological / environmental fate", "evidence_rank": 4}
+  ]
+}

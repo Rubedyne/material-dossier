@@ -1,0 +1,2689 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rubedyne.com/schemas/material-dossier/1.0/dossier.schema.json",
+  "title": "Rubedyne Material Dossier 1.0",
+  "description": "The complete structured document of one sellable grade of a cosmetic raw material. Normative text: SPEC.md. Vocabulary membership, references and view rules are checked outside this schema (SPEC.md section 11). Licence: Apache-2.0.",
+  "type": "object",
+  "additionalProperties": false,
+  "patternProperties": {
+    "^x-[a-z0-9][a-z0-9.-]*:[a-z0-9][a-z0-9_.-]*$": {}
+  },
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "standard_version": {
+      "type": "string",
+      "pattern": "^1\\.[0-9]+$"
+    },
+    "vocab_version": {
+      "type": "string",
+      "pattern": "^1\\.[0-9]+$"
+    },
+    "dossier_id": {
+      "type": "string",
+      "maxLength": 200,
+      "pattern": "^([a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z]{2,}:[a-z0-9][a-z0-9._-]{0,99}$",
+      "description": "<publisher domain>:<slug>; stable across versions, never reused."
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "issued": {
+      "$ref": "#/$defs/timestamp"
+    },
+    "supersedes": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "hash": {
+          "$ref": "#/$defs/hash"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "hash"
+      ]
+    },
+    "representation": {
+      "enum": [
+        "public",
+        "restricted"
+      ]
+    },
+    "restricted_content": {
+      "type": "object",
+      "properties": {
+        "available": {
+          "type": "boolean"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "composition",
+              "properties",
+              "datasets",
+              "formulations",
+              "studies",
+              "relations",
+              "attestations",
+              "statements",
+              "media"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "access_info": {
+          "$ref": "#/$defs/httpsUrl"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Informative: what the restricted representation adds.",
+      "required": [
+        "available"
+      ]
+    },
+    "completeness": {
+      "enum": [
+        "full",
+        "partial"
+      ]
+    },
+    "conformance_level": {
+      "enum": [
+        "L1",
+        "L2",
+        "L3"
+      ]
+    },
+    "default_language": {
+      "type": "string",
+      "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$"
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "declarations": {
+      "type": "object",
+      "properties": {
+        "negative_results_included": {
+          "type": "boolean"
+        },
+        "batch_data_excluded": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "source": {
+      "$ref": "#/$defs/source"
+    },
+    "identity": {
+      "$ref": "#/$defs/identity"
+    },
+    "composition": {
+      "$ref": "#/$defs/composition"
+    },
+    "properties": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/property"
+      },
+      "maxItems": 3000
+    },
+    "datasets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/dataset"
+      },
+      "maxItems": 300
+    },
+    "formulations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/formulation"
+      },
+      "maxItems": 300
+    },
+    "studies": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/study"
+      },
+      "maxItems": 300
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/relation"
+      },
+      "maxItems": 1000
+    },
+    "attestations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/attestation"
+      },
+      "maxItems": 500
+    },
+    "statements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/statement"
+      },
+      "maxItems": 500
+    },
+    "media": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/media"
+      },
+      "maxItems": 1000
+    }
+  },
+  "required": [
+    "standard_version",
+    "vocab_version",
+    "dossier_id",
+    "version",
+    "issued",
+    "representation",
+    "completeness",
+    "conformance_level",
+    "default_language",
+    "source",
+    "identity"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "version": {
+            "minimum": 2
+          }
+        },
+        "required": [
+          "version"
+        ]
+      },
+      "then": {
+        "required": [
+          "supersedes"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "source": {
+            "properties": {
+              "route": {
+                "enum": [
+                  "manufacturer",
+                  "distributor"
+                ]
+              }
+            },
+            "required": [
+              "route"
+            ]
+          }
+        },
+        "required": [
+          "source"
+        ]
+      },
+      "then": {
+        "properties": {
+          "identity": {
+            "required": [
+              "product_code"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "source": {
+            "properties": {
+              "route": {
+                "const": "extracted"
+              }
+            },
+            "required": [
+              "route"
+            ]
+          }
+        },
+        "required": [
+          "source"
+        ]
+      },
+      "then": {
+        "properties": {
+          "completeness": {
+            "const": "partial"
+          },
+          "identity": {
+            "$ref": "#/$defs/needsEvidence"
+          },
+          "composition": {
+            "properties": {
+              "components": {
+                "items": {
+                  "$ref": "#/$defs/needsEvidence"
+                }
+              }
+            }
+          },
+          "properties": {
+            "items": {
+              "$ref": "#/$defs/needsEvidence"
+            }
+          },
+          "datasets": {
+            "items": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/needsEvidence"
+                },
+                {
+                  "properties": {
+                    "points_origin": {
+                      "enum": [
+                        "tabulated",
+                        "none"
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "formulations": {
+            "items": {
+              "$ref": "#/$defs/needsEvidence"
+            }
+          },
+          "studies": {
+            "items": {
+              "$ref": "#/$defs/needsEvidence"
+            }
+          },
+          "relations": {
+            "items": {
+              "$ref": "#/$defs/needsEvidence"
+            }
+          },
+          "attestations": {
+            "items": {
+              "$ref": "#/$defs/needsEvidence"
+            }
+          },
+          "statements": {
+            "items": {
+              "$ref": "#/$defs/needsEvidence"
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "representation": {
+            "const": "public"
+          }
+        },
+        "required": [
+          "representation"
+        ]
+      },
+      "then": {
+        "properties": {
+          "properties": {
+            "items": {
+              "properties": {
+                "visibility": {
+                  "const": "public"
+                }
+              }
+            }
+          },
+          "datasets": {
+            "items": {
+              "properties": {
+                "visibility": {
+                  "const": "public"
+                }
+              }
+            }
+          },
+          "formulations": {
+            "items": {
+              "properties": {
+                "visibility": {
+                  "const": "public"
+                }
+              }
+            }
+          },
+          "studies": {
+            "items": {
+              "properties": {
+                "visibility": {
+                  "const": "public"
+                }
+              }
+            }
+          },
+          "relations": {
+            "items": {
+              "properties": {
+                "visibility": {
+                  "const": "public"
+                }
+              }
+            }
+          },
+          "attestations": {
+            "items": {
+              "properties": {
+                "visibility": {
+                  "const": "public"
+                }
+              }
+            }
+          },
+          "statements": {
+            "items": {
+              "properties": {
+                "visibility": {
+                  "const": "public"
+                }
+              }
+            }
+          },
+          "media": {
+            "items": {
+              "properties": {
+                "visibility": {
+                  "const": "public"
+                }
+              }
+            }
+          },
+          "composition": {
+            "properties": {
+              "components": {
+                "items": {
+                  "properties": {
+                    "visibility": {
+                      "const": "public"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]{0,63}$",
+      "description": "Identifier, unique within the dossier and stable across versions."
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}(-(0[1-9]|1[0-2])(-(0[1-9]|[12][0-9]|3[01]))?)?$",
+      "description": "ISO 8601 calendar date, reduced precision allowed: YYYY, YYYY-MM or YYYY-MM-DD."
+    },
+    "fullDate": {
+      "type": "string",
+      "format": "date",
+      "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$"
+    },
+    "vocabKey": {
+      "type": "string",
+      "maxLength": 120,
+      "pattern": "^([a-z][a-z0-9_-]*(\\.[a-z0-9][a-z0-9_-]*)*|x-[a-z0-9][a-z0-9.-]*:[a-z0-9][a-z0-9_.-]*)$",
+      "description": "A key of the vocabulary that governs the member, or a namespaced extension key x-<domain>:<key>."
+    },
+    "shortText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[^\\u0000-\\u001f\\u007f]*$"
+    },
+    "line": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "pattern": "^[^\\u0000-\\u001f\\u007f]*$"
+    },
+    "longText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000,
+      "pattern": "^[^\\u0000-\\u0009\\u000b-\\u001f\\u007f]*$"
+    },
+    "localizedLine": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/line"
+      },
+      "description": "Display-only text per BCP 47 language tag, at most 300 characters each."
+    },
+    "localizedText": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/longText"
+      },
+      "description": "Display-only text per BCP 47 language tag."
+    },
+    "unit": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 40,
+      "pattern": "^[!-~]+$",
+      "description": "UCUM case-sensitive unit code."
+    },
+    "percent": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "httpsUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://[^\\s]+$",
+      "maxLength": 2000
+    },
+    "domain": {
+      "type": "string",
+      "maxLength": 253,
+      "pattern": "^([a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z]{2,}$"
+    },
+    "country": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$",
+      "description": "ISO 3166-1 alpha-2."
+    },
+    "region": {
+      "type": "string",
+      "pattern": "^([A-Z]{2}|EEA|ASEAN|GCC|MERCOSUR|EAEU|GLOBAL)$",
+      "description": "ISO 3166-1 alpha-2 code (EU included) or a group code of vocab/regions.json."
+    },
+    "cas": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]{1,6}-[0-9]{2}-[0-9]$"
+    },
+    "ec": {
+      "type": "string",
+      "pattern": "^[0-9]{3}-[0-9]{3}-[0-9]$"
+    },
+    "pointer": {
+      "type": "string",
+      "pattern": "^(/[^/]+)+$",
+      "maxLength": 200,
+      "description": "JSON Pointer (RFC 6901) relative to the element that carries the evidence."
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "$ref": "#/$defs/id",
+          "description": "A media element of kind source_document."
+        },
+        "page": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "quote": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400,
+          "pattern": "^[^\\u0000-\\u001f\\u007f]*$",
+          "description": "Verbatim text of the source page."
+        },
+        "supports": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/pointer"
+          },
+          "minItems": 1,
+          "uniqueItems": true,
+          "description": "The members of the element this quote proves."
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "page",
+        "quote",
+        "supports"
+      ]
+    },
+    "needsEvidence": {
+      "anyOf": [
+        {
+          "required": [
+            "evidence"
+          ]
+        },
+        {
+          "required": [
+            "curated"
+          ],
+          "properties": {
+            "curated": {
+              "const": true
+            }
+          }
+        }
+      ]
+    },
+    "elementCommon": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "as_of": {
+          "$ref": "#/$defs/date",
+          "description": "Date on which the content of the element was established or last confirmed."
+        },
+        "visibility": {
+          "enum": [
+            "public",
+            "restricted"
+          ],
+          "default": "public"
+        },
+        "curated": {
+          "type": "boolean",
+          "description": "true: authored by a curator, not taken from a source document. Only in dossiers of route extracted or curated."
+        },
+        "note": {
+          "$ref": "#/$defs/line"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1,
+          "maxItems": 20
+        }
+      },
+      "patternProperties": {
+        "^x-[a-z0-9][a-z0-9.-]*:[a-z0-9][a-z0-9_.-]*$": {}
+      },
+      "required": [
+        "id",
+        "as_of"
+      ]
+    },
+    "numberRange": {
+      "type": "object",
+      "properties": {
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "min",
+        "max"
+      ],
+      "additionalProperties": false
+    },
+    "numberLimit": {
+      "type": "object",
+      "properties": {
+        "op": {
+          "enum": [
+            "<",
+            "<=",
+            ">",
+            ">="
+          ]
+        },
+        "value": {
+          "type": "number"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "op",
+        "value"
+      ]
+    },
+    "value": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 1,
+      "additionalProperties": false,
+      "description": "Exactly one value form.",
+      "properties": {
+        "exact": {
+          "type": "number"
+        },
+        "range": {
+          "$ref": "#/$defs/numberRange"
+        },
+        "limit": {
+          "$ref": "#/$defs/numberLimit"
+        },
+        "nominal": {
+          "$ref": "#/$defs/vocabKey"
+        },
+        "text": {
+          "$ref": "#/$defs/localizedLine"
+        },
+        "in_figure": {
+          "$ref": "#/$defs/id",
+          "description": "The value exists only in the referenced figure; no number is stated."
+        }
+      }
+    },
+    "content": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 1,
+      "additionalProperties": false,
+      "description": "Content in % w/w of the material as supplied.",
+      "properties": {
+        "exact": {
+          "$ref": "#/$defs/percent"
+        },
+        "range": {
+          "type": "object",
+          "properties": {
+            "min": {
+              "$ref": "#/$defs/percent"
+            },
+            "max": {
+              "$ref": "#/$defs/percent"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "min",
+            "max"
+          ]
+        },
+        "limit": {
+          "type": "object",
+          "properties": {
+            "op": {
+              "enum": [
+                "<",
+                "<=",
+                ">",
+                ">="
+              ]
+            },
+            "value": {
+              "$ref": "#/$defs/percent"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "op",
+            "value"
+          ]
+        },
+        "nominal": {
+          "enum": [
+            "not_detected",
+            "present",
+            "trace"
+          ]
+        }
+      }
+    },
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "key": {
+          "$ref": "#/$defs/vocabKey"
+        },
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "$ref": "#/$defs/unit"
+        },
+        "code": {
+          "$ref": "#/$defs/vocabKey"
+        },
+        "text": {
+          "$ref": "#/$defs/shortText"
+        },
+        "ref_id": {
+          "$ref": "#/$defs/shortText",
+          "description": "External identifier, for example a culture-collection strain number."
+        }
+      },
+      "required": [
+        "key"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "value",
+            "unit"
+          ]
+        },
+        {
+          "required": [
+            "code"
+          ]
+        },
+        {
+          "required": [
+            "text"
+          ]
+        }
+      ],
+      "dependentRequired": {
+        "value": [
+          "unit"
+        ],
+        "unit": [
+          "value"
+        ]
+      }
+    },
+    "concentration": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "$ref": "#/$defs/percent"
+        },
+        "unit": {
+          "const": "%"
+        },
+        "basis": {
+          "enum": [
+            "as_supplied",
+            "active",
+            "total_solids",
+            "unspecified"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "description": "Concentration of this dossier's material in the tested system, % w/w.",
+      "required": [
+        "value",
+        "unit",
+        "basis"
+      ]
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "What was measured or what the statement is about.",
+      "properties": {
+        "kind": {
+          "enum": [
+            "neat",
+            "dilution",
+            "formulation",
+            "biological_system",
+            "reference_material"
+          ]
+        },
+        "material_conc": {
+          "$ref": "#/$defs/concentration"
+        },
+        "medium": {
+          "$ref": "#/$defs/shortText"
+        },
+        "formulation": {
+          "$ref": "#/$defs/id"
+        },
+        "system": {
+          "$ref": "#/$defs/shortText"
+        },
+        "reference": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "$ref": "#/$defs/shortText"
+            },
+            "inci": {
+              "$ref": "#/$defs/shortText"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "name"
+          ]
+        },
+        "read_across_from": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "$ref": "#/$defs/shortText"
+            },
+            "reason": {
+              "$ref": "#/$defs/line"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "name"
+          ]
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "formulation"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "formulation"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "dilution"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "medium"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "reference_material"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "reference"
+            ]
+          }
+        }
+      ]
+    },
+    "method": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "standard": {
+          "type": "string",
+          "pattern": "^[a-z][a-z-]*:[a-z0-9][a-z0-9._/-]*$",
+          "maxLength": 60,
+          "description": "<body>:<designation>, body from vocab/test-methods.json."
+        },
+        "edition": {
+          "$ref": "#/$defs/shortText"
+        },
+        "name": {
+          "$ref": "#/$defs/shortText"
+        },
+        "instrument": {
+          "$ref": "#/$defs/shortText"
+        },
+        "settings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/condition"
+          },
+          "maxItems": 20
+        },
+        "non_standard": {
+          "const": true,
+          "description": "Explicit statement that no published standard was followed."
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "region": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/region"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "product_type": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/vocabKey"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      }
+    },
+    "organization": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/shortText"
+        },
+        "domain": {
+          "$ref": "#/$defs/domain"
+        },
+        "country": {
+          "$ref": "#/$defs/country"
+        },
+        "contact": {
+          "$ref": "#/$defs/shortText"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ]
+    },
+    "license": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/shortText",
+          "description": "SPDX licence identifier, or `proprietary`, or `unknown`."
+        },
+        "holder": {
+          "$ref": "#/$defs/shortText"
+        },
+        "terms_url": {
+          "$ref": "#/$defs/httpsUrl"
+        },
+        "redistribution": {
+          "enum": [
+            "allowed",
+            "consumer_display",
+            "none"
+          ],
+          "description": "allowed: may be redistributed; consumer_display: a consumer may store a copy and show it to its own users; none: must not be shown to third parties."
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "redistribution"
+      ]
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^x-[a-z0-9][a-z0-9.-]*:[a-z0-9][a-z0-9_.-]*$": {}
+      },
+      "properties": {
+        "trade_name": {
+          "$ref": "#/$defs/shortText"
+        },
+        "product_code": {
+          "$ref": "#/$defs/shortText",
+          "description": "The manufacturer's code of this sellable grade or form."
+        },
+        "grade": {
+          "$ref": "#/$defs/shortText",
+          "description": "Grade or form that distinguishes this dossier inside its family."
+        },
+        "family": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "$ref": "#/$defs/shortText"
+            },
+            "id": {
+              "$ref": "#/$defs/shortText"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "name"
+          ]
+        },
+        "manufacturer": {
+          "$ref": "#/$defs/organization"
+        },
+        "inci": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/shortText"
+          },
+          "minItems": 1,
+          "maxItems": 60,
+          "description": "INCI names (CosIng spelling), in descending order of content."
+        },
+        "inci_variants": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "region": {
+                "$ref": "#/$defs/region"
+              },
+              "names": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/shortText"
+                },
+                "minItems": 1
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "region",
+              "names"
+            ]
+          }
+        },
+        "cas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/cas"
+          },
+          "uniqueItems": true
+        },
+        "ec": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ec"
+          },
+          "uniqueItems": true
+        },
+        "chemical_name": {
+          "$ref": "#/$defs/shortText"
+        },
+        "synonyms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/shortText"
+          },
+          "maxItems": 20
+        },
+        "molecular_formula": {
+          "$ref": "#/$defs/shortText"
+        },
+        "as_of": {
+          "$ref": "#/$defs/date"
+        },
+        "curated": {
+          "type": "boolean"
+        },
+        "note": {
+          "$ref": "#/$defs/line"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1,
+          "maxItems": 20
+        }
+      },
+      "required": [
+        "trade_name",
+        "manufacturer",
+        "inci",
+        "as_of"
+      ]
+    },
+    "component": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^x-[a-z0-9][a-z0-9.-]*:[a-z0-9][a-z0-9_.-]*$": {}
+      },
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "inci": {
+          "$ref": "#/$defs/shortText"
+        },
+        "name": {
+          "$ref": "#/$defs/shortText"
+        },
+        "cas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/cas"
+          },
+          "uniqueItems": true
+        },
+        "ec": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ec"
+          },
+          "uniqueItems": true
+        },
+        "role": {
+          "$ref": "#/$defs/vocabKey"
+        },
+        "content": {
+          "$ref": "#/$defs/content"
+        },
+        "as_written": {
+          "type": "string",
+          "maxLength": 80,
+          "pattern": "^[^\\u0000-\\u001f\\u007f]*$"
+        },
+        "origin": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "$ref": "#/$defs/vocabKey"
+            },
+            "botanical": {
+              "type": "object",
+              "properties": {
+                "latin_name": {
+                  "$ref": "#/$defs/shortText"
+                },
+                "plant_part": {
+                  "$ref": "#/$defs/shortText"
+                },
+                "country": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/country"
+                  }
+                },
+                "extraction_solvent": {
+                  "$ref": "#/$defs/shortText"
+                },
+                "drug_extract_ratio": {
+                  "$ref": "#/$defs/shortText"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "latin_name"
+              ]
+            },
+            "source": {
+              "$ref": "#/$defs/shortText"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "type"
+          ]
+        },
+        "visibility": {
+          "enum": [
+            "public",
+            "restricted"
+          ]
+        },
+        "refines": {
+          "$ref": "#/$defs/id",
+          "description": "Restricted component that gives more precise content for the named public component."
+        },
+        "curated": {
+          "type": "boolean"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 1,
+          "maxItems": 20
+        }
+      },
+      "required": [
+        "id",
+        "role"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "inci"
+          ]
+        },
+        {
+          "required": [
+            "name"
+          ]
+        }
+      ]
+    },
+    "composition": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^x-[a-z0-9][a-z0-9.-]*:[a-z0-9][a-z0-9_.-]*$": {}
+      },
+      "properties": {
+        "as_of": {
+          "$ref": "#/$defs/date"
+        },
+        "basis": {
+          "const": "w/w_as_supplied"
+        },
+        "complete": {
+          "type": "boolean",
+          "description": "true: the public and restricted components together describe 100 % of the material."
+        },
+        "components": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/component"
+          },
+          "minItems": 1,
+          "maxItems": 200
+        },
+        "note": {
+          "$ref": "#/$defs/line"
+        }
+      },
+      "required": [
+        "as_of",
+        "components",
+        "complete"
+      ]
+    },
+    "property": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/elementCommon"
+        },
+        {
+          "if": {
+            "properties": {
+              "value": {
+                "anyOf": [
+                  {
+                    "required": [
+                      "exact"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "range"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "limit"
+                    ]
+                  }
+                ]
+              }
+            },
+            "required": [
+              "value"
+            ]
+          },
+          "then": {
+            "required": [
+              "unit"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "basis": {
+                "const": "regulatory_limit"
+              }
+            },
+            "required": [
+              "basis"
+            ]
+          },
+          "then": {
+            "required": [
+              "scope"
+            ],
+            "properties": {
+              "scope": {
+                "required": [
+                  "region"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "subject": {
+                "properties": {
+                  "kind": {
+                    "const": "dilution"
+                  }
+                },
+                "required": [
+                  "kind"
+                ]
+              }
+            },
+            "required": [
+              "subject"
+            ]
+          },
+          "then": {
+            "properties": {
+              "subject": {
+                "required": [
+                  "material_conc"
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "properties": {
+        "key": {
+          "$ref": "#/$defs/vocabKey"
+        },
+        "basis": {
+          "enum": [
+            "specification",
+            "typical",
+            "measured",
+            "recommended",
+            "regulatory_limit",
+            "calculated",
+            "declared"
+          ]
+        },
+        "subject": {
+          "$ref": "#/$defs/subject"
+        },
+        "method": {
+          "$ref": "#/$defs/method"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/condition"
+          },
+          "maxItems": 20
+        },
+        "value": {
+          "$ref": "#/$defs/value"
+        },
+        "unit": {
+          "$ref": "#/$defs/unit"
+        },
+        "as_written": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120,
+          "pattern": "^[^\\u0000-\\u001f\\u007f]*$",
+          "description": "The value exactly as the source wrote it."
+        },
+        "comparison": {
+          "type": "object",
+          "properties": {
+            "vs": {
+              "enum": [
+                "baseline",
+                "placebo",
+                "vehicle",
+                "untreated",
+                "benchmark"
+              ]
+            },
+            "ref": {
+              "$ref": "#/$defs/id"
+            },
+            "change": {
+              "enum": [
+                "relative",
+                "absolute"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "vs"
+          ]
+        },
+        "statistics": {
+          "type": "object",
+          "properties": {
+            "n": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "p": {
+              "type": "object",
+              "properties": {
+                "op": {
+                  "enum": [
+                    "<",
+                    "<=",
+                    "=",
+                    ">",
+                    ">="
+                  ]
+                },
+                "value": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "op",
+                "value"
+              ]
+            },
+            "test": {
+              "$ref": "#/$defs/shortText"
+            },
+            "significant": {
+              "enum": [
+                "yes",
+                "no",
+                "not_reported"
+              ]
+            },
+            "dispersion": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "enum": [
+                    "sd",
+                    "sem",
+                    "ci95"
+                  ]
+                },
+                "value": {
+                  "type": "number"
+                },
+                "low": {
+                  "type": "number"
+                },
+                "high": {
+                  "type": "number"
+                }
+              },
+              "additionalProperties": false,
+              "required": [
+                "kind"
+              ]
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "significant"
+          ]
+        },
+        "outcome": {
+          "enum": [
+            "positive",
+            "no_effect",
+            "negative",
+            "inconclusive"
+          ]
+        },
+        "scope": {
+          "$ref": "#/$defs/scope"
+        },
+        "study": {
+          "$ref": "#/$defs/id"
+        },
+        "analyte": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "code": {
+              "$ref": "#/$defs/vocabKey"
+            }
+          },
+          "required": [
+            "code"
+          ]
+        }
+      },
+      "required": [
+        "key",
+        "basis",
+        "subject",
+        "value"
+      ],
+      "unevaluatedProperties": false
+    },
+    "dataset": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/elementCommon"
+        },
+        {
+          "if": {
+            "properties": {
+              "points_origin": {
+                "const": "none"
+              }
+            },
+            "required": [
+              "points_origin"
+            ]
+          },
+          "then": {
+            "required": [
+              "figure"
+            ],
+            "properties": {
+              "series": {
+                "items": {
+                  "not": {
+                    "required": [
+                      "points"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "series": {
+                "items": {
+                  "required": [
+                    "points"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      ],
+      "properties": {
+        "title": {
+          "$ref": "#/$defs/localizedLine"
+        },
+        "axes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "$ref": "#/$defs/vocabKey",
+                "description": "A property key or a condition key."
+              },
+              "label": {
+                "$ref": "#/$defs/localizedLine"
+              },
+              "type": {
+                "enum": [
+                  "numeric",
+                  "ordinal",
+                  "category"
+                ]
+              },
+              "unit": {
+                "$ref": "#/$defs/unit"
+              },
+              "scale": {
+                "enum": [
+                  "lin",
+                  "log"
+                ]
+              },
+              "role": {
+                "enum": [
+                  "independent",
+                  "dependent"
+                ]
+              },
+              "legend": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "$ref": "#/$defs/shortText"
+                    },
+                    "rank": {
+                      "type": "integer"
+                    },
+                    "label": {
+                      "$ref": "#/$defs/localizedLine"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "required": [
+                    "code"
+                  ]
+                },
+                "minItems": 1,
+                "maxItems": 60
+              }
+            },
+            "additionalProperties": false,
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "type": {
+                      "const": "numeric"
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ]
+                },
+                "then": {
+                  "required": [
+                    "unit"
+                  ]
+                },
+                "else": {
+                  "required": [
+                    "legend"
+                  ]
+                }
+              }
+            ],
+            "required": [
+              "key",
+              "type",
+              "role"
+            ]
+          },
+          "minItems": 2,
+          "maxItems": 6
+        },
+        "series": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/id"
+              },
+              "label": {
+                "$ref": "#/$defs/localizedLine"
+              },
+              "subject": {
+                "$ref": "#/$defs/subject"
+              },
+              "conditions": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/condition"
+                },
+                "maxItems": 20
+              },
+              "points": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "type": [
+                      "number",
+                      "string"
+                    ],
+                    "maxLength": 200
+                  },
+                  "minItems": 2,
+                  "maxItems": 6
+                },
+                "minItems": 1,
+                "maxItems": 5000
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "label"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 60
+        },
+        "points_origin": {
+          "enum": [
+            "publisher_raw",
+            "tabulated",
+            "none"
+          ],
+          "description": "publisher_raw: the publisher's own numeric data; tabulated: copied from a table in a source document; none: only the figure exists."
+        },
+        "figure": {
+          "$ref": "#/$defs/id"
+        },
+        "subject": {
+          "$ref": "#/$defs/subject"
+        },
+        "method": {
+          "$ref": "#/$defs/method"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/condition"
+          },
+          "maxItems": 20
+        },
+        "study": {
+          "$ref": "#/$defs/id"
+        },
+        "basis": {
+          "enum": [
+            "typical",
+            "measured",
+            "calculated"
+          ]
+        }
+      },
+      "required": [
+        "title",
+        "axes",
+        "series",
+        "points_origin",
+        "subject",
+        "basis"
+      ],
+      "unevaluatedProperties": false
+    },
+    "formulation": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/elementCommon"
+        }
+      ],
+      "properties": {
+        "role": {
+          "enum": [
+            "starting_formula",
+            "test_formula",
+            "placebo",
+            "vehicle",
+            "benchmark"
+          ]
+        },
+        "name": {
+          "$ref": "#/$defs/localizedLine"
+        },
+        "code": {
+          "$ref": "#/$defs/shortText"
+        },
+        "product_type": {
+          "$ref": "#/$defs/vocabKey"
+        },
+        "product_form": {
+          "$ref": "#/$defs/vocabKey"
+        },
+        "disclosure": {
+          "enum": [
+            "full",
+            "actives_complete",
+            "partial"
+          ],
+          "description": "full: every line with its %; actives_complete: every ingredient that contributes to the reported performance is listed with its %; partial: anything less."
+        },
+        "lines": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "phase": {
+                "type": "string",
+                "pattern": "^[A-Z][0-9]?$"
+              },
+              "trade_name": {
+                "$ref": "#/$defs/shortText"
+              },
+              "inci": {
+                "$ref": "#/$defs/shortText"
+              },
+              "percent": {
+                "$ref": "#/$defs/percent"
+              },
+              "qs": {
+                "const": true
+              },
+              "function": {
+                "$ref": "#/$defs/vocabKey"
+              },
+              "supplier": {
+                "$ref": "#/$defs/shortText"
+              },
+              "is_subject": {
+                "type": "boolean",
+                "description": "true: this line is the material of this dossier."
+              }
+            },
+            "additionalProperties": false,
+            "oneOf": [
+              {
+                "required": [
+                  "percent"
+                ]
+              },
+              {
+                "required": [
+                  "qs"
+                ]
+              }
+            ],
+            "required": [
+              "inci"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 120
+        },
+        "procedure": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/localizedLine"
+          },
+          "maxItems": 30
+        }
+      },
+      "required": [
+        "role",
+        "name",
+        "disclosure",
+        "lines"
+      ],
+      "unevaluatedProperties": false
+    },
+    "study": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/elementCommon"
+        }
+      ],
+      "properties": {
+        "kind": {
+          "$ref": "#/$defs/vocabKey"
+        },
+        "title": {
+          "$ref": "#/$defs/localizedLine"
+        },
+        "design": {
+          "type": "object",
+          "properties": {
+            "control": {
+              "enum": [
+                "placebo",
+                "vehicle",
+                "untreated",
+                "benchmark",
+                "baseline_only",
+                "none"
+              ]
+            },
+            "blinding": {
+              "enum": [
+                "none",
+                "single",
+                "double",
+                "not_reported"
+              ]
+            },
+            "randomized": {
+              "type": "boolean"
+            },
+            "layout": {
+              "enum": [
+                "parallel",
+                "split_body",
+                "crossover",
+                "single_arm",
+                "not_reported"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "subjects": {
+          "type": "object",
+          "properties": {
+            "n": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "description": {
+              "$ref": "#/$defs/line"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "n"
+          ]
+        },
+        "duration": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "minimum": 0
+            },
+            "unit": {
+              "$ref": "#/$defs/unit"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "value",
+            "unit"
+          ]
+        },
+        "application": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/condition"
+          },
+          "maxItems": 10
+        },
+        "arms": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "role": {
+                "enum": [
+                  "test",
+                  "placebo",
+                  "vehicle",
+                  "untreated",
+                  "benchmark",
+                  "positive_control"
+                ]
+              },
+              "formulation": {
+                "$ref": "#/$defs/id"
+              },
+              "label": {
+                "$ref": "#/$defs/shortText"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "role"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 12
+        },
+        "method": {
+          "$ref": "#/$defs/method"
+        },
+        "lab": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "in_house",
+                "independent",
+                "not_reported"
+              ]
+            },
+            "name": {
+              "$ref": "#/$defs/shortText"
+            },
+            "country": {
+              "$ref": "#/$defs/country"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "type"
+          ]
+        },
+        "reference": {
+          "type": "object",
+          "properties": {
+            "citation": {
+              "$ref": "#/$defs/line"
+            },
+            "doi": {
+              "type": "string",
+              "pattern": "^10\\.[0-9]{4,9}/[^\\s]+$",
+              "maxLength": 200
+            },
+            "url": {
+              "$ref": "#/$defs/httpsUrl"
+            }
+          },
+          "additionalProperties": false
+        },
+        "report": {
+          "$ref": "#/$defs/id",
+          "description": "A media element holding the study report or summary."
+        },
+        "all_endpoints_reported": {
+          "type": "boolean",
+          "description": "true: every endpoint measured in the study is present in this dossier, including those without effect."
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "unevaluatedProperties": false
+    },
+    "relation": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/elementCommon"
+        }
+      ],
+      "properties": {
+        "with": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "class": {
+              "$ref": "#/$defs/vocabKey"
+            },
+            "inci": {
+              "$ref": "#/$defs/shortText"
+            },
+            "cas": {
+              "$ref": "#/$defs/cas"
+            },
+            "trade_name": {
+              "$ref": "#/$defs/shortText"
+            },
+            "manufacturer": {
+              "$ref": "#/$defs/shortText"
+            }
+          },
+          "anyOf": [
+            {
+              "required": [
+                "class"
+              ]
+            },
+            {
+              "required": [
+                "inci"
+              ]
+            },
+            {
+              "required": [
+                "trade_name"
+              ]
+            }
+          ]
+        },
+        "effect": {
+          "$ref": "#/$defs/vocabKey"
+        },
+        "basis": {
+          "enum": [
+            "measured",
+            "declared",
+            "recommended"
+          ]
+        },
+        "rating": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "$ref": "#/$defs/shortText"
+            },
+            "rank": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "of": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "code"
+          ]
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/condition"
+          },
+          "maxItems": 20
+        },
+        "support": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "uniqueItems": true,
+          "description": "Properties, datasets or studies that back the relation."
+        },
+        "text": {
+          "$ref": "#/$defs/localizedLine"
+        }
+      },
+      "required": [
+        "with",
+        "effect",
+        "basis"
+      ],
+      "unevaluatedProperties": false
+    },
+    "attestation": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/elementCommon"
+        }
+      ],
+      "properties": {
+        "scheme": {
+          "$ref": "#/$defs/vocabKey"
+        },
+        "status": {
+          "$ref": "#/$defs/vocabKey"
+        },
+        "scope": {
+          "$ref": "#/$defs/scope"
+        },
+        "issuer": {
+          "$ref": "#/$defs/organization"
+        },
+        "certificate_id": {
+          "$ref": "#/$defs/shortText"
+        },
+        "edition": {
+          "$ref": "#/$defs/shortText",
+          "description": "Edition of the scheme, for example the IFRA amendment."
+        },
+        "reference": {
+          "$ref": "#/$defs/shortText",
+          "description": "Entry in the scheme, for example an annex entry number."
+        },
+        "valid_from": {
+          "$ref": "#/$defs/fullDate"
+        },
+        "valid_until": {
+          "$ref": "#/$defs/fullDate"
+        },
+        "usage_restriction": {
+          "type": "object",
+          "properties": {
+            "codes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/vocabKey"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "text": {
+              "$ref": "#/$defs/localizedLine"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "codes"
+          ]
+        },
+        "limits": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "category": {
+                "$ref": "#/$defs/shortText"
+              },
+              "max": {
+                "$ref": "#/$defs/percent"
+              },
+              "prohibited": {
+                "const": true
+              },
+              "note": {
+                "$ref": "#/$defs/line"
+              }
+            },
+            "additionalProperties": false,
+            "oneOf": [
+              {
+                "required": [
+                  "max"
+                ]
+              },
+              {
+                "required": [
+                  "prohibited"
+                ]
+              }
+            ],
+            "required": [
+              "category"
+            ]
+          },
+          "minItems": 1,
+          "maxItems": 60
+        },
+        "document": {
+          "$ref": "#/$defs/id"
+        }
+      },
+      "required": [
+        "scheme",
+        "status"
+      ],
+      "unevaluatedProperties": false
+    },
+    "statement": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/elementCommon"
+        }
+      ],
+      "properties": {
+        "kind": {
+          "$ref": "#/$defs/vocabKey"
+        },
+        "text": {
+          "$ref": "#/$defs/localizedText"
+        },
+        "source_language": {
+          "type": "string",
+          "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$",
+          "description": "Language of the original when other entries are translations."
+        },
+        "supports": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "uniqueItems": true,
+          "description": "Properties, studies or datasets that back a claim or benefit."
+        },
+        "scope": {
+          "$ref": "#/$defs/scope"
+        }
+      },
+      "required": [
+        "kind",
+        "text"
+      ],
+      "unevaluatedProperties": false
+    },
+    "media": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/elementCommon"
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "source_document"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "document"
+            ]
+          },
+          "else": {
+            "required": [
+              "url"
+            ],
+            "properties": {
+              "mime": {
+                "enum": [
+                  "image/png",
+                  "image/jpeg",
+                  "image/webp"
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "figure",
+            "structure",
+            "photo",
+            "source_document"
+          ]
+        },
+        "url": {
+          "$ref": "#/$defs/httpsUrl"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "mime": {
+          "enum": [
+            "image/png",
+            "image/jpeg",
+            "image/webp",
+            "application/pdf"
+          ]
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "title": {
+          "$ref": "#/$defs/localizedLine"
+        },
+        "caption": {
+          "$ref": "#/$defs/localizedLine"
+        },
+        "license": {
+          "$ref": "#/$defs/license"
+        },
+        "document": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "$ref": "#/$defs/vocabKey"
+            },
+            "doc_version": {
+              "$ref": "#/$defs/shortText"
+            },
+            "issued": {
+              "$ref": "#/$defs/date"
+            },
+            "language": {
+              "type": "string",
+              "pattern": "^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$"
+            },
+            "pages": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "issuer": {
+              "$ref": "#/$defs/shortText"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "kind"
+          ]
+        }
+      },
+      "required": [
+        "kind",
+        "sha256",
+        "mime",
+        "license"
+      ],
+      "unevaluatedProperties": false
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "route": {
+          "enum": [
+            "manufacturer",
+            "distributor",
+            "extracted",
+            "curated"
+          ]
+        },
+        "publisher": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/organization"
+            }
+          ],
+          "required": [
+            "name",
+            "domain"
+          ]
+        },
+        "authorization": {
+          "type": "object",
+          "properties": {
+            "manufacturer": {
+              "$ref": "#/$defs/shortText"
+            },
+            "manufacturer_domain": {
+              "$ref": "#/$defs/domain"
+            },
+            "reference": {
+              "$ref": "#/$defs/shortText"
+            },
+            "valid_from": {
+              "$ref": "#/$defs/fullDate"
+            },
+            "valid_until": {
+              "$ref": "#/$defs/fullDate"
+            },
+            "document": {
+              "$ref": "#/$defs/id"
+            }
+          },
+          "additionalProperties": false,
+          "description": "The manufacturer's authorization as declared by a distributor.",
+          "required": [
+            "manufacturer",
+            "reference",
+            "valid_from"
+          ]
+        },
+        "extraction": {
+          "type": "object",
+          "properties": {
+            "tool": {
+              "$ref": "#/$defs/shortText"
+            },
+            "completed": {
+              "$ref": "#/$defs/fullDate"
+            },
+            "sources": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/id"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "tool",
+            "completed",
+            "sources"
+          ]
+        },
+        "curation": {
+          "type": "object",
+          "properties": {
+            "method": {
+              "enum": [
+                "manual",
+                "migrated_playbook_v1"
+              ]
+            },
+            "completed": {
+              "$ref": "#/$defs/fullDate"
+            },
+            "sources": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/id"
+              },
+              "uniqueItems": true
+            },
+            "reference": {
+              "$ref": "#/$defs/shortText"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "method",
+            "completed"
+          ]
+        }
+      },
+      "required": [
+        "route",
+        "publisher"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "route": {
+                "const": "distributor"
+              }
+            },
+            "required": [
+              "route"
+            ]
+          },
+          "then": {
+            "required": [
+              "authorization"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "authorization"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "route": {
+                "const": "extracted"
+              }
+            },
+            "required": [
+              "route"
+            ]
+          },
+          "then": {
+            "required": [
+              "extraction"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "extraction"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "route": {
+                "const": "curated"
+              }
+            },
+            "required": [
+              "route"
+            ]
+          },
+          "then": {
+            "required": [
+              "curation"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "curation"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

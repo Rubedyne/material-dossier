@@ -1,0 +1,30 @@
+{
+  "vocab": "document-kinds",
+  "vocab_version": "1.0",
+  "issued": "2026-11-14",
+  "title": "Kinds of source and reference documents (media.document.kind)",
+  "license": "Apache-2.0",
+  "terms": [
+    {"key": "tds", "label": "Technical data sheet"},
+    {"key": "specification", "label": "Specification sheet"},
+    {"key": "sds", "label": "Safety data sheet"},
+    {"key": "brochure", "label": "Brochure"},
+    {"key": "presentation", "label": "Presentation"},
+    {"key": "formulation_sheet", "label": "Formulation sheet"},
+    {"key": "formulation_guide", "label": "Formulation guide / handbook"},
+    {"key": "study_report", "label": "Study report"},
+    {"key": "study_summary", "label": "Study summary"},
+    {"key": "publication", "label": "Scientific publication"},
+    {"key": "composition_statement", "label": "Composition statement"},
+    {"key": "allergen_statement", "label": "Allergen statement"},
+    {"key": "ifra_certificate", "label": "IFRA certificate"},
+    {"key": "natural_origin_statement", "label": "Natural-origin (ISO 16128) statement"},
+    {"key": "certificate", "label": "Certificate"},
+    {"key": "regulatory_statement", "label": "Regulatory statement"},
+    {"key": "declaration", "label": "Declaration (vegan, GMO, BSE/TSE, CMR and similar)"},
+    {"key": "toxicology_summary", "label": "Toxicology summary"},
+    {"key": "manufacturing_flowchart", "label": "Manufacturing flow chart"},
+    {"key": "coa_template", "label": "Certificate-of-analysis template (batch data are out of scope)"},
+    {"key": "other", "label": "Other"}
+  ]
+}

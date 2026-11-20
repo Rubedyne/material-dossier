@@ -1,0 +1,19 @@
+{
+  "vocab": "statement-kinds",
+  "vocab_version": "1.0",
+  "issued": "2026-11-14",
+  "title": "Kinds of free-text statements (all display-only)",
+  "license": "Apache-2.0",
+  "terms": [
+    {"key": "description", "label": "Description"},
+    {"key": "benefit", "label": "Benefit"},
+    {"key": "claim", "label": "Marketing claim of the publisher"},
+    {"key": "guidance", "label": "Formulation guidance"},
+    {"key": "checklist", "label": "Review question answerable from a formula's material list"},
+    {"key": "handling", "label": "Handling"},
+    {"key": "storage", "label": "Storage"},
+    {"key": "warning", "label": "Warning"},
+    {"key": "disclaimer", "label": "Disclaimer"},
+    {"key": "mechanism", "label": "Mechanism of action"}
+  ]
+}

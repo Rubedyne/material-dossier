@@ -1,0 +1,22 @@
+{
+  "title": "Vectors for SPEC 7.3 rule 6: does a quote that covers /analyte name the analyte?",
+  "note": "Each vector is run through the evidence check of a property `composition.regulated_basis_content` whose `analyte.code` is `code` and whose only evidence entry has `quote` and supports `/analyte`. `expect` true: the quote names the analyte (no rule-6 error); false: it does not. The symbol is matched case-sensitively on the NFKC-normalised quote, an alias on the normalised (lower-case) quote; in both cases no letter or digit may stand directly before or after the match.",
+  "vectors": [
+    {"quote": "Content (as Ag): 15 %", "code": "element.ag", "expect": true, "why": "symbol only; no alias in the quote"},
+    {"quote": "F 0.15 %", "code": "element.f", "expect": true, "why": "one-letter symbol standing alone"},
+    {"quote": "ＡｇＣｌ 20 %", "code": "substance.silver_chloride", "expect": true, "why": "full-width symbol, matched after NFKC"},
+    {"quote": "(AgCl): typically 20 %", "code": "substance.silver_chloride", "expect": true, "why": "symbol between brackets; no alias in the quote"},
+    {"quote": "Zinc 2 %", "code": "element.zn", "expect": true, "why": "alias only; the symbol Zn is not in the quote"},
+    {"quote": "Silver-coated 15 %", "code": "element.ag", "expect": true, "why": "alias; a hyphen is a word boundary"},
+    {"quote": "SILVER 15 %", "code": "element.ag", "expect": true, "why": "alias in capitals, matched after case folding"},
+    {"quote": "Fluoride 0.15 %", "code": "element.f", "expect": true, "why": "alias; the symbol F is followed by a letter and does not count"},
+    {"quote": "Silver chloride 20 %", "code": "substance.silver_chloride", "expect": true, "why": "multi-word alias"},
+    {"quote": "AG 15 %", "code": "element.ag", "expect": false, "why": "the symbol is case-sensitive"},
+    {"quote": "AgCl 20 %", "code": "element.ag", "expect": false, "why": "Ag inside AgCl is followed by a letter; no alias"},
+    {"quote": "Zn2+ 1 %", "code": "element.zn", "expect": false, "why": "ion notation: Zn is followed by a digit, so the symbol does not match; only an alias would"},
+    {"quote": "quicksilver 15 %", "code": "element.ag", "expect": false, "why": "the alias silver inside a longer word"},
+    {"quote": "Sulphurous acid 1 %", "code": "element.s", "expect": false, "why": "S and the alias sulphur are both inside a longer word"},
+    {"quote": "Assay 99 %", "code": "element.s", "expect": false, "why": "capital S inside a word"},
+    {"quote": "Silver content (as Ag): 13.5 - 16.5 %", "code": "substance.silver_chloride", "expect": false, "why": "names silver, not silver chloride"}
+  ]
+}

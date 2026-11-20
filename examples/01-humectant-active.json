@@ -1,0 +1,1437 @@
+{
+  "$schema": "https://rubedyne.com/schemas/material-dossier/1.0/dossier.schema.json",
+  "standard_version": "1.0",
+  "vocab_version": "1.0",
+  "dossier_id": "example.com:exahydrate-l30",
+  "version": 3,
+  "issued": "2026-11-02T09:00:00Z",
+  "representation": "public",
+  "completeness": "full",
+  "conformance_level": "L3",
+  "default_language": "en",
+  "languages": [
+    "en"
+  ],
+  "source": {
+    "route": "manufacturer",
+    "publisher": {
+      "name": "Example Ingredients Ltd.",
+      "domain": "example.com",
+      "country": "IE"
+    }
+  },
+  "supersedes": {
+    "version": 2,
+    "hash": "sha256:69123e7d53749c2c758409a391162091de8c15eed5c57feaacab91ef66f05159"
+  },
+  "declarations": {
+    "negative_results_included": true,
+    "batch_data_excluded": true
+  },
+  "restricted_content": {
+    "available": true,
+    "sections": [
+      "composition",
+      "media"
+    ],
+    "access_info": "https://example.com/partners"
+  },
+  "identity": {
+    "trade_name": "Exahydrate L30",
+    "product_code": "EX-1030",
+    "grade": "30 % aqueous solution",
+    "family": {
+      "name": "Exahydrate"
+    },
+    "manufacturer": {
+      "name": "Example Ingredients Ltd.",
+      "domain": "example.com",
+      "country": "IE"
+    },
+    "inci": [
+      "Aqua",
+      "Betaine",
+      "Trehalose",
+      "Sodium PCA",
+      "Sodium Benzoate",
+      "Potassium Sorbate"
+    ],
+    "inci_variants": [
+      {
+        "region": "US",
+        "names": [
+          "Water",
+          "Betaine",
+          "Trehalose",
+          "Sodium PCA",
+          "Sodium Benzoate",
+          "Potassium Sorbate"
+        ]
+      }
+    ],
+    "as_of": "2026-03"
+  },
+  "composition": {
+    "as_of": "2026-03",
+    "basis": "w/w_as_supplied",
+    "complete": true,
+    "components": [
+      {
+        "id": "c-water",
+        "inci": "Aqua",
+        "cas": [
+          "7732-18-5"
+        ],
+        "role": "water",
+        "content": {
+          "range": {
+            "min": 67,
+            "max": 72
+          }
+        }
+      },
+      {
+        "id": "c-betaine",
+        "inci": "Betaine",
+        "cas": [
+          "107-43-7"
+        ],
+        "role": "active",
+        "content": {
+          "range": {
+            "min": 12,
+            "max": 16
+          }
+        },
+        "origin": {
+          "type": "plant",
+          "botanical": {
+            "latin_name": "Beta vulgaris",
+            "plant_part": "root",
+            "country": [
+              "FR",
+              "DE"
+            ]
+          }
+        }
+      },
+      {
+        "id": "c-trehalose",
+        "inci": "Trehalose",
+        "cas": [
+          "99-20-7"
+        ],
+        "role": "active",
+        "content": {
+          "range": {
+            "min": 8,
+            "max": 12
+          }
+        },
+        "origin": {
+          "type": "microbial_fermentation"
+        }
+      },
+      {
+        "id": "c-pca",
+        "inci": "Sodium PCA",
+        "cas": [
+          "28874-51-3"
+        ],
+        "role": "active",
+        "content": {
+          "range": {
+            "min": 4,
+            "max": 6
+          }
+        },
+        "origin": {
+          "type": "microbial_fermentation"
+        }
+      },
+      {
+        "id": "c-benz",
+        "inci": "Sodium Benzoate",
+        "cas": [
+          "532-32-1"
+        ],
+        "role": "preservative",
+        "content": {
+          "limit": {
+            "op": "<=",
+            "value": 0.5
+          }
+        },
+        "origin": {
+          "type": "synthetic"
+        }
+      },
+      {
+        "id": "c-sorb",
+        "inci": "Potassium Sorbate",
+        "cas": [
+          "24634-61-5"
+        ],
+        "role": "preservative",
+        "content": {
+          "limit": {
+            "op": "<=",
+            "value": 0.3
+          }
+        },
+        "origin": {
+          "type": "synthetic"
+        }
+      }
+    ]
+  },
+  "properties": [
+    {
+      "id": "use-level",
+      "as_of": "2026-03",
+      "key": "use.level",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "range": {
+          "min": 1,
+          "max": 5
+        }
+      },
+      "unit": "%"
+    },
+    {
+      "id": "use-typical",
+      "as_of": "2026-03",
+      "key": "use.level_typical",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "exact": 3
+      },
+      "unit": "%"
+    },
+    {
+      "id": "use-level-rinse",
+      "as_of": "2026-03",
+      "key": "use.level",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "range": {
+          "min": 2,
+          "max": 8
+        }
+      },
+      "unit": "%",
+      "scope": {
+        "product_type": [
+          "rinse_off"
+        ]
+      }
+    },
+    {
+      "id": "use-phase-c",
+      "as_of": "2026-03",
+      "key": "use.phase",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "cool_down"
+      }
+    },
+    {
+      "id": "use-phase-a",
+      "as_of": "2026-03",
+      "key": "use.phase",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "water_phase"
+      }
+    },
+    {
+      "id": "use-ph",
+      "as_of": "2026-03",
+      "key": "use.ph_window",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "range": {
+          "min": 4,
+          "max": 8
+        }
+      },
+      "unit": "[pH]"
+    },
+    {
+      "id": "use-temp",
+      "as_of": "2026-03",
+      "key": "use.process_temperature_max",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "limit": {
+          "op": "<=",
+          "value": 60
+        }
+      },
+      "unit": "Cel"
+    },
+    {
+      "id": "fn-humectant",
+      "as_of": "2026-03",
+      "key": "profile.function",
+      "basis": "declared",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "humectant"
+      }
+    },
+    {
+      "id": "fn-skincond",
+      "as_of": "2026-03",
+      "key": "profile.function",
+      "basis": "declared",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "skin_conditioning"
+      }
+    },
+    {
+      "id": "form",
+      "as_of": "2026-03",
+      "key": "profile.physical_form",
+      "basis": "declared",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "liquid"
+      }
+    },
+    {
+      "id": "app-face",
+      "as_of": "2026-03",
+      "key": "profile.application",
+      "basis": "declared",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "face_care"
+      }
+    },
+    {
+      "id": "app-body",
+      "as_of": "2026-03",
+      "key": "profile.application",
+      "basis": "declared",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "body_care"
+      }
+    },
+    {
+      "id": "sol-water",
+      "as_of": "2026-03",
+      "key": "solubility.water",
+      "basis": "typical",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "miscible"
+      },
+      "conditions": [
+        {
+          "key": "temperature",
+          "value": 20,
+          "unit": "Cel"
+        }
+      ]
+    },
+    {
+      "id": "sol-oil",
+      "as_of": "2026-03",
+      "key": "solubility.oil",
+      "basis": "typical",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "insoluble"
+      }
+    },
+    {
+      "id": "sens-nontacky",
+      "as_of": "2026-03",
+      "key": "sensory.descriptor",
+      "basis": "declared",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "non_tacky"
+      }
+    },
+    {
+      "id": "spec-appearance",
+      "as_of": "2026-03",
+      "key": "physchem.appearance",
+      "basis": "specification",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "text": {
+          "en": "Clear, colourless to pale yellow liquid"
+        }
+      }
+    },
+    {
+      "id": "spec-ph",
+      "as_of": "2026-03",
+      "key": "physchem.ph",
+      "basis": "specification",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "range": {
+          "min": 5.0,
+          "max": 6.5
+        }
+      },
+      "unit": "[pH]",
+      "method": {
+        "standard": "ph-eur:2.2.3"
+      },
+      "conditions": [
+        {
+          "key": "temperature",
+          "value": 20,
+          "unit": "Cel"
+        }
+      ]
+    },
+    {
+      "id": "spec-dry",
+      "as_of": "2026-03",
+      "key": "physchem.dry_matter",
+      "basis": "specification",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "range": {
+          "min": 28,
+          "max": 32
+        }
+      },
+      "unit": "%",
+      "method": {
+        "name": "Internal method EX-M-012, 105 Cel, 2 h"
+      }
+    },
+    {
+      "id": "spec-tamc",
+      "as_of": "2026-03",
+      "key": "micro.total_aerobic_count",
+      "basis": "specification",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "limit": {
+          "op": "<",
+          "value": 100
+        }
+      },
+      "unit": "[CFU]/g",
+      "method": {
+        "standard": "iso:21149"
+      }
+    },
+    {
+      "id": "spec-pb",
+      "as_of": "2026-03",
+      "key": "purity.lead",
+      "basis": "specification",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "limit": {
+          "op": "<",
+          "value": 1
+        }
+      },
+      "unit": "[ppm]",
+      "as_written": "< 1 ppm"
+    },
+    {
+      "id": "typ-density",
+      "as_of": "2026-03",
+      "key": "physchem.density",
+      "basis": "typical",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "exact": 1.12
+      },
+      "unit": "g/cm3",
+      "conditions": [
+        {
+          "key": "temperature",
+          "value": 20,
+          "unit": "Cel"
+        }
+      ]
+    },
+    {
+      "id": "shelf",
+      "as_of": "2026-03",
+      "key": "stability.shelf_life",
+      "basis": "specification",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "exact": 24
+      },
+      "unit": "mo"
+    },
+    {
+      "id": "storage-temp",
+      "as_of": "2026-03",
+      "key": "stability.storage_temperature",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "range": {
+          "min": 5,
+          "max": 25
+        }
+      },
+      "unit": "Cel"
+    },
+    {
+      "id": "tox-irr",
+      "as_of": "2023-06",
+      "key": "tox.skin_irritation",
+      "basis": "measured",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "not_irritant"
+      },
+      "method": {
+        "standard": "oecd:439"
+      }
+    },
+    {
+      "id": "tox-hript",
+      "as_of": "2023-09",
+      "key": "tox.hript",
+      "basis": "measured",
+      "subject": {
+        "kind": "dilution",
+        "medium": "water",
+        "material_conc": {
+          "value": 5,
+          "unit": "%",
+          "basis": "as_supplied"
+        }
+      },
+      "value": {
+        "nominal": "not_sensitizer"
+      },
+      "method": {
+        "name": "HRIPT, 9 induction patches, occlusive",
+        "non_standard": true
+      },
+      "statistics": {
+        "n": 52,
+        "significant": "not_reported"
+      }
+    },
+    {
+      "id": "tox-ames",
+      "as_of": "2022-11",
+      "key": "tox.mutagenicity",
+      "basis": "measured",
+      "subject": {
+        "kind": "reference_material",
+        "reference": {
+          "name": "Exahydrate P (dry form of the same actives)"
+        },
+        "read_across_from": {
+          "name": "Exahydrate P",
+          "reason": "Same actives without water and preservatives."
+        }
+      },
+      "value": {
+        "nominal": "negative"
+      },
+      "method": {
+        "standard": "oecd:471"
+      }
+    },
+    {
+      "id": "noi",
+      "as_of": "2026-03",
+      "key": "origin.natural_origin_index",
+      "basis": "calculated",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "exact": 0.99
+      },
+      "unit": "1",
+      "method": {
+        "standard": "iso:16128-2",
+        "edition": "2017"
+      }
+    },
+    {
+      "id": "biodeg",
+      "as_of": "2022-05",
+      "key": "eco.biodegradation",
+      "basis": "measured",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "exact": 82
+      },
+      "unit": "%",
+      "method": {
+        "standard": "oecd:301b"
+      },
+      "conditions": [
+        {
+          "key": "time",
+          "value": 672,
+          "unit": "h"
+        }
+      ]
+    },
+    {
+      "id": "biodeg-class",
+      "as_of": "2022-05",
+      "key": "eco.biodegradability_class",
+      "basis": "measured",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "readily_biodegradable"
+      },
+      "method": {
+        "standard": "oecd:301b"
+      }
+    },
+    {
+      "id": "eff-hydration",
+      "as_of": "2024-02",
+      "key": "efficacy.hydration",
+      "basis": "measured",
+      "subject": {
+        "kind": "formulation",
+        "formulation": "f-test"
+      },
+      "value": {
+        "exact": 24.1
+      },
+      "unit": "%",
+      "study": "st-hydration",
+      "method": {
+        "name": "Corneometry",
+        "instrument": "Capacitance probe",
+        "non_standard": true
+      },
+      "conditions": [
+        {
+          "key": "time_point",
+          "value": 672,
+          "unit": "h"
+        },
+        {
+          "key": "body_site",
+          "text": "volar forearm"
+        }
+      ],
+      "comparison": {
+        "vs": "placebo",
+        "ref": "f-placebo",
+        "change": "relative"
+      },
+      "statistics": {
+        "n": 24,
+        "p": {
+          "op": "<",
+          "value": 0.01
+        },
+        "test": "paired t-test",
+        "significant": "yes"
+      },
+      "outcome": "positive"
+    },
+    {
+      "id": "eff-hydration-d14",
+      "as_of": "2024-02",
+      "key": "efficacy.hydration",
+      "basis": "measured",
+      "subject": {
+        "kind": "formulation",
+        "formulation": "f-test"
+      },
+      "value": {
+        "exact": 15.3
+      },
+      "unit": "%",
+      "study": "st-hydration",
+      "method": {
+        "name": "Corneometry",
+        "instrument": "Capacitance probe",
+        "non_standard": true
+      },
+      "conditions": [
+        {
+          "key": "time_point",
+          "value": 336,
+          "unit": "h"
+        },
+        {
+          "key": "body_site",
+          "text": "volar forearm"
+        }
+      ],
+      "comparison": {
+        "vs": "placebo",
+        "ref": "f-placebo",
+        "change": "relative"
+      },
+      "statistics": {
+        "n": 24,
+        "p": {
+          "op": "<",
+          "value": 0.05
+        },
+        "test": "paired t-test",
+        "significant": "yes"
+      },
+      "outcome": "positive"
+    },
+    {
+      "id": "eff-tewl",
+      "as_of": "2024-02",
+      "key": "efficacy.tewl",
+      "basis": "measured",
+      "subject": {
+        "kind": "formulation",
+        "formulation": "f-test"
+      },
+      "value": {
+        "exact": -2.8
+      },
+      "unit": "%",
+      "study": "st-hydration",
+      "method": {
+        "name": "Open-chamber evaporimetry",
+        "non_standard": true
+      },
+      "conditions": [
+        {
+          "key": "time_point",
+          "value": 672,
+          "unit": "h"
+        },
+        {
+          "key": "body_site",
+          "text": "volar forearm"
+        }
+      ],
+      "comparison": {
+        "vs": "placebo",
+        "ref": "f-placebo",
+        "change": "relative"
+      },
+      "statistics": {
+        "n": 24,
+        "p": {
+          "op": "=",
+          "value": 0.21
+        },
+        "test": "paired t-test",
+        "significant": "no"
+      },
+      "outcome": "no_effect"
+    },
+    {
+      "id": "visc-loss-carbomer",
+      "as_of": "2025-04",
+      "key": "rheology.viscosity_change",
+      "basis": "measured",
+      "subject": {
+        "kind": "dilution",
+        "medium": "0.3 % carbomer gel in water, neutralized to pH 6.0",
+        "material_conc": {
+          "value": 3,
+          "unit": "%",
+          "basis": "as_supplied"
+        }
+      },
+      "value": {
+        "exact": -35
+      },
+      "unit": "%",
+      "method": {
+        "instrument": "Rotational viscometer",
+        "settings": [
+          {
+            "key": "rotation_speed",
+            "value": 20,
+            "unit": "{rpm}"
+          },
+          {
+            "key": "spindle",
+            "text": "RV 5"
+          }
+        ]
+      },
+      "conditions": [
+        {
+          "key": "temperature",
+          "value": 25,
+          "unit": "Cel"
+        }
+      ],
+      "comparison": {
+        "vs": "untreated",
+        "change": "relative"
+      }
+    }
+  ],
+  "datasets": [
+    {
+      "id": "ds-hydration",
+      "as_of": "2024-02",
+      "title": {
+        "en": "Skin hydration over 28 days, change against day 0"
+      },
+      "basis": "measured",
+      "points_origin": "publisher_raw",
+      "figure": "fig-hydration",
+      "study": "st-hydration",
+      "subject": {
+        "kind": "formulation",
+        "formulation": "f-test"
+      },
+      "method": {
+        "name": "Corneometry",
+        "instrument": "Capacitance probe",
+        "non_standard": true
+      },
+      "axes": [
+        {
+          "key": "time_point",
+          "type": "numeric",
+          "unit": "d",
+          "scale": "lin",
+          "role": "independent"
+        },
+        {
+          "key": "efficacy.hydration",
+          "type": "numeric",
+          "unit": "%",
+          "scale": "lin",
+          "role": "dependent",
+          "label": {
+            "en": "Change in corneometer units against day 0"
+          }
+        }
+      ],
+      "series": [
+        {
+          "id": "ser-test",
+          "label": {
+            "en": "3 % Exahydrate L30"
+          },
+          "subject": {
+            "kind": "formulation",
+            "formulation": "f-test"
+          },
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              14,
+              21.4
+            ],
+            [
+              28,
+              30.2
+            ]
+          ]
+        },
+        {
+          "id": "ser-placebo",
+          "label": {
+            "en": "Placebo"
+          },
+          "subject": {
+            "kind": "formulation",
+            "formulation": "f-placebo"
+          },
+          "points": [
+            [
+              0,
+              0
+            ],
+            [
+              14,
+              5.3
+            ],
+            [
+              28,
+              4.9
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "formulations": [
+    {
+      "id": "f-test",
+      "as_of": "2024-02",
+      "role": "test_formula",
+      "name": {
+        "en": "O/W cream with 3 % Exahydrate L30"
+      },
+      "code": "EX-F-0711",
+      "product_type": "body_care",
+      "product_form": "o_w_emulsion",
+      "disclosure": "full",
+      "lines": [
+        {
+          "phase": "A",
+          "inci": "Aqua",
+          "qs": true
+        },
+        {
+          "phase": "A",
+          "inci": "Glycerin",
+          "percent": 3,
+          "function": "humectant"
+        },
+        {
+          "phase": "A",
+          "inci": "Xanthan Gum",
+          "percent": 0.3,
+          "function": "viscosity_controlling"
+        },
+        {
+          "phase": "B",
+          "inci": "Caprylic/Capric Triglyceride",
+          "percent": 8,
+          "function": "emollient"
+        },
+        {
+          "phase": "B",
+          "inci": "Cetearyl Alcohol",
+          "percent": 3,
+          "function": "emulsion_stabilising"
+        },
+        {
+          "phase": "B",
+          "inci": "Glyceryl Stearate Citrate",
+          "percent": 2.5,
+          "function": "emulsifying"
+        },
+        {
+          "phase": "C",
+          "inci": "Phenoxyethanol",
+          "percent": 0.9,
+          "function": "preservative"
+        },
+        {
+          "phase": "C",
+          "inci": "Ethylhexylglycerin",
+          "percent": 0.1,
+          "function": "skin_conditioning"
+        },
+        {
+          "phase": "C",
+          "inci": "Aqua (and) Betaine (and) Trehalose (and) Sodium PCA (and) Sodium Benzoate (and) Potassium Sorbate",
+          "percent": 3,
+          "trade_name": "Exahydrate L30",
+          "supplier": "Example Ingredients Ltd.",
+          "function": "humectant",
+          "is_subject": true
+        }
+      ]
+    },
+    {
+      "id": "f-placebo",
+      "as_of": "2024-02",
+      "role": "placebo",
+      "name": {
+        "en": "Placebo O/W cream"
+      },
+      "code": "EX-F-0710",
+      "product_type": "body_care",
+      "product_form": "o_w_emulsion",
+      "disclosure": "full",
+      "lines": [
+        {
+          "phase": "A",
+          "inci": "Aqua",
+          "qs": true
+        },
+        {
+          "phase": "A",
+          "inci": "Glycerin",
+          "percent": 3,
+          "function": "humectant"
+        },
+        {
+          "phase": "A",
+          "inci": "Xanthan Gum",
+          "percent": 0.3,
+          "function": "viscosity_controlling"
+        },
+        {
+          "phase": "B",
+          "inci": "Caprylic/Capric Triglyceride",
+          "percent": 8,
+          "function": "emollient"
+        },
+        {
+          "phase": "B",
+          "inci": "Cetearyl Alcohol",
+          "percent": 3,
+          "function": "emulsion_stabilising"
+        },
+        {
+          "phase": "B",
+          "inci": "Glyceryl Stearate Citrate",
+          "percent": 2.5,
+          "function": "emulsifying"
+        },
+        {
+          "phase": "C",
+          "inci": "Phenoxyethanol",
+          "percent": 0.9,
+          "function": "preservative"
+        },
+        {
+          "phase": "C",
+          "inci": "Ethylhexylglycerin",
+          "percent": 0.1,
+          "function": "skin_conditioning"
+        }
+      ]
+    }
+  ],
+  "studies": [
+    {
+      "id": "st-hydration",
+      "as_of": "2024-02",
+      "kind": "in_vivo",
+      "title": {
+        "en": "Skin hydration, 28 days, placebo-controlled"
+      },
+      "design": {
+        "control": "placebo",
+        "blinding": "double",
+        "randomized": true,
+        "layout": "split_body"
+      },
+      "subjects": {
+        "n": 24,
+        "description": "Female volunteers, 25 to 55 years, dry skin on the forearms"
+      },
+      "duration": {
+        "value": 28,
+        "unit": "d"
+      },
+      "application": [
+        {
+          "key": "application_frequency",
+          "text": "twice daily"
+        },
+        {
+          "key": "body_site",
+          "text": "volar forearm"
+        },
+        {
+          "key": "application_dose",
+          "value": 2,
+          "unit": "mg/cm2"
+        }
+      ],
+      "arms": [
+        {
+          "role": "test",
+          "formulation": "f-test",
+          "label": "3 % Exahydrate L30"
+        },
+        {
+          "role": "placebo",
+          "formulation": "f-placebo",
+          "label": "Placebo"
+        }
+      ],
+      "lab": {
+        "type": "independent",
+        "country": "DE"
+      },
+      "all_endpoints_reported": true
+    }
+  ],
+  "relations": [
+    {
+      "id": "rel-carbomer",
+      "as_of": "2025-04",
+      "with": {
+        "class": "carbomers"
+      },
+      "effect": "thins",
+      "basis": "measured",
+      "conditions": [
+        {
+          "key": "material_concentration",
+          "value": 3,
+          "unit": "%"
+        }
+      ],
+      "support": [
+        "visc-loss-carbomer"
+      ],
+      "text": {
+        "en": "The electrolyte content lowers the viscosity of carbomer gels; raise the polymer level or use an electrolyte-tolerant thickener."
+      }
+    },
+    {
+      "id": "rel-ethanol",
+      "as_of": "2025-04",
+      "with": {
+        "class": "ethanol"
+      },
+      "effect": "limited_compatibility",
+      "basis": "declared",
+      "conditions": [
+        {
+          "key": "ethanol_content",
+          "value": 20,
+          "unit": "%"
+        }
+      ],
+      "text": {
+        "en": "Clear solutions up to 20 % ethanol in the finished product."
+      }
+    },
+    {
+      "id": "rel-glycerin",
+      "as_of": "2025-04",
+      "with": {
+        "inci": "Glycerin",
+        "cas": "56-81-5"
+      },
+      "effect": "compatible",
+      "basis": "declared"
+    }
+  ],
+  "attestations": [
+    {
+      "id": "att-eu",
+      "as_of": "2026-03",
+      "scheme": "eu_cosmetics_regulation",
+      "status": "permitted",
+      "scope": {
+        "region": [
+          "EU"
+        ]
+      }
+    },
+    {
+      "id": "att-reach",
+      "as_of": "2026-03",
+      "scheme": "eu_reach",
+      "status": "registered",
+      "scope": {
+        "region": [
+          "EU"
+        ]
+      }
+    },
+    {
+      "id": "att-iecic",
+      "as_of": "2026-03",
+      "scheme": "cn_iecic",
+      "status": "listed",
+      "scope": {
+        "region": [
+          "CN"
+        ]
+      },
+      "edition": "IECIC 2021"
+    },
+    {
+      "id": "att-vegan",
+      "as_of": "2026-03",
+      "scheme": "vegan",
+      "status": "compliant"
+    },
+    {
+      "id": "att-nano",
+      "as_of": "2026-03",
+      "scheme": "nano_status",
+      "status": "not_nano",
+      "scope": {
+        "region": [
+          "EU"
+        ]
+      }
+    },
+    {
+      "id": "att-cosmos",
+      "as_of": "2026-03",
+      "scheme": "cosmos",
+      "status": "approved",
+      "issuer": {
+        "name": "Example Certification Body",
+        "country": "FR"
+      },
+      "certificate_id": "RM-2026-00417",
+      "valid_from": "2026-01-01",
+      "valid_until": "2026-12-31",
+      "document": "doc-cosmos",
+      "usage_restriction": {
+        "codes": [
+          "no_customer_reference",
+          "raw_material_only"
+        ],
+        "text": {
+          "en": "The approval covers the raw material only; customers must not refer to it on finished products."
+        }
+      }
+    },
+    {
+      "id": "att-16128",
+      "as_of": "2026-03",
+      "scheme": "iso_16128",
+      "status": "compliant",
+      "document": "doc-16128"
+    }
+  ],
+  "statements": [
+    {
+      "id": "s-desc",
+      "as_of": "2026-03",
+      "kind": "description",
+      "text": {
+        "en": "Exahydrate L30 is a preserved aqueous solution of three natural moisturising factors for leave-on and rinse-off skin care."
+      }
+    },
+    {
+      "id": "s-benefit",
+      "as_of": "2026-03",
+      "kind": "benefit",
+      "text": {
+        "en": "Builds up skin hydration over four weeks of use."
+      },
+      "supports": [
+        "eff-hydration",
+        "ds-hydration"
+      ]
+    },
+    {
+      "id": "s-claim",
+      "as_of": "2026-03",
+      "kind": "claim",
+      "text": {
+        "en": "Up to 24 % more skin hydration than placebo after 28 days (3 % in an O/W cream, n = 24)."
+      },
+      "supports": [
+        "eff-hydration"
+      ]
+    },
+    {
+      "id": "s-guid-1",
+      "as_of": "2026-03",
+      "kind": "guidance",
+      "text": {
+        "en": "Add below 40 Cel during cool-down, or dissolve in the water phase when the process stays below 60 Cel."
+      }
+    },
+    {
+      "id": "s-guid-2",
+      "as_of": "2026-03",
+      "kind": "guidance",
+      "text": {
+        "en": "In carbomer gels expect a viscosity loss; compensate with a higher polymer level."
+      }
+    },
+    {
+      "id": "s-check-1",
+      "as_of": "2026-03",
+      "kind": "checklist",
+      "text": {
+        "en": "If a carbomer is present, is its level raised or an electrolyte-tolerant thickener added?"
+      }
+    },
+    {
+      "id": "s-storage",
+      "as_of": "2026-03",
+      "kind": "storage",
+      "text": {
+        "en": "Store closed at 5 to 25 Cel. Use within three months after opening."
+      }
+    },
+    {
+      "id": "s-disclaimer",
+      "as_of": "2026-03",
+      "kind": "disclaimer",
+      "text": {
+        "en": "Study results describe the test formulation named with each result; they do not substantiate claims for any other product."
+      }
+    }
+  ],
+  "media": [
+    {
+      "id": "fig-hydration",
+      "as_of": "2024-02",
+      "kind": "figure",
+      "url": "https://example.com/material-dossier/media/exahydrate-l30-hydration.png",
+      "sha256": "b88c27a6956d0784bf0ac322db8b7e9897176a32f38fdb0111204cc415ea5233",
+      "mime": "image/png",
+      "caption": {
+        "en": "Skin hydration over 28 days: 3 % Exahydrate L30 against placebo."
+      },
+      "license": {
+        "id": "proprietary",
+        "holder": "Example Ingredients Ltd.",
+        "redistribution": "consumer_display"
+      }
+    },
+    {
+      "id": "doc-sds",
+      "as_of": "2026-01-15",
+      "kind": "source_document",
+      "url": "https://example.com/material-dossier/docs/exahydrate-l30-sds.pdf",
+      "sha256": "2de8f73ed6417970461717bf1d26e5994d071e80b6700885d3bb1f1a936a12c8",
+      "mime": "application/pdf",
+      "title": {
+        "en": "Safety data sheet, Exahydrate L30"
+      },
+      "license": {
+        "id": "proprietary",
+        "holder": "Example Ingredients Ltd.",
+        "redistribution": "consumer_display"
+      },
+      "document": {
+        "kind": "sds",
+        "issued": "2026-01-15",
+        "language": "en",
+        "pages": 12
+      }
+    },
+    {
+      "id": "doc-tds",
+      "as_of": "2026-03-01",
+      "kind": "source_document",
+      "url": "https://example.com/material-dossier/docs/exahydrate-l30-tds.pdf",
+      "sha256": "1c5dd26e6c58d9a59c3acc8c101639ea645f3d40366909375724664d4e24fc4b",
+      "mime": "application/pdf",
+      "title": {
+        "en": "Technical data sheet, Exahydrate L30"
+      },
+      "license": {
+        "id": "proprietary",
+        "holder": "Example Ingredients Ltd.",
+        "redistribution": "consumer_display"
+      },
+      "document": {
+        "kind": "tds",
+        "issued": "2026-03-01",
+        "language": "en",
+        "pages": 4
+      }
+    },
+    {
+      "id": "doc-cosmos",
+      "as_of": "2026-01-01",
+      "kind": "source_document",
+      "url": "https://example.com/material-dossier/docs/exahydrate-l30-cosmos-2026.pdf",
+      "sha256": "51b3fec7b76504f7b16fc3df25f8d4126ac6852c97e45553503934e012f27ab5",
+      "mime": "application/pdf",
+      "title": {
+        "en": "COSMOS raw material approval 2026"
+      },
+      "license": {
+        "id": "proprietary",
+        "holder": "Example Ingredients Ltd.",
+        "redistribution": "consumer_display"
+      },
+      "document": {
+        "kind": "certificate",
+        "issued": "2026-01-01",
+        "language": "en",
+        "pages": 1
+      }
+    },
+    {
+      "id": "doc-16128",
+      "as_of": "2025-10-01",
+      "kind": "source_document",
+      "url": "https://example.com/material-dossier/docs/exahydrate-l30-iso16128.pdf",
+      "sha256": "7fb45d4c2c062cbba74470f5559ba3ec3c599722d988f526ff8156e3665099f3",
+      "mime": "application/pdf",
+      "title": {
+        "en": "ISO 16128 statement"
+      },
+      "license": {
+        "id": "proprietary",
+        "holder": "Example Ingredients Ltd.",
+        "redistribution": "consumer_display"
+      },
+      "document": {
+        "kind": "natural_origin_statement",
+        "issued": "2025-10-01",
+        "language": "en",
+        "pages": 1
+      }
+    }
+  ]
+}

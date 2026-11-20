@@ -1,0 +1,318 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rubedyne.com/schemas/material-dossier/1.0/index.schema.json",
+  "title": "Rubedyne Material Dossier 1.0: publisher index",
+  "description": "The index a publisher serves at https://<domain>/.well-known/material-dossier/index.json. Normative text: SPEC.md section 9. Licence: Apache-2.0.",
+  "type": "object",
+  "additionalProperties": false,
+  "patternProperties": {
+    "^x-[a-z0-9][a-z0-9.-]*:[a-z0-9][a-z0-9_.-]*$": {}
+  },
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "standard": {
+      "const": "rubedyne-material-dossier"
+    },
+    "standard_versions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^1\\.[0-9]+$"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "publisher": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/shortText"
+        },
+        "domain": {
+          "$ref": "#/$defs/domain"
+        },
+        "country": {
+          "$ref": "#/$defs/country"
+        },
+        "contact": {
+          "$ref": "#/$defs/shortText"
+        },
+        "role": {
+          "enum": [
+            "manufacturer",
+            "distributor",
+            "extractor",
+            "curator"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "domain",
+        "role"
+      ]
+    },
+    "updated": {
+      "$ref": "#/$defs/timestamp"
+    },
+    "hosts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/domain"
+      },
+      "uniqueItems": true,
+      "description": "Additional hosts that may serve this publisher's dossiers, signatures and index pages."
+    },
+    "keys": {
+      "type": "object",
+      "description": "JWK Set (RFC 7517) with the public keys that verify detached signatures.",
+      "properties": {
+        "keys": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "kty",
+              "kid"
+            ]
+          }
+        }
+      },
+      "required": [
+        "keys"
+      ]
+    },
+    "authorized_publishers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "$ref": "#/$defs/domain"
+          },
+          "name": {
+            "$ref": "#/$defs/shortText"
+          },
+          "since": {
+            "type": "string",
+            "format": "date"
+          },
+          "until": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "domain"
+        ]
+      },
+      "description": "Manufacturers only: distributors authorized to publish dossiers of this manufacturer's materials."
+    },
+    "restricted_access": {
+      "type": "object",
+      "properties": {
+        "scheme": {
+          "const": "bearer"
+        },
+        "info_url": {
+          "$ref": "#/$defs/httpsUrl"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "scheme"
+      ]
+    },
+    "dossiers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "patternProperties": {
+          "^x-[a-z0-9][a-z0-9.-]*:[a-z0-9][a-z0-9_.-]*$": {}
+        },
+        "properties": {
+          "dossier_id": {
+            "type": "string",
+            "maxLength": 200,
+            "pattern": "^([a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z]{2,}:[a-z0-9][a-z0-9._-]{0,99}$",
+            "description": "<publisher domain>:<slug>; stable across versions, never reused."
+          },
+          "product_code": {
+            "$ref": "#/$defs/shortText"
+          },
+          "trade_name": {
+            "$ref": "#/$defs/shortText"
+          },
+          "manufacturer": {
+            "$ref": "#/$defs/organization"
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "updated": {
+            "$ref": "#/$defs/timestamp"
+          },
+          "status": {
+            "enum": [
+              "active",
+              "withdrawn"
+            ]
+          },
+          "withdrawn_reason": {
+            "$ref": "#/$defs/shortText"
+          },
+          "route": {
+            "enum": [
+              "manufacturer",
+              "distributor",
+              "extracted",
+              "curated"
+            ]
+          },
+          "conformance_level": {
+            "enum": [
+              "L1",
+              "L2",
+              "L3"
+            ]
+          },
+          "standard_version": {
+            "type": "string",
+            "pattern": "^1\\.[0-9]+$"
+          },
+          "vocab_version": {
+            "type": "string",
+            "pattern": "^1\\.[0-9]+$"
+          },
+          "public": {
+            "$ref": "#/$defs/representation"
+          },
+          "restricted": {
+            "$ref": "#/$defs/representation"
+          }
+        },
+        "required": [
+          "dossier_id",
+          "trade_name",
+          "version",
+          "updated",
+          "status",
+          "route",
+          "standard_version",
+          "vocab_version"
+        ],
+        "if": {
+          "properties": {
+            "status": {
+              "const": "active"
+            }
+          },
+          "required": [
+            "status"
+          ]
+        },
+        "then": {
+          "required": [
+            "public",
+            "conformance_level"
+          ]
+        }
+      },
+      "maxItems": 5000
+    },
+    "next": {
+      "$ref": "#/$defs/httpsUrl",
+      "description": "Next page of the index."
+    }
+  },
+  "required": [
+    "standard",
+    "standard_versions",
+    "publisher",
+    "updated",
+    "dossiers"
+  ],
+  "$defs": {
+    "shortText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[^\\u0000-\\u001f\\u007f]*$"
+    },
+    "httpsUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://[^\\s]+$",
+      "maxLength": 2000
+    },
+    "hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "domain": {
+      "type": "string",
+      "maxLength": 253,
+      "pattern": "^([a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?\\.)+[a-z]{2,}$"
+    },
+    "country": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$",
+      "description": "ISO 3166-1 alpha-2."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$"
+    },
+    "organization": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/shortText"
+        },
+        "domain": {
+          "$ref": "#/$defs/domain"
+        },
+        "country": {
+          "$ref": "#/$defs/country"
+        },
+        "contact": {
+          "$ref": "#/$defs/shortText"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ]
+    },
+    "representation": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "$ref": "#/$defs/httpsUrl"
+        },
+        "hash": {
+          "$ref": "#/$defs/hash"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "signature_url": {
+          "$ref": "#/$defs/httpsUrl"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "url",
+        "hash"
+      ]
+    }
+  }
+}

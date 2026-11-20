@@ -1,0 +1,21 @@
+{
+  "vocab": "process-stages",
+  "vocab_version": "1.0",
+  "issued": "2026-11-14",
+  "title": "Formulation process stages (nominal set of `use.phase`)",
+  "license": "Apache-2.0",
+  "note": "`usage_view_phase` is the phase letter (A to E) the stage projects to in the usage view (SPEC section 6.1); a stage without it is not projected. `usage_view_process: \"cold\"` marks the stage that sets `process: \"cold\"` in the usage view, so a cold-processed material needs no phase letter.",
+  "terms": [
+    {"key": "water_phase", "label": "Water phase (heated)", "definition": "Part of the heated water phase.", "usage_view_phase": "A"},
+    {"key": "oil_phase", "label": "Oil phase (heated)", "definition": "Part of the heated oil phase.", "usage_view_phase": "B"},
+    {"key": "cool_down", "label": "Cool-down phase", "definition": "Added after emulsification, below about 40 Cel.", "usage_view_phase": "C"},
+    {"key": "hot_water_phase_addition", "label": "Added to the hot water phase", "definition": "Dispersed or dissolved into the already heated water phase.", "usage_view_phase": "D"},
+    {"key": "hot_oil_phase_addition", "label": "Added to the hot oil phase", "definition": "Dispersed or dissolved into the already heated oil phase.", "usage_view_phase": "E"},
+    {"key": "cold_process", "label": "Cold process", "definition": "Processed without heating.", "usage_view_process": "cold"},
+    {"key": "pre_dispersion", "label": "Pre-dispersion / premix", "definition": "Pre-dispersed or pre-wetted in a part of the formula before the main phases."},
+    {"key": "post_emulsification", "label": "Post-emulsification (hot)", "definition": "Added right after emulsification, before cooling."},
+    {"key": "surfactant_phase", "label": "Surfactant phase", "definition": "Part of the surfactant base of a cleansing product."},
+    {"key": "final_adjustment", "label": "Final adjustment", "definition": "Added last (pH, viscosity or fragrance adjustment)."},
+    {"key": "powder_phase", "label": "Powder phase", "definition": "Part of the powder phase of a decorative or anhydrous product."}
+  ]
+}

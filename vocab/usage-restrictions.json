@@ -1,0 +1,16 @@
+{
+  "vocab": "usage-restrictions",
+  "vocab_version": "1.0",
+  "issued": "2026-11-14",
+  "title": "Restrictions on the use of an attestation (attestation.usage_restriction.codes)",
+  "license": "Apache-2.0",
+  "terms": [
+    {"key": "no_customer_reference", "label": "The customer must not refer to this attestation on products or in communication."},
+    {"key": "raw_material_only", "label": "Applies to the raw material only; says nothing about a finished product."},
+    {"key": "requires_customer_certification", "label": "A finished-product claim requires the customer's own certification."},
+    {"key": "valid_with_certificate_copy_only", "label": "Valid only together with a current copy of the certificate."},
+    {"key": "site_specific", "label": "Applies only to material from the named production site."},
+    {"key": "batch_specific", "label": "Applies only to batches delivered with the corresponding batch certificate."},
+    {"key": "partners_only", "label": "May be shared with authenticated partners only."}
+  ]
+}

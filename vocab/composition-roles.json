@@ -1,0 +1,23 @@
+{
+  "vocab": "composition-roles",
+  "vocab_version": "1.0",
+  "issued": "2026-11-14",
+  "title": "Role of a component in the material",
+  "license": "Apache-2.0",
+  "terms": [
+    {"key": "active", "label": "Active / principal substance"},
+    {"key": "functional", "label": "Functional component of a blend"},
+    {"key": "solvent", "label": "Solvent"},
+    {"key": "carrier", "label": "Carrier"},
+    {"key": "preservative", "label": "Preservative"},
+    {"key": "antioxidant", "label": "Antioxidant"},
+    {"key": "stabilizer", "label": "Stabilizer"},
+    {"key": "ph_adjuster", "label": "pH adjuster"},
+    {"key": "processing_aid", "label": "Processing aid"},
+    {"key": "residual", "label": "Residual starting material or by-product"},
+    {"key": "impurity", "label": "Impurity"},
+    {"key": "allergen", "label": "Fragrance allergen subject to labelling"},
+    {"key": "marker", "label": "Marker compound of an extract"},
+    {"key": "water", "label": "Water"}
+  ]
+}

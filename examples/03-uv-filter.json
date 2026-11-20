@@ -1,0 +1,1069 @@
+{
+  "$schema": "https://rubedyne.com/schemas/material-dossier/1.0/dossier.schema.json",
+  "standard_version": "1.0",
+  "vocab_version": "1.0",
+  "dossier_id": "example.com:exasol-uv-t",
+  "version": 2,
+  "issued": "2026-11-02T09:00:00Z",
+  "representation": "public",
+  "completeness": "partial",
+  "conformance_level": "L2",
+  "default_language": "en",
+  "languages": [
+    "en"
+  ],
+  "source": {
+    "route": "manufacturer",
+    "publisher": {
+      "name": "Example Ingredients Ltd.",
+      "domain": "example.com",
+      "country": "IE"
+    }
+  },
+  "supersedes": {
+    "version": 1,
+    "hash": "sha256:3ee981afb3f2fa9cc0316c397874d5c5a5904f4e896cad8438703272dd9fdc6a"
+  },
+  "declarations": {
+    "negative_results_included": false,
+    "batch_data_excluded": true
+  },
+  "identity": {
+    "trade_name": "Exasol UV-T",
+    "product_code": "EX-3310",
+    "grade": "Powder",
+    "manufacturer": {
+      "name": "Example Ingredients Ltd.",
+      "domain": "example.com",
+      "country": "IE"
+    },
+    "inci": [
+      "Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine"
+    ],
+    "cas": [
+      "187393-00-6"
+    ],
+    "as_of": "2026-06"
+  },
+  "composition": {
+    "as_of": "2026-06",
+    "basis": "w/w_as_supplied",
+    "complete": true,
+    "components": [
+      {
+        "id": "c-filter",
+        "inci": "Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine",
+        "cas": [
+          "187393-00-6"
+        ],
+        "role": "active",
+        "content": {
+          "limit": {
+            "op": ">=",
+            "value": 98
+          }
+        },
+        "origin": {
+          "type": "synthetic"
+        }
+      },
+      {
+        "id": "c-rest",
+        "name": "Related substances",
+        "role": "impurity",
+        "content": {
+          "limit": {
+            "op": "<=",
+            "value": 2
+          }
+        }
+      }
+    ]
+  },
+  "formulations": [
+    {
+      "id": "f-sun-1",
+      "as_of": "2025-09",
+      "role": "test_formula",
+      "name": {
+        "en": "O/W sun lotion with 3 % Exasol UV-T"
+      },
+      "code": "EX-SUN-031",
+      "product_type": "sun_care",
+      "product_form": "o_w_emulsion",
+      "disclosure": "full",
+      "lines": [
+        {
+          "phase": "A",
+          "inci": "Aqua",
+          "qs": true
+        },
+        {
+          "phase": "A",
+          "inci": "Glycerin",
+          "percent": 3,
+          "function": "humectant"
+        },
+        {
+          "phase": "A",
+          "inci": "Xanthan Gum",
+          "percent": 0.2,
+          "function": "viscosity_controlling"
+        },
+        {
+          "phase": "B",
+          "inci": "Ethylhexyl Salicylate",
+          "percent": 5,
+          "function": "uv_filter"
+        },
+        {
+          "phase": "B",
+          "inci": "Butyl Methoxydibenzoylmethane",
+          "percent": 3,
+          "function": "uv_filter"
+        },
+        {
+          "phase": "B",
+          "inci": "Octocrylene",
+          "percent": 6,
+          "function": "uv_filter"
+        },
+        {
+          "phase": "B",
+          "inci": "Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine",
+          "percent": 3,
+          "trade_name": "Exasol UV-T",
+          "supplier": "Example Ingredients Ltd.",
+          "function": "uv_filter",
+          "is_subject": true
+        },
+        {
+          "phase": "B",
+          "inci": "C12-15 Alkyl Benzoate",
+          "percent": 8,
+          "function": "emollient"
+        },
+        {
+          "phase": "B",
+          "inci": "Dibutyl Adipate",
+          "percent": 4,
+          "function": "emollient"
+        },
+        {
+          "phase": "B",
+          "inci": "Potassium Cetyl Phosphate",
+          "percent": 2,
+          "function": "emulsifying"
+        },
+        {
+          "phase": "B",
+          "inci": "Cetearyl Alcohol",
+          "percent": 1.5,
+          "function": "emulsion_stabilising"
+        },
+        {
+          "phase": "C",
+          "inci": "Phenoxyethanol",
+          "percent": 0.9,
+          "function": "preservative"
+        },
+        {
+          "phase": "C",
+          "inci": "Ethylhexylglycerin",
+          "percent": 0.1,
+          "function": "skin_conditioning"
+        }
+      ]
+    },
+    {
+      "id": "f-sun-0",
+      "as_of": "2025-09",
+      "role": "placebo",
+      "name": {
+        "en": "O/W sun lotion without Exasol UV-T (comparator)"
+      },
+      "code": "EX-SUN-030",
+      "product_type": "sun_care",
+      "product_form": "o_w_emulsion",
+      "disclosure": "full",
+      "lines": [
+        {
+          "phase": "A",
+          "inci": "Aqua",
+          "qs": true
+        },
+        {
+          "phase": "A",
+          "inci": "Glycerin",
+          "percent": 3,
+          "function": "humectant"
+        },
+        {
+          "phase": "A",
+          "inci": "Xanthan Gum",
+          "percent": 0.2,
+          "function": "viscosity_controlling"
+        },
+        {
+          "phase": "B",
+          "inci": "Ethylhexyl Salicylate",
+          "percent": 5,
+          "function": "uv_filter"
+        },
+        {
+          "phase": "B",
+          "inci": "Butyl Methoxydibenzoylmethane",
+          "percent": 3,
+          "function": "uv_filter"
+        },
+        {
+          "phase": "B",
+          "inci": "Octocrylene",
+          "percent": 6,
+          "function": "uv_filter"
+        },
+        {
+          "phase": "B",
+          "inci": "C12-15 Alkyl Benzoate",
+          "percent": 8,
+          "function": "emollient"
+        },
+        {
+          "phase": "B",
+          "inci": "Dibutyl Adipate",
+          "percent": 4,
+          "function": "emollient"
+        },
+        {
+          "phase": "B",
+          "inci": "Potassium Cetyl Phosphate",
+          "percent": 2,
+          "function": "emulsifying"
+        },
+        {
+          "phase": "B",
+          "inci": "Cetearyl Alcohol",
+          "percent": 1.5,
+          "function": "emulsion_stabilising"
+        },
+        {
+          "phase": "C",
+          "inci": "Phenoxyethanol",
+          "percent": 0.9,
+          "function": "preservative"
+        },
+        {
+          "phase": "C",
+          "inci": "Ethylhexylglycerin",
+          "percent": 0.1,
+          "function": "skin_conditioning"
+        }
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "id": "use-level",
+      "as_of": "2026-06",
+      "key": "use.level",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "range": {
+          "min": 1,
+          "max": 10
+        }
+      },
+      "unit": "%"
+    },
+    {
+      "id": "use-typical",
+      "as_of": "2026-06",
+      "key": "use.level_typical",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "exact": 3
+      },
+      "unit": "%"
+    },
+    {
+      "id": "use-phase-b",
+      "as_of": "2026-06",
+      "key": "use.phase",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "oil_phase"
+      }
+    },
+    {
+      "id": "use-temp",
+      "as_of": "2026-06",
+      "key": "use.process_temperature_max",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "limit": {
+          "op": "<=",
+          "value": 90
+        }
+      },
+      "unit": "Cel"
+    },
+    {
+      "id": "use-dissolve",
+      "as_of": "2026-06",
+      "key": "use.dissolution_temperature",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "range": {
+          "min": 75,
+          "max": 85
+        }
+      },
+      "unit": "Cel"
+    },
+    {
+      "id": "reg-eu",
+      "as_of": "2026-06-01",
+      "key": "use.level",
+      "basis": "regulatory_limit",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "limit": {
+          "op": "<=",
+          "value": 10
+        }
+      },
+      "unit": "%",
+      "scope": {
+        "region": [
+          "EU"
+        ]
+      }
+    },
+    {
+      "id": "reg-au",
+      "as_of": "2026-10-16",
+      "key": "use.level",
+      "basis": "regulatory_limit",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "limit": {
+          "op": "<=",
+          "value": 10
+        }
+      },
+      "unit": "%",
+      "scope": {
+        "region": [
+          "AU"
+        ]
+      }
+    },
+    {
+      "id": "reg-us",
+      "as_of": "2026-11-01",
+      "key": "use.level",
+      "basis": "regulatory_limit",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "limit": {
+          "op": "<=",
+          "value": 6
+        }
+      },
+      "unit": "%",
+      "scope": {
+        "region": [
+          "US"
+        ]
+      }
+    },
+    {
+      "id": "fn-uv",
+      "as_of": "2026-06",
+      "key": "profile.function",
+      "basis": "declared",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "uv_filter"
+      }
+    },
+    {
+      "id": "form",
+      "as_of": "2026-06",
+      "key": "profile.physical_form",
+      "basis": "declared",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "powder"
+      }
+    },
+    {
+      "id": "app-sun",
+      "as_of": "2026-06",
+      "key": "profile.application",
+      "basis": "declared",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "sun_care"
+      }
+    },
+    {
+      "id": "sol-water",
+      "as_of": "2026-06",
+      "key": "solubility.water",
+      "basis": "typical",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "insoluble"
+      }
+    },
+    {
+      "id": "sol-benzoate",
+      "as_of": "2026-06",
+      "key": "solubility.in_medium",
+      "basis": "typical",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "exact": 12
+      },
+      "unit": "g/(100.mL)",
+      "conditions": [
+        {
+          "key": "medium",
+          "text": "C12-15 Alkyl Benzoate"
+        },
+        {
+          "key": "temperature",
+          "value": 25,
+          "unit": "Cel"
+        }
+      ]
+    },
+    {
+      "id": "sol-adipate",
+      "as_of": "2026-06",
+      "key": "solubility.in_medium",
+      "basis": "typical",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "exact": 16
+      },
+      "unit": "g/(100.mL)",
+      "conditions": [
+        {
+          "key": "medium",
+          "text": "Dibutyl Adipate"
+        },
+        {
+          "key": "temperature",
+          "value": 25,
+          "unit": "Cel"
+        }
+      ]
+    },
+    {
+      "id": "spec-appearance",
+      "as_of": "2026-06",
+      "key": "physchem.appearance",
+      "basis": "specification",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "text": {
+          "en": "Pale yellow powder"
+        }
+      }
+    },
+    {
+      "id": "spec-assay",
+      "as_of": "2026-06",
+      "key": "physchem.assay",
+      "basis": "specification",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "limit": {
+          "op": ">=",
+          "value": 98
+        }
+      },
+      "unit": "%",
+      "method": {
+        "name": "HPLC, internal method EX-M-101"
+      }
+    },
+    {
+      "id": "spec-ext",
+      "as_of": "2026-06",
+      "key": "uv.specific_extinction",
+      "basis": "specification",
+      "subject": {
+        "kind": "dilution",
+        "medium": "ethanol",
+        "material_conc": {
+          "value": 0.001,
+          "unit": "%",
+          "basis": "as_supplied"
+        }
+      },
+      "value": {
+        "limit": {
+          "op": ">=",
+          "value": 790
+        }
+      },
+      "unit": "{E1%1cm}",
+      "conditions": [
+        {
+          "key": "wavelength",
+          "value": 343,
+          "unit": "nm"
+        }
+      ]
+    },
+    {
+      "id": "typ-max",
+      "as_of": "2026-06",
+      "key": "uv.absorption_maximum",
+      "basis": "typical",
+      "subject": {
+        "kind": "dilution",
+        "medium": "ethanol",
+        "material_conc": {
+          "value": 0.001,
+          "unit": "%",
+          "basis": "as_supplied"
+        }
+      },
+      "value": {
+        "exact": 343
+      },
+      "unit": "nm"
+    },
+    {
+      "id": "typ-mp",
+      "as_of": "2026-06",
+      "key": "physchem.melting_point",
+      "basis": "typical",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "range": {
+          "min": 80,
+          "max": 84
+        }
+      },
+      "unit": "Cel"
+    },
+    {
+      "id": "shelf",
+      "as_of": "2026-06",
+      "key": "stability.shelf_life",
+      "basis": "specification",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "exact": 36
+      },
+      "unit": "mo"
+    },
+    {
+      "id": "spf-f1",
+      "as_of": "2025-09",
+      "key": "uv.spf_in_vivo",
+      "basis": "measured",
+      "subject": {
+        "kind": "formulation",
+        "formulation": "f-sun-1"
+      },
+      "value": {
+        "exact": 32.4
+      },
+      "unit": "1",
+      "study": "st-spf",
+      "method": {
+        "standard": "iso:24444",
+        "edition": "2019"
+      },
+      "conditions": [
+        {
+          "key": "application_dose",
+          "value": 2,
+          "unit": "mg/cm2"
+        }
+      ],
+      "statistics": {
+        "n": 10,
+        "significant": "not_reported",
+        "dispersion": {
+          "kind": "ci95",
+          "low": 29.1,
+          "high": 35.7
+        }
+      }
+    },
+    {
+      "id": "spf-f0",
+      "as_of": "2025-09",
+      "key": "uv.spf_in_vivo",
+      "basis": "measured",
+      "subject": {
+        "kind": "formulation",
+        "formulation": "f-sun-0"
+      },
+      "value": {
+        "exact": 23.0
+      },
+      "unit": "1",
+      "study": "st-spf",
+      "method": {
+        "standard": "iso:24444",
+        "edition": "2019"
+      },
+      "conditions": [
+        {
+          "key": "application_dose",
+          "value": 2,
+          "unit": "mg/cm2"
+        }
+      ],
+      "statistics": {
+        "n": 10,
+        "significant": "not_reported"
+      }
+    },
+    {
+      "id": "spf-boost",
+      "as_of": "2025-09",
+      "key": "uv.spf_boost",
+      "basis": "calculated",
+      "subject": {
+        "kind": "formulation",
+        "formulation": "f-sun-1"
+      },
+      "value": {
+        "exact": 41
+      },
+      "unit": "%",
+      "study": "st-spf",
+      "method": {
+        "standard": "iso:24444",
+        "edition": "2019"
+      },
+      "comparison": {
+        "vs": "placebo",
+        "ref": "f-sun-0",
+        "change": "relative"
+      }
+    },
+    {
+      "id": "uvapf-f1",
+      "as_of": "2025-09",
+      "key": "uv.uva_pf_in_vitro",
+      "basis": "measured",
+      "subject": {
+        "kind": "formulation",
+        "formulation": "f-sun-1"
+      },
+      "value": {
+        "limit": {
+          "op": ">",
+          "value": 12
+        }
+      },
+      "unit": "1",
+      "method": {
+        "standard": "iso:24443",
+        "edition": "2021"
+      },
+      "as_written": "> 12"
+    },
+    {
+      "id": "cw-f1",
+      "as_of": "2025-09",
+      "key": "uv.critical_wavelength",
+      "basis": "measured",
+      "subject": {
+        "kind": "formulation",
+        "formulation": "f-sun-1"
+      },
+      "value": {
+        "exact": 378
+      },
+      "unit": "nm",
+      "method": {
+        "standard": "iso:24443",
+        "edition": "2021"
+      }
+    },
+    {
+      "id": "wr-f1",
+      "as_of": "2025-09",
+      "key": "uv.water_resistance_retention",
+      "basis": "measured",
+      "subject": {
+        "kind": "formulation",
+        "formulation": "f-sun-1"
+      },
+      "value": {
+        "exact": 62
+      },
+      "unit": "%",
+      "study": "st-spf",
+      "method": {
+        "standard": "iso:18861"
+      },
+      "conditions": [
+        {
+          "key": "immersion_time",
+          "value": 40,
+          "unit": "min"
+        }
+      ]
+    },
+    {
+      "id": "photo-f1",
+      "as_of": "2025-09",
+      "key": "uv.photostability",
+      "basis": "measured",
+      "subject": {
+        "kind": "formulation",
+        "formulation": "f-sun-1"
+      },
+      "value": {
+        "exact": 97
+      },
+      "unit": "%",
+      "method": {
+        "name": "UV absorbance recovery on PMMA plates",
+        "non_standard": true
+      },
+      "conditions": [
+        {
+          "key": "irradiation_dose",
+          "value": 25,
+          "unit": "J/cm2"
+        }
+      ]
+    },
+    {
+      "id": "tox-photo",
+      "as_of": "2019-04",
+      "key": "tox.phototoxicity",
+      "basis": "measured",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "not_phototoxic"
+      },
+      "method": {
+        "standard": "oecd:432"
+      }
+    },
+    {
+      "id": "tox-sens",
+      "as_of": "2019-04",
+      "key": "tox.skin_sensitization",
+      "basis": "measured",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "not_sensitizer"
+      },
+      "method": {
+        "standard": "oecd:429"
+      }
+    }
+  ],
+  "studies": [
+    {
+      "id": "st-spf",
+      "as_of": "2025-09",
+      "kind": "in_vivo",
+      "title": {
+        "en": "SPF and water resistance of two sun lotions"
+      },
+      "method": {
+        "standard": "iso:24444",
+        "edition": "2019"
+      },
+      "subjects": {
+        "n": 10,
+        "description": "Phototypes I to III"
+      },
+      "arms": [
+        {
+          "role": "test",
+          "formulation": "f-sun-1"
+        },
+        {
+          "role": "vehicle",
+          "formulation": "f-sun-0",
+          "label": "Same lotion without Exasol UV-T"
+        }
+      ],
+      "lab": {
+        "type": "independent",
+        "country": "FR"
+      },
+      "all_endpoints_reported": true
+    }
+  ],
+  "datasets": [
+    {
+      "id": "ds-spectrum",
+      "as_of": "2026-06",
+      "title": {
+        "en": "UV absorbance spectrum in ethanol"
+      },
+      "basis": "typical",
+      "points_origin": "none",
+      "figure": "fig-spectrum",
+      "subject": {
+        "kind": "dilution",
+        "medium": "ethanol",
+        "material_conc": {
+          "value": 0.001,
+          "unit": "%",
+          "basis": "as_supplied"
+        }
+      },
+      "axes": [
+        {
+          "key": "wavelength",
+          "type": "numeric",
+          "unit": "nm",
+          "scale": "lin",
+          "role": "independent"
+        },
+        {
+          "key": "uv.specific_extinction",
+          "type": "numeric",
+          "unit": "{E1%1cm}",
+          "scale": "lin",
+          "role": "dependent"
+        }
+      ],
+      "series": [
+        {
+          "id": "ser-spectrum",
+          "label": {
+            "en": "Exasol UV-T, 10 mg/L in ethanol"
+          }
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "id": "rel-avobenzone",
+      "as_of": "2026-06",
+      "with": {
+        "inci": "Butyl Methoxydibenzoylmethane"
+      },
+      "effect": "stabilizes",
+      "basis": "measured",
+      "support": [
+        "photo-f1"
+      ]
+    },
+    {
+      "id": "rel-oils",
+      "as_of": "2026-06",
+      "with": {
+        "class": "polar_oils"
+      },
+      "effect": "solubilized_by",
+      "basis": "measured",
+      "support": [
+        "sol-benzoate",
+        "sol-adipate"
+      ]
+    },
+    {
+      "id": "rel-nonpolar",
+      "as_of": "2026-06",
+      "with": {
+        "class": "nonpolar_oils"
+      },
+      "effect": "limited_compatibility",
+      "basis": "declared",
+      "text": {
+        "en": "Poorly soluble in nonpolar oils; recrystallization is possible."
+      }
+    }
+  ],
+  "attestations": [
+    {
+      "id": "att-eu",
+      "as_of": "2026-06-01",
+      "scheme": "eu_cosmetics_regulation",
+      "status": "permitted_with_restrictions",
+      "scope": {
+        "region": [
+          "EU"
+        ]
+      },
+      "reference": "Annex VI, entry 25"
+    },
+    {
+      "id": "att-us",
+      "as_of": "2026-11-01",
+      "scheme": "us_fda_otc_monograph",
+      "status": "permitted_with_restrictions",
+      "scope": {
+        "region": [
+          "US"
+        ]
+      },
+      "reference": "OTC Monograph M020, final order OTC000039 (issued 2026-06-10, effective 2026-08-09): up to 6 %"
+    },
+    {
+      "id": "att-au",
+      "as_of": "2026-10-16",
+      "scheme": "au_tga_sunscreen",
+      "status": "permitted_with_restrictions",
+      "scope": {
+        "region": [
+          "AU"
+        ]
+      },
+      "reference": "Therapeutic Goods (Permissible Ingredients) Determination (No. 3) 2026, Schedule 1, entry BEMOTRIZINOL (not more than 10 %)"
+    },
+    {
+      "id": "att-reach",
+      "as_of": "2026-06",
+      "scheme": "eu_reach",
+      "status": "registered",
+      "scope": {
+        "region": [
+          "EU"
+        ]
+      }
+    },
+    {
+      "id": "att-nano",
+      "as_of": "2026-06",
+      "scheme": "nano_status",
+      "status": "not_nano",
+      "scope": {
+        "region": [
+          "EU"
+        ]
+      }
+    }
+  ],
+  "statements": [
+    {
+      "id": "s-desc",
+      "as_of": "2026-06",
+      "kind": "description",
+      "text": {
+        "en": "Exasol UV-T is an oil-soluble broad-spectrum UV filter with high photostability."
+      }
+    },
+    {
+      "id": "s-disclaimer",
+      "as_of": "2026-06",
+      "kind": "disclaimer",
+      "text": {
+        "en": "SPF, UVA-PF, critical wavelength and water-resistance values describe the named test formulations only. They are not properties of the raw material and must not be used as claims for any other product; every sunscreen product needs its own tests."
+      }
+    },
+    {
+      "id": "s-guid-1",
+      "as_of": "2026-06",
+      "kind": "guidance",
+      "text": {
+        "en": "Dissolve completely in the heated oil phase (75 to 85 Cel) with polar emollients before emulsifying."
+      }
+    },
+    {
+      "id": "s-check-1",
+      "as_of": "2026-06",
+      "kind": "checklist",
+      "text": {
+        "en": "Does the oil phase contain enough polar emollient to keep the filter dissolved (about 8 parts per part of filter)?"
+      }
+    }
+  ],
+  "media": [
+    {
+      "id": "fig-spectrum",
+      "as_of": "2026-06",
+      "kind": "figure",
+      "url": "https://example.com/material-dossier/media/exasol-uv-t-spectrum.png",
+      "sha256": "66e1ab79ad478ca9c8ea64dc6f55faea2f856b656458b681384547188793fc46",
+      "mime": "image/png",
+      "caption": {
+        "en": "UV absorbance spectrum, 10 mg/L in ethanol, 1 cm."
+      },
+      "license": {
+        "id": "proprietary",
+        "holder": "Example Ingredients Ltd.",
+        "redistribution": "consumer_display"
+      }
+    },
+    {
+      "id": "doc-sds",
+      "as_of": "2026-01-15",
+      "kind": "source_document",
+      "url": "https://example.com/material-dossier/docs/exasol-uv-t-sds.pdf",
+      "sha256": "ed747ca13d9e008fa96304ecab63533b5983e7f392bdfe95fabdfc981c47f456",
+      "mime": "application/pdf",
+      "title": {
+        "en": "Safety data sheet, Exasol UV-T"
+      },
+      "license": {
+        "id": "proprietary",
+        "holder": "Example Ingredients Ltd.",
+        "redistribution": "consumer_display"
+      },
+      "document": {
+        "kind": "sds",
+        "issued": "2026-01-15",
+        "language": "en",
+        "pages": 12
+      }
+    }
+  ]
+}

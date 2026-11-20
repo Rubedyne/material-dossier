@@ -1,0 +1,31 @@
+{
+  "vocab": "interaction-effects",
+  "vocab_version": "1.0",
+  "issued": "2026-11-14",
+  "title": "Effect of an interaction (relation.effect)",
+  "license": "Apache-2.0",
+  "terms": [
+    {"key": "compatible", "label": "Compatible"},
+    {"key": "incompatible", "label": "Incompatible"},
+    {"key": "limited_compatibility", "label": "Compatible within the stated conditions only"},
+    {"key": "synergy", "label": "Synergy"},
+    {"key": "antagonism", "label": "Antagonism"},
+    {"key": "boosts", "label": "Boosts the partner's performance"},
+    {"key": "boosted_by", "label": "Performance is boosted by the partner"},
+    {"key": "reduces_efficacy", "label": "The partner reduces this material's efficacy"},
+    {"key": "reduces_partner_efficacy", "label": "This material reduces the partner's efficacy"},
+    {"key": "stabilizes", "label": "Stabilizes the partner or the system"},
+    {"key": "stabilized_by", "label": "Is stabilized by the partner"},
+    {"key": "destabilizes", "label": "Destabilizes the partner or the system"},
+    {"key": "destabilized_by", "label": "Is destabilized by the partner"},
+    {"key": "thickens", "label": "Viscosity increases"},
+    {"key": "thins", "label": "Viscosity decreases"},
+    {"key": "precipitates", "label": "Precipitation or complex formation"},
+    {"key": "discolors", "label": "Discoloration"},
+    {"key": "solubilizes", "label": "Solubilizes the partner"},
+    {"key": "solubilized_by", "label": "Is solubilized by the partner"},
+    {"key": "requires", "label": "Requires the partner (for example a neutralizer)"},
+    {"key": "replaces", "label": "Can replace the partner (publisher statement)"},
+    {"key": "no_effect", "label": "Tested, no effect observed"}
+  ]
+}

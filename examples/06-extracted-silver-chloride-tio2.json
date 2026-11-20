@@ -1,0 +1,272 @@
+{
+  "$schema": "https://rubedyne.com/schemas/material-dossier/1.0/dossier.schema.json",
+  "standard_version": "1.0",
+  "vocab_version": "1.0",
+  "dossier_id": "extractor.example.org:example-minerals-em-ag20",
+  "version": 1,
+  "issued": "2026-11-16T09:00:00Z",
+  "representation": "public",
+  "completeness": "partial",
+  "conformance_level": "L1",
+  "default_language": "en",
+  "languages": [
+    "en"
+  ],
+  "source": {
+    "route": "extracted",
+    "publisher": {
+      "name": "Example Extraction Service",
+      "domain": "extractor.example.org"
+    },
+    "extraction": {
+      "tool": "example-extractor 2.3",
+      "completed": "2026-11-16",
+      "sources": [
+        "doc-agcl"
+      ]
+    }
+  },
+  "identity": {
+    "trade_name": "Example AgCl-TiO2 Antimicrobial",
+    "product_code": "EM-AG20",
+    "manufacturer": {
+      "name": "Example Minerals Ltd."
+    },
+    "inci": [
+      "Silver Chloride",
+      "Titanium Dioxide"
+    ],
+    "cas": [
+      "7783-90-6",
+      "13463-67-7"
+    ],
+    "as_of": "2026-05-04",
+    "evidence": [
+      {
+        "source": "doc-agcl",
+        "page": 1,
+        "quote": "Example AgCl-TiO2 Antimicrobial",
+        "supports": [
+          "/trade_name"
+        ]
+      },
+      {
+        "source": "doc-agcl",
+        "page": 1,
+        "quote": "Product code: EM-AG20",
+        "supports": [
+          "/product_code"
+        ]
+      },
+      {
+        "source": "doc-agcl",
+        "page": 1,
+        "quote": "Example Minerals Ltd.",
+        "supports": [
+          "/manufacturer"
+        ]
+      },
+      {
+        "source": "doc-agcl",
+        "page": 1,
+        "quote": "INCI names: Silver Chloride, Titanium Dioxide",
+        "supports": [
+          "/inci"
+        ]
+      },
+      {
+        "source": "doc-agcl",
+        "page": 1,
+        "quote": "CAS No.: 7783-90-6 (silver chloride), 13463-67-7 (titanium dioxide)",
+        "supports": [
+          "/cas"
+        ]
+      }
+    ]
+  },
+  "properties": [
+    {
+      "id": "basis-ag",
+      "as_of": "2026-05-04",
+      "key": "composition.regulated_basis_content",
+      "basis": "specification",
+      "subject": {
+        "kind": "neat"
+      },
+      "analyte": {
+        "code": "element.ag"
+      },
+      "value": {
+        "range": {
+          "min": 13.5,
+          "max": 16.5
+        }
+      },
+      "unit": "%",
+      "as_written": "13.5 - 16.5 %",
+      "evidence": [
+        {
+          "source": "doc-agcl",
+          "page": 1,
+          "quote": "Silver content (as Ag): 13.5 - 16.5 %",
+          "supports": [
+            "/analyte",
+            "/value",
+            "/unit"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "basis-agcl",
+      "as_of": "2026-05-04",
+      "key": "composition.regulated_basis_content",
+      "basis": "typical",
+      "subject": {
+        "kind": "neat"
+      },
+      "analyte": {
+        "code": "substance.silver_chloride"
+      },
+      "value": {
+        "exact": 20
+      },
+      "unit": "%",
+      "as_written": "typically 20 %",
+      "evidence": [
+        {
+          "source": "doc-agcl",
+          "page": 1,
+          "quote": "(AgCl): typically 20 %",
+          "supports": [
+            "/analyte",
+            "/value",
+            "/unit"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spec-water",
+      "as_of": "2026-05-04",
+      "key": "physchem.water_content",
+      "basis": "specification",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "limit": {
+          "op": "<=",
+          "value": 2.5
+        }
+      },
+      "unit": "%",
+      "as_written": "max. 2.5 %",
+      "evidence": [
+        {
+          "source": "doc-agcl",
+          "page": 1,
+          "quote": "Water content: max. 2.5 %",
+          "supports": [
+            "/value",
+            "/unit"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "use-level",
+      "as_of": "2026-05-04",
+      "key": "use.level",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "range": {
+          "min": 0.1,
+          "max": 0.5
+        }
+      },
+      "unit": "%",
+      "as_written": "0.1 - 0.5 %",
+      "evidence": [
+        {
+          "source": "doc-agcl",
+          "page": 1,
+          "quote": "Recommended use level: 0.1 - 0.5 %.",
+          "supports": [
+            "/value",
+            "/unit"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "use-phase",
+      "as_of": "2026-05-04",
+      "key": "use.phase",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "water_phase"
+      },
+      "evidence": [
+        {
+          "source": "doc-agcl",
+          "page": 1,
+          "quote": "Disperse in the water phase.",
+          "supports": [
+            "/value"
+          ]
+        }
+      ]
+    }
+  ],
+  "statements": [
+    {
+      "id": "s-desc",
+      "as_of": "2026-05-04",
+      "kind": "description",
+      "text": {
+        "en": "Silver chloride deposited on titanium dioxide, a white to off-white powder."
+      },
+      "evidence": [
+        {
+          "source": "doc-agcl",
+          "page": 1,
+          "quote": "Silver chloride deposited on titanium dioxide, a white to off-white powder.",
+          "supports": [
+            "/text"
+          ]
+        }
+      ]
+    }
+  ],
+  "media": [
+    {
+      "id": "doc-agcl",
+      "as_of": "2026-05-04",
+      "kind": "source_document",
+      "sha256": "a158de461eec6fb9e46783d107b1eb84b9f1fb00d74bda91583bf4052bb66be5",
+      "mime": "application/pdf",
+      "title": {
+        "en": "Product specification, Example AgCl-TiO2 Antimicrobial, issue 2"
+      },
+      "license": {
+        "id": "unknown",
+        "redistribution": "none"
+      },
+      "document": {
+        "kind": "specification",
+        "doc_version": "Issue 2",
+        "issued": "2026-05-04",
+        "language": "en",
+        "pages": 1,
+        "issuer": "Example Minerals Ltd."
+      }
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "vocab_version": "1.0",
+  "issued": "2026-11-14",
+  "license": "Apache-2.0",
+  "base": "https://rubedyne.com/schemas/material-dossier/vocab/1.0/",
+  "vocabularies": [
+    {
+      "vocab": "basis",
+      "file": "basis.json",
+      "title": "Basis of a property value (structural enumeration, mirrored in the JSON Schema)",
+      "terms": 7
+    },
+    {
+      "vocab": "functions",
+      "file": "functions.json",
+      "title": "Cosmetic ingredient functions",
+      "terms": 85
+    },
+    {
+      "vocab": "sensory",
+      "file": "sensory.json",
+      "title": "Sensory descriptors and panel attributes",
+      "terms": 38
+    },
+    {
+      "vocab": "endpoints",
+      "file": "endpoints.json",
+      "title": "Efficacy endpoints (suffix of property keys `efficacy.<endpoint>`; value of the `endpoint` condition)",
+      "terms": 68
+    },
+    {
+      "vocab": "study-kinds",
+      "file": "study-kinds.json",
+      "title": "Study kinds",
+      "terms": 12
+    },
+    {
+      "vocab": "interaction-effects",
+      "file": "interaction-effects.json",
+      "title": "Effect of an interaction (relation.effect)",
+      "terms": 22
+    },
+    {
+      "vocab": "interaction-classes",
+      "file": "interaction-classes.json",
+      "title": "Material classes usable in relation.with.class",
+      "terms": 64
+    },
+    {
+      "vocab": "composition-roles",
+      "file": "composition-roles.json",
+      "title": "Role of a component in the material",
+      "terms": 14
+    },
+    {
+      "vocab": "origin-types",
+      "file": "origin-types.json",
+      "title": "Origin of a component",
+      "terms": 11
+    },
+    {
+      "vocab": "product-types",
+      "file": "product-types.json",
+      "title": "Finished-product types (scope.product_type, profile.application)",
+      "terms": 34
+    },
+    {
+      "vocab": "product-forms",
+      "file": "product-forms.json",
+      "title": "Physical form of a formulation (formulation.product_form)",
+      "terms": 24
+    },
+    {
+      "vocab": "process-stages",
+      "file": "process-stages.json",
+      "title": "Formulation process stages (nominal set of `use.phase`)",
+      "terms": 11
+    },
+    {
+      "vocab": "statement-kinds",
+      "file": "statement-kinds.json",
+      "title": "Kinds of free-text statements (all display-only)",
+      "terms": 10
+    },
+    {
+      "vocab": "document-kinds",
+      "file": "document-kinds.json",
+      "title": "Kinds of source and reference documents (media.document.kind)",
+      "terms": 21
+    },
+    {
+      "vocab": "attestation-schemes",
+      "file": "attestation-schemes.json",
+      "title": "Certification, declaration and regulatory schemes (attestation.scheme)",
+      "terms": 77
+    },
+    {
+      "vocab": "attestation-statuses",
+      "file": "attestation-statuses.json",
+      "title": "Status of an attestation",
+      "terms": 21
+    },
+    {
+      "vocab": "usage-restrictions",
+      "file": "usage-restrictions.json",
+      "title": "Restrictions on the use of an attestation (attestation.usage_restriction.codes)",
+      "terms": 7
+    },
+    {
+      "vocab": "condition-keys",
+      "file": "condition-keys.json",
+      "title": "Keys of conditions, method settings and dataset axes (no dot in the key)",
+      "terms": 51
+    },
+    {
+      "vocab": "units",
+      "file": "units.json",
+      "title": "Dimensions, canonical UCUM units and accepted units",
+      "terms": 36
+    },
+    {
+      "vocab": "nominal-codes",
+      "file": "nominal-codes.json",
+      "title": "Nominal code sets for value.nominal",
+      "terms": 15
+    },
+    {
+      "vocab": "test-methods",
+      "file": "test-methods.json",
+      "title": "Standard bodies and a registry of well-known test methods",
+      "terms": 88
+    },
+    {
+      "vocab": "regions",
+      "file": "regions.json",
+      "title": "Region group codes accepted in addition to ISO 3166-1 alpha-2 country codes",
+      "terms": 7
+    },
+    {
+      "vocab": "property-keys",
+      "file": "property-keys.json",
+      "title": "Property keys with value forms, dimensions and plausibility bounds",
+      "terms": 163
+    },
+    {
+      "vocab": "regulated-bases",
+      "file": "regulated-bases.json",
+      "title": "Regulated bases: the element or named substance in which a regulatory limit is expressed (analyte of composition.regulated_basis_content)",
+      "terms": 9
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "vocab": "product-forms",
+  "vocab_version": "1.0",
+  "issued": "2026-11-14",
+  "title": "Physical form of a formulation (formulation.product_form)",
+  "license": "Apache-2.0",
+  "terms": [
+    {"key": "o_w_emulsion", "label": "O w emulsion"},
+    {"key": "w_o_emulsion", "label": "W o emulsion"},
+    {"key": "w_si_emulsion", "label": "W si emulsion"},
+    {"key": "multiple_emulsion", "label": "Multiple emulsion"},
+    {"key": "gel", "label": "Gel"},
+    {"key": "gel_cream", "label": "Gel cream"},
+    {"key": "hydroalcoholic_gel", "label": "Hydroalcoholic gel"},
+    {"key": "oleogel", "label": "Oleogel"},
+    {"key": "aqueous_solution", "label": "Aqueous solution"},
+    {"key": "hydroalcoholic_solution", "label": "Hydroalcoholic solution"},
+    {"key": "oil", "label": "Oil"},
+    {"key": "anhydrous_balm", "label": "Anhydrous balm"},
+    {"key": "stick", "label": "Stick"},
+    {"key": "surfactant_solution", "label": "Surfactant solution"},
+    {"key": "surfactant_gel", "label": "Surfactant gel"},
+    {"key": "suspension", "label": "Suspension"},
+    {"key": "powder", "label": "Powder"},
+    {"key": "pressed_powder", "label": "Pressed powder"},
+    {"key": "aerosol", "label": "Aerosol"},
+    {"key": "foam", "label": "Foam"},
+    {"key": "paste", "label": "Paste"},
+    {"key": "serum", "label": "Serum"},
+    {"key": "lotion", "label": "Lotion"},
+    {"key": "spray", "label": "Spray"}
+  ]
+}

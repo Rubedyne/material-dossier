@@ -1,0 +1,30 @@
+{
+  "vocab": "attestation-statuses",
+  "vocab_version": "1.0",
+  "issued": "2026-11-14",
+  "title": "Status of an attestation",
+  "license": "Apache-2.0",
+  "terms": [
+    {"key": "certified", "label": "Certified by the issuer"},
+    {"key": "approved", "label": "Approved / accepted as raw material by the scheme"},
+    {"key": "compliant", "label": "Compliant (publisher declaration)"},
+    {"key": "not_compliant", "label": "Not compliant"},
+    {"key": "listed", "label": "Listed in the inventory or positive list"},
+    {"key": "not_listed", "label": "Not listed"},
+    {"key": "registered", "label": "Registered"},
+    {"key": "pre_registered", "label": "Pre-registered"},
+    {"key": "exempt", "label": "Exempt"},
+    {"key": "permitted", "label": "Permitted"},
+    {"key": "permitted_with_restrictions", "label": "Permitted with restrictions (see limits or reference)"},
+    {"key": "prohibited", "label": "Prohibited"},
+    {"key": "free_of", "label": "Free of the named concern"},
+    {"key": "contains", "label": "Contains the named concern"},
+    {"key": "is_nano", "label": "Is a nanomaterial under the stated definition"},
+    {"key": "not_nano", "label": "Is not a nanomaterial under the stated definition"},
+    {"key": "suitable", "label": "Suitable for products under the scheme"},
+    {"key": "not_suitable", "label": "Not suitable for products under the scheme"},
+    {"key": "in_progress", "label": "Application in progress"},
+    {"key": "not_applicable", "label": "Not applicable"},
+    {"key": "expired", "label": "Expired"}
+  ]
+}

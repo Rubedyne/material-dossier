@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rubedyne.com/schemas/material-dossier/1.0/vocab.schema.json",
+  "title": "Rubedyne Material Dossier 1.0: vocabulary file",
+  "type": "object",
+  "properties": {
+    "vocab": {
+      "type": "string"
+    },
+    "vocab_version": {
+      "type": "string",
+      "pattern": "^1\\.[0-9]+$"
+    },
+    "issued": {
+      "type": "string",
+      "format": "date"
+    },
+    "title": {
+      "type": "string"
+    },
+    "license": {
+      "const": "Apache-2.0"
+    },
+    "source": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    },
+    "terms": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:*/-]*$"
+          },
+          "label": {
+            "type": "string"
+          },
+          "definition": {
+            "type": "string"
+          },
+          "deprecated": {
+            "type": "boolean"
+          },
+          "replaced_by": {
+            "type": "string"
+          },
+          "since": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "element",
+              "substance"
+            ],
+            "description": "regulated-bases: an element or a named substance."
+          },
+          "symbol": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Za-z0-9]*$",
+            "description": "regulated-bases: the chemical symbol or formula, matched case-sensitively as a whole word (SPEC 7.3 rule 6)."
+          },
+          "cas": {
+            "type": "string",
+            "pattern": "^[1-9][0-9]{1,6}-[0-9]{2}-[0-9]$"
+          },
+          "aliases": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[^A-Z]+$"
+            },
+            "uniqueItems": true,
+            "description": "regulated-bases: lower-case names matched as whole words by the evidence check (SPEC 7.3 rule 6)."
+          },
+          "annex_examples": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^(II|III|IV|V|VI)/[0-9]+[a-z]?(-[0-9]+[a-z]?)?$"
+            },
+            "uniqueItems": true,
+            "description": "regulated-bases: entries of Regulation (EC) No 1223/2009 (annex/reference number) that state a limit on this basis."
+          },
+          "analyte": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*$",
+            "description": "property-keys: the vocabulary whose key a property of this key gives in its analyte member (SPEC 5.5.6)."
+          }
+        },
+        "required": [
+          "key",
+          "label"
+        ]
+      }
+    }
+  },
+  "required": [
+    "vocab",
+    "vocab_version",
+    "issued",
+    "title",
+    "license",
+    "terms"
+  ]
+}

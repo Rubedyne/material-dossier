@@ -1,0 +1,20 @@
+Example Ingredients Ltd.                                  Technical Data Sheet
+EXAESTER GC                                               Revision 4 / 2025-03-10
+Product code: EX-4410
+
+INCI name: Caprylic/Capric Triglyceride
+CAS No.: 73398-61-5          EC No.: 277-452-2
+
+Description
+Exaester GC is a clear, colourless, odourless oil of medium polarity.
+
+Specification
+Appearance (20 °C)             clear, colourless liquid
+Acid value                     max. 0.1 mg KOH/g
+Saponification value           325 - 345 mg KOH/g
+Water content                  max. 0,1 %
+
+Typical data (not part of the specification)
+Density (20 °C)                0,945 g/cm³
+Viscosity (20 °C)              25 - 33 mPa·s
+Spreading value                approx. 550 mm²/10 min

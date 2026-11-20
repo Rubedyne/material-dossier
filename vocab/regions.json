@@ -1,0 +1,17 @@
+{
+  "vocab": "regions",
+  "vocab_version": "1.0",
+  "issued": "2026-11-14",
+  "title": "Region group codes accepted in addition to ISO 3166-1 alpha-2 country codes",
+  "license": "Apache-2.0",
+  "note": "Country codes are ISO 3166-1 alpha-2 officially assigned codes (for example GB, not UK; GR, not EL). Only EU is itself an ISO 3166-1 code: it is an exceptionally reserved code of the ISO 3166 Maintenance Agency, not an officially assigned country code. All other keys here are supranational group codes defined by this vocabulary and are not ISO 3166-1 codes.",
+  "terms": [
+    {"key": "EU", "label": "European Union", "definition": "The member states of the European Union. ISO 3166-1 alpha-2 exceptionally reserved code."},
+    {"key": "EEA", "label": "European Economic Area", "definition": "The EU member states plus the three EEA EFTA states Iceland (IS), Liechtenstein (LI) and Norway (NO). Not an ISO 3166-1 code."},
+    {"key": "ASEAN", "label": "Association of Southeast Asian Nations (ASEAN)", "definition": "The ASEAN member states. Not an ISO 3166-1 code."},
+    {"key": "GCC", "label": "Gulf Cooperation Council", "definition": "The member states of the Cooperation Council for the Arab States of the Gulf. Not an ISO 3166-1 code."},
+    {"key": "MERCOSUR", "label": "MERCOSUR (Southern Common Market)", "definition": "The MERCOSUR states parties. Not an ISO 3166-1 code."},
+    {"key": "EAEU", "label": "Eurasian Economic Union", "definition": "The member states of the Eurasian Economic Union (Armenia, Belarus, Kazakhstan, Kyrgyzstan, Russia). Not an ISO 3166-1 code."},
+    {"key": "GLOBAL", "label": "No regional restriction stated", "definition": "Not a geographic code: the statement applies without a stated regional restriction."}
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "$schema": "https://rubedyne.com/schemas/material-dossier/1.0/dossier.schema.json",
+  "standard_version": "1.0",
+  "vocab_version": "1.0",
+  "dossier_id": "curator.example.net:exawax-e1000",
+  "version": 1,
+  "issued": "2026-10-06T00:00:00Z",
+  "representation": "public",
+  "completeness": "partial",
+  "conformance_level": "L1",
+  "default_language": "en",
+  "languages": [
+    "en"
+  ],
+  "source": {
+    "route": "curated",
+    "publisher": {
+      "name": "Example Curation Desk",
+      "domain": "curator.example.net"
+    },
+    "curation": {
+      "method": "migrated_playbook_v1",
+      "completed": "2026-10-06",
+      "reference": "v1 playbook 4711, approved 2026-10-06",
+      "sources": [
+        "doc-tds"
+      ]
+    }
+  },
+  "identity": {
+    "trade_name": "Exawax E1000",
+    "manufacturer": {
+      "name": "Example Ingredients Ltd."
+    },
+    "inci": [
+      "Cetearyl Olivate",
+      "Sorbitan Olivate"
+    ],
+    "as_of": "2026-10-06",
+    "curated": true
+  },
+  "properties": [
+    {
+      "id": "use-level",
+      "as_of": "2026-10-06",
+      "key": "use.level",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "range": {
+          "min": 2,
+          "max": 5
+        }
+      },
+      "unit": "%",
+      "evidence": [
+        {
+          "source": "doc-tds",
+          "page": 1,
+          "quote": "Recommended use level: 2 - 5 %",
+          "supports": [
+            "/value",
+            "/unit"
+          ]
+        },
+        {
+          "source": "doc-tds",
+          "page": 1,
+          "quote": "Recommended use level: 2 - 5 %",
+          "supports": [
+            "/value",
+            "/unit"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "use-typical",
+      "as_of": "2026-10-06",
+      "key": "use.level_typical",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "exact": 3
+      },
+      "unit": "%",
+      "evidence": [
+        {
+          "source": "doc-tds",
+          "page": 1,
+          "quote": "typically 3 % in O/W creams",
+          "supports": [
+            "/value",
+            "/unit"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "use-phase-b",
+      "as_of": "2026-10-06",
+      "key": "use.phase",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "oil_phase"
+      },
+      "evidence": [
+        {
+          "source": "doc-tds",
+          "page": 2,
+          "quote": "melt in the oil phase",
+          "supports": [
+            "/value"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "use-phase-e",
+      "as_of": "2026-10-06",
+      "key": "use.phase",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "nominal": "hot_oil_phase_addition"
+      },
+      "evidence": [
+        {
+          "source": "doc-tds",
+          "page": 2,
+          "quote": "melt in the oil phase",
+          "supports": [
+            "/value"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "use-ph",
+      "as_of": "2026-10-06",
+      "key": "use.ph_window",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "range": {
+          "min": 3,
+          "max": 12
+        }
+      },
+      "unit": "[pH]",
+      "evidence": [
+        {
+          "source": "doc-tds",
+          "page": 2,
+          "quote": "stable between pH 3 and 12",
+          "supports": [
+            "/value"
+          ]
+        },
+        {
+          "source": "doc-tds",
+          "page": 2,
+          "quote": "stable between pH 3 and 12",
+          "supports": [
+            "/value"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "use-temp",
+      "as_of": "2026-10-06",
+      "key": "use.process_temperature_max",
+      "basis": "recommended",
+      "subject": {
+        "kind": "neat"
+      },
+      "value": {
+        "limit": {
+          "op": "<=",
+          "value": 80
+        }
+      },
+      "unit": "Cel",
+      "evidence": [
+        {
+          "source": "doc-tds",
+          "page": 2,
+          "quote": "do not exceed 80 °C",
+          "supports": [
+            "/value"
+          ]
+        }
+      ]
+    }
+  ],
+  "statements": [
+    {
+      "id": "s-guidance-1",
+      "as_of": "2026-10-06",
+      "kind": "guidance",
+      "text": {
+        "en": "Melt into the oil phase at 70-75 °C; add the oil phase to the water phase under high shear."
+      },
+      "evidence": [
+        {
+          "source": "doc-tds",
+          "page": 2,
+          "quote": "melt in the oil phase",
+          "supports": [
+            "/text"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s-checklist-1",
+      "as_of": "2026-10-06",
+      "kind": "checklist",
+      "text": {
+        "en": "Is a fatty alcohol co-stabilizer present alongside it?"
+      }
+    }
+  ],
+  "media": [
+    {
+      "id": "doc-tds",
+      "as_of": "2024-05-02",
+      "kind": "source_document",
+      "sha256": "2e6da664f0813056625c5880ea89971e620ab98242c195eac95548c68c0746a3",
+      "mime": "application/pdf",
+      "title": {
+        "en": "Technical data sheet, Exawax E1000"
+      },
+      "license": {
+        "id": "unknown",
+        "redistribution": "none"
+      },
+      "document": {
+        "kind": "tds",
+        "issued": "2024-05-02",
+        "language": "en",
+        "pages": 3
+      }
+    }
+  ]
+}

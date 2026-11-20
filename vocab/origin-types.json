@@ -1,0 +1,20 @@
+{
+  "vocab": "origin-types",
+  "vocab_version": "1.0",
+  "issued": "2026-11-14",
+  "title": "Origin of a component",
+  "license": "Apache-2.0",
+  "terms": [
+    {"key": "plant", "label": "Plant"},
+    {"key": "animal", "label": "Animal"},
+    {"key": "mineral", "label": "Mineral"},
+    {"key": "marine", "label": "Marine"},
+    {"key": "microbial_fermentation", "label": "Microbial fermentation"},
+    {"key": "biotechnology", "label": "Biotechnology"},
+    {"key": "synthetic", "label": "Synthetic"},
+    {"key": "petrochemical", "label": "Petrochemical"},
+    {"key": "semi_synthetic", "label": "Semi synthetic"},
+    {"key": "mixed", "label": "Mixed"},
+    {"key": "upcycled", "label": "Upcycled"}
+  ]
+}

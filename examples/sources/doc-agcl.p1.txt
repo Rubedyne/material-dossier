@@ -1,0 +1,19 @@
+Example Minerals Ltd.                                     Product Specification
+Example AgCl-TiO2 Antimicrobial                           Issue 2 / 2026-05-04
+Product code: EM-AG20
+
+INCI names: Silver Chloride, Titanium Dioxide
+CAS No.: 7783-90-6 (silver chloride), 13463-67-7 (titanium dioxide)
+
+Description
+Silver chloride deposited on titanium dioxide, a white to off-white powder.
+
+Specification
+Silver content (as Ag): 13.5 - 16.5 %
+Water content: max. 2.5 %
+
+Typical data (not part of the specification)
+Silver chloride (AgCl): typically 20 %
+
+Application
+Recommended use level: 0.1 - 0.5 %. Disperse in the water phase.
