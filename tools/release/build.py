@@ -132,7 +132,8 @@ def build(root: Path, version: str, out: Path) -> None:
     write_zip(root, names, zip_path, top)
     files = [zip_path] + write_id_files(root, out)
     lines = sorted((f.relative_to(out).as_posix(), hashlib.sha256(f.read_bytes()).hexdigest()) for f in files)
-    (out / "SHA256SUMS.txt").write_text("".join(f"{h}  {p}\n" for p, h in lines), encoding="utf-8", newline="\n")
+    sums = "".join(f"{h}  {p}\n" for p, h in lines)
+    (out / "SHA256SUMS.txt").write_bytes(sums.encode("utf-8"))
 
 
 def main(argv=None) -> int:
