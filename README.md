@@ -188,9 +188,8 @@ cmp dist/SHA256SUMS.published.txt dist/1.0.0-draft.4/SHA256SUMS.txt && echo iden
 The builder writes into the output folder the ZIP `material-dossier-<version>.zip`, the files served on the site
 (the schemas at the path of their `$id`, `schemas/material-dossier/1.0/*.schema.json`, and the vocabularies at the
 path of the vocabulary `base`, `schemas/material-dossier/1.0/vocab/1.0/`) and `SHA256SUMS.txt`, which lists all of
-them. It refuses, with exit
-status 2, when the git work tree has uncommitted or untracked files, when the output folder exists and is not
-empty, or when the version is neither `1.0.0` nor `1.0.0-draft.N`.
+them. It refuses, with exit status 2, when the git work tree has uncommitted or untracked files, when the output
+folder exists and is not empty, or when the version is neither `1.0.0` nor `1.0.0-draft.N`.
 
 To verify a downloaded ZIP, run `sha256sum -c --ignore-missing SHA256SUMS.txt` in the folder that holds both files.
 
