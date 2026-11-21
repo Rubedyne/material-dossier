@@ -849,8 +849,9 @@ makes an optional member required. Those need 2.0. A dossier valid under 1.n is 
 4. External vocabularies are used where they exist: UCUM for units, CosIng for INCI names and functions, ISO, OECD
    and pharmacopoeia designations for methods, ISO 3166-1 for countries, BCP 47 for languages, culture-collection
    numbers for organisms, SPDX for licences.
-5. The schemas and vocabularies of a version are served at their `$id` URLs under
-   `https://rubedyne.com/schemas/material-dossier/<standard_version>/`. Consumers SHOULD NOT fetch them at
+5. The schemas of a version are served at their `$id` URLs under
+   `https://rubedyne.com/schemas/material-dossier/<standard_version>/`. Vocabulary files have no `$id`; each is
+   served at the `base` URL of `vocab/index.json` followed by its file name. Consumers SHOULD NOT fetch them at
    validation time; they ship the files of the versions they implement.
 
 ### 13.4 Extension keys

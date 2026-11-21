@@ -169,8 +169,10 @@ See `CONTRIBUTING.md` for the route, the licence of contributions and what not t
 ## Releases
 
 Releases are tags (`v1.0.0-draft.3`, …); the version is the tag without the leading `v`. Each GitHub release
-carries the ZIP and `SHA256SUMS.txt`, and those assets are canonical. The schemas and vocabularies are served at
-their `$id`, under `https://rubedyne.com/schemas/material-dossier/1.0/`.
+carries the ZIP and `SHA256SUMS.txt`, and those assets are canonical. The schemas are served at their `$id`, under
+`https://rubedyne.com/schemas/material-dossier/1.0/`. The vocabulary files have no `$id`; each is served at the
+`base` of `vocab/index.json` followed by its file name, under
+`https://rubedyne.com/schemas/material-dossier/1.0/vocab/1.0/`.
 
 The build is deterministic: the same tag gives the same bytes on any machine and at any time. To rebuild a release
 and compare it with the published checksums:
@@ -183,9 +185,10 @@ curl -sL -o dist/SHA256SUMS.published.txt \
 cmp dist/SHA256SUMS.published.txt dist/1.0.0-draft.3/SHA256SUMS.txt && echo identical
 ```
 
-The builder writes into the output folder the ZIP `material-dossier-<version>.zip`, the files served under each
-`$id` (`schemas/material-dossier/1.0/*.schema.json` and the vocabularies under
-`schemas/material-dossier/1.0/vocab/1.0/`) and `SHA256SUMS.txt`, which lists all of them. It refuses, with exit
+The builder writes into the output folder the ZIP `material-dossier-<version>.zip`, the files served on the site
+(the schemas at the path of their `$id`, `schemas/material-dossier/1.0/*.schema.json`, and the vocabularies at the
+path of the vocabulary `base`, `schemas/material-dossier/1.0/vocab/1.0/`) and `SHA256SUMS.txt`, which lists all of
+them. It refuses, with exit
 status 2, when the git work tree has uncommitted or untracked files, when the output folder exists and is not
 empty, or when the version is neither `1.0.0` nor `1.0.0-draft.N`.
 

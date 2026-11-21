@@ -219,7 +219,7 @@ strongest candidate become active (8.2 rule 8).
 | 2 Curated below extracted | Confirmed, together with the two additions in section 7. | SPEC 8.2, 8.3 |
 | 3 Phase letters | A separate cold-process marker. The stage `cold_process` carries `usage_view_process: "cold"`, the usage view gets `process: "cold"`, and the view is complete without a phase letter. The v1 playbook validator must accept this before such a usage view can be stored; that change belongs to the implementation. | SPEC 6.1, `vocab/process-stages.json`, checker |
 | 4 Facts to verify | Verified against primary sources on 2026-11-15 and re-checked on 2026-11-20; see the CHANGELOG. | vocab, example 03 |
-| 5 Governance | Rubedyne decides on vocabulary proposals and issues vocabulary versions. Schemas and vocabularies are served at their `$id` URLs under `rubedyne.com/schemas/material-dossier/<version>/`. The full licence texts are in `LICENSE-CC-BY-4.0.txt` and `LICENSE-APACHE-2.0.txt`. Protection of the name was not decided. | SPEC 13.3, README |
+| 5 Governance | Rubedyne decides on vocabulary proposals and issues vocabulary versions. Schemas are served at their `$id` URLs under `rubedyne.com/schemas/material-dossier/<version>/`; vocabulary files have no `$id` and are served at the `base` of `vocab/index.json` followed by the file name. The full licence texts are in `LICENSE-CC-BY-4.0.txt` and `LICENSE-APACHE-2.0.txt`. Protection of the name was not decided. | SPEC 13.3, README |
 | 6 Well-known URL | Not registered in 1.0. Consumers must not rely on registration. | SPEC 9.1 |
 | 7 Restricted access brokering | Not decided; a product decision for later. | — |
 | 8 Signature | Optional in 1.0; planned to be required for the manufacturer route from 1.1. | SPEC 9.5 |
