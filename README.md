@@ -51,7 +51,7 @@ https://github.com/Rubedyne/material-dossier/releases/tag/v1.0.0-draft.4.
 | `tools/check_dossier.py` | Reference checker (non-normative): schema, vocabulary, view rules, evidence, usage view, index. |
 | `tools/conformance/` | `run_all.py` (runs every check), `mutation_cases.py` (the conformance cases), `rule6_vectors.json` (the evidence rule 6 vectors), `regulated_basis_phrases.json` with its source list `annex-basis-phrases-2026-11-16.md` (the Annex basis phrase map), `check_identity.py` (checks that every commit has the project identity). |
 | `tools/release/build.py` | The release builder (see "Releases"). |
-| `tests/` | Tests of the runner, the release builder, the identity check and the issue forms. |
+| `tests/` | Tests of the runner, the release builder, the identity check, the issue forms and the named draft tag. |
 | `DESIGN-NOTES.md` | Decisions, rejected alternatives, migration of Rubedyne's earlier material records ("v1 material playbooks"), open issues, validation log. |
 | `README.md` | This overview. |
 | `CHANGELOG.md`, `LICENSE.md` | The history of the standard and the vocabularies; which licence covers which files. |

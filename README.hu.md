@@ -45,9 +45,10 @@ kötelező `subject` (mit mértek), és pontosan egy értékforma (pont, tartom�
 | `tools/check_dossier.py` | Referencia-ellenőrző (nem normatív): séma, szótár, nézet-szabályok, idézet-ellenőrzés, használati nézet, index-hash. |
 | `tools/conformance/` | `run_all.py` (minden ellenőrzést lefuttat), `mutation_cases.py` (a megfelelőségi esetek), `rule6_vectors.json` (az evidence 6. szabályának tesztidézetei), `regulated_basis_phrases.json` és a forráslistája (az Annex-báziskifejezések térképe), `check_identity.py` (ellenőrzi, hogy minden commit a projekt azonosítójával készült-e). |
 | `tools/release/build.py` | A kiadás építője: a ZIP, a sémák `$id`-címe alatt kiszolgált fájlok és a `SHA256SUMS.txt`; ugyanabból a tagből bájtra azonos eredményt ad. |
-| `tests/` | A futtató, a kiadásépítő, az azonosító-ellenőrzés és az issue-űrlapok tesztjei. |
+| `tests/` | A futtató, a kiadásépítő, az azonosító-ellenőrzés, az issue-űrlapok és a megnevezett tervezet-tag tesztjei. |
 | `DESIGN-NOTES.md` | Döntések és elvetett alternatívák, eltérések a koncepció-felülvizsgálattól, a v1 playbook migrációs szabálya, nyitott kérdések, az ellenőrzés parancsa és eredménye. |
 | `LICENSE-*.txt` | A teljes licencszövegek (CC BY 4.0, Apache-2.0); összefoglaló: `LICENSE.md`. |
+| `.gitattributes` | Kikapcsolja a sorvégek átalakítását, így minden checkout bájtra azonos a kiadással (és az `examples/index.json` hash-ei egyeznek). |
 | `.github/workflows/conformance.yml` | CI Python 3.10-en és 3.12-n: minden `main`- és `devel`-pushnál és pull requestnél lefuttatja a `run_all.py`-t és a teszteket, és megépíti a kiadást; a commitok azonosítóját csak pushnál ellenőrzi. |
 
 A reprodukálás lépései (telepítés, ellenőrzés, tesztek, egy kiadás újraépítése és összevetése a közzétett
