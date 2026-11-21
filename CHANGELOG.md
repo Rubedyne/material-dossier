@@ -5,6 +5,17 @@ Within 1.x both only add (SPEC.md sections 13.2 and 13.3).
 
 ## Standard
 
+### 1.0 — public draft 4, 2026-11-21
+
+Tag `v1.0.0-draft.4`. The rules, keys and examples of the standard are unchanged.
+
+- `.gitattributes` keeps the released bytes on every checkout (line endings): a clone with `core.autocrlf=true`
+  passes the checks on the examples and rebuilds the same release.
+- Vocabulary files are served at the `base` of `vocab/index.json`, not at an `$id` (README "Releases", SPEC 13.3
+  rule 5, DESIGN-NOTES issue 5).
+- A test ties the named tag to the changelog: every `v1.0.0-draft.N` in the repository equals the tag of the top
+  entry.
+
 ### 1.0 — public draft 3, 2026-11-20
 
 Tag `v1.0.0-draft.3`. The rules, keys and examples of the standard are unchanged.

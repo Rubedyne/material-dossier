@@ -7,11 +7,11 @@ use, functions, studies, interactions, starting formulations, stability, safety,
 figures. Formulation software, PIF tools and distributors read it directly. The brochure, the technical data sheet
 and the PDF attachments stop being the carrier of the data.
 
-Status: **1.0, public draft for feedback (tag v1.0.0-draft.3).** Landing page:
+Status: **1.0, public draft 4 for feedback (tag v1.0.0-draft.4).** Landing page:
 [rubedyne.com/material-dossier](https://rubedyne.com/material-dossier).
 
 Start with `SPEC.md` sections 1 to 3, `guides/publisher-guide.md` and `examples/`. Release:
-https://github.com/Rubedyne/material-dossier/releases/tag/v1.0.0-draft.3.
+https://github.com/Rubedyne/material-dossier/releases/tag/v1.0.0-draft.4.
 
 ## Who it is for
 
@@ -140,7 +140,7 @@ The tests need the dev requirements:
 .venv/bin/python -m pytest -q tests
 ```
 
-The test run ends with `25 passed`.
+The test run ends with `26 passed`.
 
 ## How the vocabularies grow
 
@@ -168,7 +168,7 @@ See `CONTRIBUTING.md` for the route, the licence of contributions and what not t
 
 ## Releases
 
-Releases are tags (`v1.0.0-draft.3`, …); the version is the tag without the leading `v`. Each GitHub release
+Releases are tags (`v1.0.0-draft.4`, …); the version is the tag without the leading `v`. Each GitHub release
 carries the ZIP and `SHA256SUMS.txt`, and those assets are canonical. The schemas are served at their `$id`, under
 `https://rubedyne.com/schemas/material-dossier/1.0/`. The vocabulary files have no `$id`; each is served at the
 `base` of `vocab/index.json` followed by its file name, under
@@ -178,11 +178,11 @@ The build is deterministic: the same tag gives the same bytes on any machine and
 and compare it with the published checksums:
 
 ```bash
-git checkout v1.0.0-draft.3
-python3 tools/release/build.py --version 1.0.0-draft.3 dist/1.0.0-draft.3
+git checkout v1.0.0-draft.4
+python3 tools/release/build.py --version 1.0.0-draft.4 dist/1.0.0-draft.4
 curl -sL -o dist/SHA256SUMS.published.txt \
-  https://github.com/Rubedyne/material-dossier/releases/download/v1.0.0-draft.3/SHA256SUMS.txt
-cmp dist/SHA256SUMS.published.txt dist/1.0.0-draft.3/SHA256SUMS.txt && echo identical
+  https://github.com/Rubedyne/material-dossier/releases/download/v1.0.0-draft.4/SHA256SUMS.txt
+cmp dist/SHA256SUMS.published.txt dist/1.0.0-draft.4/SHA256SUMS.txt && echo identical
 ```
 
 The builder writes into the output folder the ZIP `material-dossier-<version>.zip`, the files served on the site
