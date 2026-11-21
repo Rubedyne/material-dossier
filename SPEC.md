@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Standard version | 1.0 (public draft for feedback, 2026-11-20; tag v1.0.0-draft.3) |
+| Standard version | 1.0 (public draft 4 for feedback, 2026-11-21; tag v1.0.0-draft.4) |
 | Vocabulary version | 1.0 |
 | Schema | `schema/dossier.schema.json`, `$id` `https://rubedyne.com/schemas/material-dossier/1.0/dossier.schema.json` |
 | Licence | This text: CC BY 4.0. Schemas, vocabularies and tools: Apache-2.0. See `LICENSE.md`. |
@@ -849,9 +849,10 @@ makes an optional member required. Those need 2.0. A dossier valid under 1.n is 
 4. External vocabularies are used where they exist: UCUM for units, CosIng for INCI names and functions, ISO, OECD
    and pharmacopoeia designations for methods, ISO 3166-1 for countries, BCP 47 for languages, culture-collection
    numbers for organisms, SPDX for licences.
-5. The schemas and vocabularies of a version are served at their `$id` URLs under
-   `https://rubedyne.com/schemas/material-dossier/<standard_version>/`. Consumers SHOULD NOT fetch them at
-   validation time; they ship the files of the versions they implement.
+5. The schemas of a version are served at their `$id` URLs under
+   `https://rubedyne.com/schemas/material-dossier/<standard_version>/`. Vocabulary files have no `$id`; each is
+   served at the `base` URL of `vocab/index.json` followed by its file name. Consumers SHOULD NOT fetch schemas or
+   vocabularies at validation time; they ship the files of the versions they implement.
 
 ### 13.4 Extension keys
 

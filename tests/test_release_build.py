@@ -12,7 +12,7 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 IGNORE = shutil.ignore_patterns(".git", ".venv", "__pycache__", ".pytest_cache", "*.pyc")
-VERSION = "1.0.0-draft.3"
+VERSION = "1.0.0-draft.4"
 TOP = f"material-dossier-{VERSION}"
 ID_PREFIX = "https://rubedyne.com/"
 
@@ -63,7 +63,7 @@ def test_zip_names_are_exactly_the_list(copy, tmp_path):
     assert names == sorted(names)
     assert f"{TOP}/requirements.txt" in names
     for bad in ("tests/", ".github/", "tools/release/", "README.hu.md", "DESIGN-NOTES.md", "CONTRIBUTING.md",
-                ".gitignore", "requirements-dev.txt"):
+                ".gitignore", ".gitattributes", "requirements-dev.txt"):
         assert not any(n.startswith(f"{TOP}/{bad}") for n in names), bad
 
 

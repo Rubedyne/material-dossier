@@ -1,6 +1,6 @@
 # Contributing to the Rubedyne Material Dossier
 
-The standard is a public draft for feedback: version 1.0, tag `v1.0.0-draft.3`. Comments on the draft and
+The standard is version 1.0, public draft 4 for feedback (tag `v1.0.0-draft.4`). Comments on the draft and
 proposals for new vocabulary keys are welcome through the issue forms of this repository.
 
 ## Feedback on the draft

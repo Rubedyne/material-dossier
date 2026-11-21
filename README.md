@@ -7,11 +7,11 @@ use, functions, studies, interactions, starting formulations, stability, safety,
 figures. Formulation software, PIF tools and distributors read it directly. The brochure, the technical data sheet
 and the PDF attachments stop being the carrier of the data.
 
-Status: **1.0, public draft for feedback (tag v1.0.0-draft.3).** Landing page:
+Status: **1.0, public draft 4 for feedback (tag v1.0.0-draft.4).** Landing page:
 [rubedyne.com/material-dossier](https://rubedyne.com/material-dossier).
 
 Start with `SPEC.md` sections 1 to 3, `guides/publisher-guide.md` and `examples/`. Release:
-https://github.com/Rubedyne/material-dossier/releases/tag/v1.0.0-draft.3.
+https://github.com/Rubedyne/material-dossier/releases/tag/v1.0.0-draft.4.
 
 ## Who it is for
 
@@ -51,7 +51,7 @@ https://github.com/Rubedyne/material-dossier/releases/tag/v1.0.0-draft.3.
 | `tools/check_dossier.py` | Reference checker (non-normative): schema, vocabulary, view rules, evidence, usage view, index. |
 | `tools/conformance/` | `run_all.py` (runs every check), `mutation_cases.py` (the conformance cases), `rule6_vectors.json` (the evidence rule 6 vectors), `regulated_basis_phrases.json` with its source list `annex-basis-phrases-2026-11-16.md` (the Annex basis phrase map), `check_identity.py` (checks that every commit has the project identity). |
 | `tools/release/build.py` | The release builder (see "Releases"). |
-| `tests/` | Tests of the runner, the release builder, the identity check and the issue forms. |
+| `tests/` | Tests of the runner, the release builder, the identity check, the issue forms and the named draft tag. |
 | `DESIGN-NOTES.md` | Decisions, rejected alternatives, migration of Rubedyne's earlier material records ("v1 material playbooks"), open issues, validation log. |
 | `README.md` | This overview. |
 | `CHANGELOG.md`, `LICENSE.md` | The history of the standard and the vocabularies; which licence covers which files. |
@@ -61,11 +61,12 @@ https://github.com/Rubedyne/material-dossier/releases/tag/v1.0.0-draft.3.
 | `.github/workflows/conformance.yml` | CI on Python 3.10 and 3.12: runs `run_all.py` and the tests and builds the release, on every push to `main` and `devel` and on pull requests; on pushes it also checks the commit identity. |
 | `CONTRIBUTING.md`, `.github/ISSUE_TEMPLATE/` | How to give feedback and propose vocabulary keys; the issue forms. |
 | `.gitignore` | Keeps the virtual environment, caches and `dist/` out of git. |
+| `.gitattributes` | Turns off line-ending conversion, so every checkout has the same bytes as the release (and the content hashes in `examples/index.json` hold). |
 
 The release ZIP holds the specification, this README, the CHANGELOG, the licences, the guide, the schemas, the
 vocabularies, the examples, the checker with `requirements.txt` and `tools/conformance/`. The tests, the release
-builder, `requirements-dev.txt`, `DESIGN-NOTES.md`, `CONTRIBUTING.md`, `README.hu.md` and `.github/` are only in
-the repository: https://github.com/Rubedyne/material-dossier.
+builder, `requirements-dev.txt`, `DESIGN-NOTES.md`, `CONTRIBUTING.md`, `README.hu.md`, `.gitattributes` and `.github/`
+are only in the repository: https://github.com/Rubedyne/material-dossier.
 
 ## Examples
 
@@ -139,7 +140,7 @@ The tests need the dev requirements:
 .venv/bin/python -m pytest -q tests
 ```
 
-The test run ends with `25 passed`.
+The test run ends with `26 passed`.
 
 ## How the vocabularies grow
 
@@ -167,26 +168,28 @@ See `CONTRIBUTING.md` for the route, the licence of contributions and what not t
 
 ## Releases
 
-Releases are tags (`v1.0.0-draft.3`, …); the version is the tag without the leading `v`. Each GitHub release
-carries the ZIP and `SHA256SUMS.txt`, and those assets are canonical. The schemas and vocabularies are served at
-their `$id`, under `https://rubedyne.com/schemas/material-dossier/1.0/`.
+Releases are tags (`v1.0.0-draft.4`, …); the version is the tag without the leading `v`. Each GitHub release
+carries the ZIP and `SHA256SUMS.txt`, and those assets are canonical. The schemas are served at their `$id`, under
+`https://rubedyne.com/schemas/material-dossier/1.0/`. The vocabulary files have no `$id`; each is served at the
+`base` of `vocab/index.json` followed by its file name, under
+`https://rubedyne.com/schemas/material-dossier/1.0/vocab/1.0/`.
 
 The build is deterministic: the same tag gives the same bytes on any machine and at any time. To rebuild a release
 and compare it with the published checksums:
 
 ```bash
-git checkout v1.0.0-draft.3
-python3 tools/release/build.py --version 1.0.0-draft.3 dist/1.0.0-draft.3
+git checkout v1.0.0-draft.4
+python3 tools/release/build.py --version 1.0.0-draft.4 dist/1.0.0-draft.4
 curl -sL -o dist/SHA256SUMS.published.txt \
-  https://github.com/Rubedyne/material-dossier/releases/download/v1.0.0-draft.3/SHA256SUMS.txt
-cmp dist/SHA256SUMS.published.txt dist/1.0.0-draft.3/SHA256SUMS.txt && echo identical
+  https://github.com/Rubedyne/material-dossier/releases/download/v1.0.0-draft.4/SHA256SUMS.txt
+cmp dist/SHA256SUMS.published.txt dist/1.0.0-draft.4/SHA256SUMS.txt && echo identical
 ```
 
-The builder writes into the output folder the ZIP `material-dossier-<version>.zip`, the files served under each
-`$id` (`schemas/material-dossier/1.0/*.schema.json` and the vocabularies under
-`schemas/material-dossier/1.0/vocab/1.0/`) and `SHA256SUMS.txt`, which lists all of them. It refuses, with exit
-status 2, when the git work tree has uncommitted or untracked files, when the output folder exists and is not
-empty, or when the version is neither `1.0.0` nor `1.0.0-draft.N`.
+The builder writes into the output folder the ZIP `material-dossier-<version>.zip`, the files served on the site
+(the schemas at the path of their `$id`, `schemas/material-dossier/1.0/*.schema.json`, and the vocabularies at the
+path of the vocabulary `base`, `schemas/material-dossier/1.0/vocab/1.0/`) and `SHA256SUMS.txt`, which lists all of
+them. It refuses, with exit status 2, when the git work tree has uncommitted or untracked files, when the output
+folder exists and is not empty, or when the version is neither `1.0.0` nor `1.0.0-draft.N`.
 
 To verify a downloaded ZIP, run `sha256sum -c --ignore-missing SHA256SUMS.txt` in the folder that holds both files.
 
