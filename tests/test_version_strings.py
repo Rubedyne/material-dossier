@@ -11,9 +11,21 @@ HEADING = re.compile(r"^### 1\.0 — public draft (\d+), ")
 PLACEHOLDERS = {(".github/workflows/conformance.yml", "0")}
 
 
+# Left out when there is no git checkout to list the files (an export or a source archive).
+SKIP_DIRS = {".git", ".venv", "__pycache__", "dist", ".pytest_cache"}
+
+
 def tracked_files():
-    r = subprocess.run(["git", "ls-files", "-z"], cwd=ROOT, capture_output=True, check=True)
-    return sorted(n for n in r.stdout.decode("utf-8").split("\0") if n)
+    """The files git tracks; without a git checkout, every file of the tree but SKIP_DIRS."""
+    if (ROOT / ".git").exists():
+        try:
+            r = subprocess.run(["git", "ls-files", "-z"], cwd=ROOT, capture_output=True)
+        except OSError:
+            r = None
+        if r is not None and r.returncode == 0:
+            return sorted(n for n in r.stdout.decode("utf-8").split("\0") if n)
+    return sorted(p.relative_to(ROOT).as_posix() for p in ROOT.rglob("*")
+                  if p.is_file() and not SKIP_DIRS.intersection(p.relative_to(ROOT).parts))
 
 
 def top_entry():
