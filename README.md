@@ -61,11 +61,12 @@ https://github.com/Rubedyne/material-dossier/releases/tag/v1.0.0-draft.3.
 | `.github/workflows/conformance.yml` | CI on Python 3.10 and 3.12: runs `run_all.py` and the tests and builds the release, on every push to `main` and `devel` and on pull requests; on pushes it also checks the commit identity. |
 | `CONTRIBUTING.md`, `.github/ISSUE_TEMPLATE/` | How to give feedback and propose vocabulary keys; the issue forms. |
 | `.gitignore` | Keeps the virtual environment, caches and `dist/` out of git. |
+| `.gitattributes` | Turns off line-ending conversion, so every checkout has the same bytes as the release (and the content hashes in `examples/index.json` hold). |
 
 The release ZIP holds the specification, this README, the CHANGELOG, the licences, the guide, the schemas, the
 vocabularies, the examples, the checker with `requirements.txt` and `tools/conformance/`. The tests, the release
-builder, `requirements-dev.txt`, `DESIGN-NOTES.md`, `CONTRIBUTING.md`, `README.hu.md` and `.github/` are only in
-the repository: https://github.com/Rubedyne/material-dossier.
+builder, `requirements-dev.txt`, `DESIGN-NOTES.md`, `CONTRIBUTING.md`, `README.hu.md`, `.gitattributes` and `.github/`
+are only in the repository: https://github.com/Rubedyne/material-dossier.
 
 ## Examples
 

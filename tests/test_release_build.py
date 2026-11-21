@@ -63,7 +63,7 @@ def test_zip_names_are_exactly_the_list(copy, tmp_path):
     assert names == sorted(names)
     assert f"{TOP}/requirements.txt" in names
     for bad in ("tests/", ".github/", "tools/release/", "README.hu.md", "DESIGN-NOTES.md", "CONTRIBUTING.md",
-                ".gitignore", "requirements-dev.txt"):
+                ".gitignore", ".gitattributes", "requirements-dev.txt"):
         assert not any(n.startswith(f"{TOP}/{bad}") for n in names), bad
 
 
