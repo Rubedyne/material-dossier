@@ -38,7 +38,7 @@ def edit(path, fn):
 def test_clean_tree_passes(copy):
     r = run(copy)
     assert r.returncode == 0, r.stdout + r.stderr
-    assert "49/49 expectations met" in r.stdout
+    assert "50/50 expectations met" in r.stdout
     assert "OK   06-extracted-silver-chloride-tio2.json" in r.stdout
 
 

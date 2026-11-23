@@ -1,6 +1,6 @@
 # Rubedyne Material Dossier — rövid áttekintés
 
-Állapot: **1.0, véleményezésre bocsátott 4. nyilvános tervezet (tag: v1.0.0-draft.4).**
+Állapot: **1.0, véleményezésre bocsátott 5. nyilvános tervezet (tag: v1.0.0-draft.5).**
 
 ## Mi ez
 
@@ -39,7 +39,7 @@ kötelező `subject` (mit mértek), és pontosan egy értékforma (pont, tartom�
 |---|---|
 | `SPEC.md` | A normatív specifikáció (angol, RFC 2119). |
 | `schema/` | JSON Schema: dosszié, végpont-index, szótárfájl. |
-| `vocab/` | 24 szótárfájl, 895 kulcs (funkciók, végpontok, tulajdonság-kulcsok kanonikus egységgel, módszerek, tanúsítványok …). |
+| `vocab/` | 24 szótárfájl, 896 kulcs (funkciók, végpontok, tulajdonság-kulcsok kanonikus egységgel, módszerek, tanúsítványok …). |
 | `examples/` | Hét kitalált dosszié és egy végpont-index; mind átmegy az ellenőrzésen. A 06-os kivonatolt példa egy titán-dioxidra vitt ezüst-kloridé, szabályozott bázis tartalmával. |
 | `guides/publisher-guide.md` | Gyakorlati útmutató gyártóknak: brosúra/TDS → dosszié, mezőnként; gyakori hibák; szintenkénti ellenőrzőlista. |
 | `tools/check_dossier.py` | Referencia-ellenőrző (nem normatív): séma, szótár, nézet-szabályok, idézet-ellenőrzés, használati nézet, index-hash. |

@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Standard version | 1.0 (public draft 4 for feedback, 2026-11-21; tag v1.0.0-draft.4) |
+| Standard version | 1.0 (public draft 5 for feedback, 2026-11-23; tag v1.0.0-draft.5) |
 | Vocabulary version | 1.0 |
 | Schema | `schema/dossier.schema.json`, `$id` `https://rubedyne.com/schemas/material-dossier/1.0/dossier.schema.json` |
 | Licence | This text: CC BY 4.0. Schemas, vocabularies and tools: Apache-2.0. See `LICENSE.md`. |
@@ -94,6 +94,8 @@ Variety lives in the **vocabularies**, not in the structure: the set of members 
 4. A key without a dimension accepts any syntactically valid UCUM unit; arbitrary instrument units are written as
    UCUM annotations, for example `{arb}`.
 5. A percentage that expresses a concentration is % w/w unless the key's definition says otherwise.
+6. A key of the dimension `fraction` (the ISO 16128 indexes) is a number from 0 to 1. Its canonical unit is `1`;
+   `%` is accepted because documents state the index that way: 58.3 % is 0.583.
 
 ### 4.4 Dates
 

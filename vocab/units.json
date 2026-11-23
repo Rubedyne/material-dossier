@@ -22,6 +22,7 @@
     {"key": "wavelength", "label": "Wavelength", "canonical": "nm", "units": {"nm": 1}},
     {"key": "particle_size", "label": "Particle size", "canonical": "um", "units": {"um": 1, "nm": 0.001, "mm": 1000}},
     {"key": "dimensionless", "label": "Dimensionless", "canonical": "1", "units": {"1": 1}},
+    {"key": "fraction", "label": "Fraction (dimensionless, also as percent)", "canonical": "1", "units": {"1": 1, "%": 0.01}},
     {"key": "count", "label": "Count", "canonical": "1", "units": {"1": 1}},
     {"key": "log_reduction", "label": "Log reduction", "canonical": "1", "units": {"1": 1, "{log10}": 1}},
     {"key": "dose_per_body_mass", "label": "Dose per body mass", "canonical": "mg/kg", "units": {"mg/kg": 1, "g/kg": 1000}},

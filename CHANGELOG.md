@@ -5,6 +5,14 @@ Within 1.x both only add (SPEC.md sections 13.2 and 13.3).
 
 ## Standard
 
+### 1.0 — public draft 5, 2026-11-23
+
+Tag `v1.0.0-draft.5`. The rules and examples are unchanged; one dimension is added (see Vocabularies, 2026-11-23).
+
+- SPEC 4.3 rule 6: an ISO 16128 index (dimension `fraction`) is a number from 0 to 1 in the canonical unit `1`;
+  `%` is accepted, as documents state it (58.3 % is 0.583). Dossiers that give the index in `1` stay valid.
+- One conformance case: an index of 158 % is refused as outside 0 to 1 after conversion (50 expectations in all).
+
 ### 1.0 — public draft 4, 2026-11-21
 
 Tag `v1.0.0-draft.4`. The rules, keys and examples of the standard are unchanged.
@@ -113,6 +121,12 @@ and `substance.silver_chloride`, with `kind`, `symbol`, `cas`, `aliases`, `defin
 relative forms that stoichiometry decides are left out on purpose). `property-keys`:
 `composition.regulated_basis_content`, whose term carries the new member `analyte: "regulated-bases"`.
 `vocab.schema.json` types the new term members. Now 24 vocabulary files, 895 terms.
+
+2026-11-23: `units`: new dimension `fraction` (canonical `1`; accepted `1` and `%` with factor 0.01).
+`property-keys`: the four ISO 16128 indexes (`origin.natural_index`, `origin.natural_origin_index`,
+`origin.organic_index`, `origin.organic_origin_index`) move from `dimensionless` to `fraction`; their meaning and
+their bounds 0 to 1 are unchanged. `dimensionless` itself takes no percent (HLB, SPF, refractive index). Now 24
+vocabulary files, 896 terms.
 
 2026-11-15 fact check against primary sources:
 

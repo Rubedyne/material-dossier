@@ -116,7 +116,7 @@
       "vocab": "units",
       "file": "units.json",
       "title": "Dimensions, canonical UCUM units and accepted units",
-      "terms": 36
+      "terms": 37
     },
     {
       "vocab": "nominal-codes",
