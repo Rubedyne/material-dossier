@@ -48,11 +48,19 @@ IDENTIFIER_PATHS = {
                             r"|manufacturer/name|(inci|cas|ec|synonyms)/\d+|inci_variants/\d+/names/\d+)"),
     "/composition/components/": re.compile(r"/(inci|name|(cas|ec)/\d+|origin/botanical/latin_name)"),
 }
+# Wordings of a limit operator's direction (SPEC 7.3 rule 4), English, German, French, Hungarian and Italian, in
+# the folded, case-folded form `norm` gives. A word made of letters must stand alone.
 LIMIT_WORDS = {
-    "<=": ("≤", "<=", "max", "up to", "not more than", "at most", "nmt", "maximum", "<"),
-    "<": ("<", "less than", "below", "under"),
-    ">=": ("≥", ">=", "min", "at least", "not less than", "nlt", "minimum", ">"),
-    ">": (">", "more than", "above", "greater than", "over"),
+    "<=": ("≤", "<=", "⩽", "≦", "max", "up to", "not more than", "at most", "nmt", "maximum", "not exceeding",
+           "<", "höchstens", "maximal", "bis", "nicht mehr als", "au plus", "jusqu'à", "inférieur ou égal",
+           "legfeljebb", "al massimo", "fino a", "non più di", "massimo"),
+    "<": ("<", "less than", "below", "under", "lower than", "unter", "weniger als", "kleiner als", "inférieur à",
+          "moins de", "alatt", "kevesebb mint", "kisebb mint", "inferiore a", "meno di", "sotto"),
+    ">=": ("≥", ">=", "⩾", "≧", "min", "at least", "not less than", "nlt", "minimum", ">", "mindestens",
+           "au moins", "supérieur ou égal", "legalább", "almeno", "minimo", "non meno di"),
+    ">": (">", "more than", "above", "greater than", "over", "higher than", "exceeding", "über", "mehr als",
+          "größer als", "supérieur à", "plus de", "felett", "több mint", "nagyobb mint", "superiore a", "più di",
+          "oltre"),
 }
 
 
@@ -211,34 +219,119 @@ def usage_view(doc: dict, V: dict) -> tuple[dict, list]:
 
 
 # ----------------------------------------------------------------- evidence (SPEC 7.3)
-def norm(text: str) -> str:
-    text = unicodedata.normalize("NFKC", text).replace("­", "")
-    text = re.sub(r"-\s*\n\s*", "", text)
+# Folding applied before any comparison (SPEC 7.3 rule 1): characters that are invisible or typographic variants
+# of one ASCII character.
+_INVISIBLE = dict.fromkeys(map(ord, "\u00ad\u200b\u200c\u200d\u2060\ufeff"))
+_FOLD = str.maketrans({**{c: "-" for c in "\u2010\u2011\u2012\u2013\u2014\u2015\u2212\ufe58\ufe63\uff0d"},
+                       **{c: "'" for c in "\u2018\u2019\u201a\u201b\u2032"},
+                       **{c: '"' for c in "\u201c\u201d\u201e\u201f\u2033"}})
+# end-of-line hyphenation: a hyphen between letters at a line end
+_HYPHENATION = re.compile(r"(?<=[^\W\d_])-[ \t]*\n\s*(?=[^\W\d_])")
+
+
+# before NFKC, which would make the masculine ordinal "º" an "o": both rings as the degree sign
+_DEGREE = str.maketrans({"\u00ba": "°", "\u02da": "°"})
+
+
+def fold(text: str) -> str:
+    """"º" and "˚" as "°", NFKC, invisible characters removed, dashes, quotation marks and primes as their ASCII
+    character."""
+    return unicodedata.normalize("NFKC", text.translate(_DEGREE)).translate(_INVISIBLE).translate(_FOLD)
+
+
+def norm(text: str, *, hyphen: str = "join") -> str:
+    """`fold`, end-of-line hyphenation joined ("anti-\naging" -> "antiaging") or, with hyphen="keep", the hyphen
+    kept ("anti-aging"), whitespace collapsed, case folded. Any other line break is a space."""
+    text = _HYPHENATION.sub("" if hyphen == "join" else "-", fold(text))
     return " ".join(text.split()).casefold()
 
 
-_NUM = re.compile(r"\d+(?:[.,]\d+)*")
+def on_page(quote: str, page: str) -> bool:
+    """Rule 1: the quote occurs on the page, with either reading of an end-of-line hyphenation."""
+    q = norm(quote)
+    return q in norm(page) or q in norm(page, hyphen="keep")
 
 
-def number_in_quote(n, quote: str) -> bool:
-    for tok in _NUM.findall(quote):
-        if re.fullmatch(r"[1-9]\d{0,2}(,\d{3})+", tok):
-            continue  # "2,500": thousands or decimal? An ambiguous token proves nothing.
-        if tok.count(",") + tok.count(".") > 1:
-            continue
-        try:
-            if abs(float(tok.replace(",", ".")) - float(n)) < 1e-9:
-                return True
-        except ValueError:
-            pass
-    return False
+# A number token (SPEC 7.3 rule 2): digits with "." or "," separators, or groups of three after a space.
+_TOKEN = re.compile(r"\d+(?:[.,]\d+)*")
+_SPACE_GROUPS = re.compile(r"(?<![\d.,])[1-9]\d{0,2}(?:[ \u00a0\u2009\u202f]\d{3})+(?![\d]|[.,]\d)")
+_COMMA_DECIMAL = re.compile(r"\d,\d{1,2}(?!\d)")
+_DOT_DECIMAL = re.compile(r"\d\.\d{1,2}(?!\d)")
+
+
+def decimal_mark(page: str | None) -> str | None:
+    """The page's decimal mark: "," when it shows a comma before one or two digits and never a point so, "." in the
+    opposite case, otherwise None."""
+    if not page:
+        return None
+    text = fold(page)
+    comma, dot = bool(_COMMA_DECIMAL.search(text)), bool(_DOT_DECIMAL.search(text))
+    return "," if comma and not dot else "." if dot and not comma else None
+
+
+def _signed(text: str, start: int, value: float) -> float:
+    """`value` negative when a "-" sits directly before the token and is not a hyphen or a range dash: nothing
+    alphanumeric directly before it and no digit before it across spaces ("-5", "> -5", "log Pow -1,06"; not
+    "PEG-40", "5-10", "10 -20")."""
+    if start == 0 or text[start - 1] != "-":
+        return value
+    before = text[:start - 1]
+    if before and before[-1].isalnum():
+        return value
+    rest = before.rstrip()
+    return value if rest and rest[-1].isdigit() else -value
+
+
+def number_readings(quote: str, *, page: str | None = None, plausible=None) -> list[float]:
+    """The numbers a quote proves (SPEC 7.3 rule 2). `page` is the text of the quote's page (its decimal mark),
+    `plausible(x) -> bool` the plausible range of the number's key, when there is one."""
+    # no NFKC: it would read the "³" of "g/cm³" and the "²" of "10²" as digits
+    text = quote.translate(_INVISIBLE).translate(_FOLD)
+    mark = decimal_mark(page)
+    out: list[float] = []
+    for m in _TOKEN.finditer(text):
+        tok = m.group()
+        seps = [c for c in tok if c in ".,"]
+        groups = re.split(r"[.,]", tok)
+        values: list[float] = []
+        if not seps:
+            values = [float(tok)]
+        elif len(seps) == 1:
+            left, right = groups
+            decimal = float(f"{left}.{right}")
+            if len(right) == 3 and re.fullmatch(r"[1-9]\d{0,2}", left):  # "1,461", "2,500", "2.500"
+                thousands = float(left + right)
+                fit = [v for v in (decimal, thousands) if plausible is not None and plausible(v)]
+                if len(fit) == 1:
+                    values = fit
+                elif mark is not None:
+                    values = [decimal if seps[0] == mark else thousands]
+                elif seps[0] == ".":
+                    values = [decimal]
+            else:
+                values = [decimal]
+        elif len(set(seps)) == 1:  # "1,500,000", "1.500.000"
+            if re.fullmatch(r"[1-9]\d{0,2}", groups[0]) and all(len(g) == 3 for g in groups[1:]):
+                values = [float("".join(groups))]
+        elif seps[-1] not in seps[:-1]:  # "1.234,56", "1,234.56"
+            if re.fullmatch(r"[1-9]\d{0,2}", groups[0]) and all(len(g) == 3 for g in groups[1:-1]):
+                values = [float("".join(groups[:-1]) + "." + groups[-1])]
+        out += [_signed(text, m.start(), v) for v in values]
+    for m in _SPACE_GROUPS.finditer(text):  # "15 000", "1 500 000"
+        out.append(_signed(text, m.start(), float(re.sub(r"\D", "", m.group()))))
+    return out
+
+
+def number_in_quote(n, quote: str, *, page: str | None = None, plausible=None) -> bool:
+    return any(abs(v - float(n)) < 1e-9 for v in number_readings(quote, page=page, plausible=plausible))
 
 
 def has_word(quote: str, word: str) -> bool:
-    """`word` in the quote; a word made of letters must stand alone ("min" is not in "10 minutes")."""
+    """`word` in the normalised quote; a word made of letters must stand alone ("min" is not in "10 minutes")."""
+    text = norm(quote)
     if not word[0].isalpha():
-        return word in quote
-    return re.search(rf"(?<![a-z]){re.escape(word)}(?![a-z])", quote.casefold()) is not None
+        return word in text
+    return re.search(rf"(?<![^\W\d_]){re.escape(word)}(?![^\W\d_])", text) is not None
 
 
 _NOT_ALNUM_BEFORE, _NOT_ALNUM_AFTER = r"(?<![^\W_])", r"(?![^\W_])"
@@ -275,11 +368,27 @@ def leaves(node, path=""):
         yield path, node
 
 
+def plausible_range(V, el):
+    """`plausible(x)` for a number of the element's `value` (SPEC 7.3 rule 2): inside the plausible range of the
+    property's key, in the property's unit; None when the key gives no range or the unit has no factor."""
+    t = key_term(V, el.get("key")) if isinstance(el.get("key"), str) and not is_x(el["key"]) else None
+    if not t or ("min" not in t and "max" not in t):
+        return None
+    d = unit_dim(V, t.get("dimension"))
+    factor = d["units"].get(el.get("unit")) if d else 1
+    if factor is None:
+        return None
+    lo, hi = t.get("min", float("-inf")), t.get("max", float("inf"))
+    return lambda x: lo <= x * factor <= hi
+
+
 def check_evidence(where, el, V, media, sources, R):
+    """`sources` is a directory of page texts (`<media id>.p<n>.txt`), or None to skip the page checks."""
     if el.get("curated") is True:
         return
     ev = el.get("evidence", [])
     aliases = V["units"].get("aliases", {})
+    page_of = {}
     for i, e in enumerate(ev):
         m = media.get(e["source"])
         if not m or m.get("kind") != "source_document":
@@ -291,11 +400,16 @@ def check_evidence(where, el, V, media, sources, R):
             f = sources / f"{e['source']}.p{e['page']}.txt"
             if not f.exists():
                 R.err(where, f"evidence[{i}]: no source text {f.name}")
-            elif norm(e["quote"]) not in norm(f.read_text(encoding="utf-8")):
-                R.err(where, f"evidence[{i}]: quote is not verbatim on page {e['page']} of '{e['source']}'")
+            else:
+                page_of[i] = f.read_text(encoding="utf-8")
+                if not on_page(e["quote"], page_of[i]):
+                    R.err(where, f"evidence[{i}]: quote is not verbatim on page {e['page']} of '{e['source']}'")
+    value_range = plausible_range(V, el)
     for ptr, val in leaves(el):
-        quotes = [e["quote"] for e in ev
-                  if any(ptr == s or ptr.startswith(s + "/") for s in e["supports"])]
+        if ptr == "/unit" and val == "1":
+            continue  # rule 3: the unit 1 is exempt, also from coverage
+        covering = [i for i, e in enumerate(ev) if any(ptr == s or ptr.startswith(s + "/") for s in e["supports"])]
+        quotes = [ev[i]["quote"] for i in covering]
         if not quotes:
             R.err(where, f"no evidence covers {ptr}")
             continue
@@ -303,13 +417,13 @@ def check_evidence(where, el, V, media, sources, R):
         if isinstance(val, bool):
             continue
         if isinstance(val, (int, float)):
-            if not any(number_in_quote(val, q) for q in quotes):
+            plausible = value_range if ptr.startswith("/value/") else None
+            if not any(number_in_quote(val, ev[i]["quote"], page=page_of.get(i), plausible=plausible)
+                       for i in covering):
                 R.err(where, f"the number {val} at {ptr} is in none of its quotes")
         elif last == "unit":
-            if val in ("1",):
-                continue
-            words = aliases.get(val, [val.casefold()])
-            if not any(w in q.casefold() for q in quotes for w in words):
+            words = [norm(w) for w in aliases.get(val, [val])]
+            if not any(w in norm(q) for q in quotes for w in words):
                 R.err(where, f"the unit {val} at {ptr} is in none of its quotes")
         elif last == "op":
             if not any(has_word(q, w) for q in quotes for w in LIMIT_WORDS.get(val, ())):

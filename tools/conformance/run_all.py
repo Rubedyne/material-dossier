@@ -217,8 +217,8 @@ def check_conformance_cases(root: Path) -> int:
     problems = []
     if r.returncode != 0:
         problems.append(f"exit status {r.returncode}")
-    if "50/50 expectations met" not in r.stdout:
-        problems.append("the line '50/50 expectations met' is missing")
+    if "51/51 expectations met" not in r.stdout:
+        problems.append("the line '51/51 expectations met' is missing")
     return _report("conformance cases", problems)
 
 
