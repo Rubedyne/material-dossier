@@ -59,6 +59,7 @@ case("basis content as a recommendation", e6, lambda d: prop(d, "basis-ag").upda
 case("basis content with a scope", e6, lambda d: prop(d, "basis-ag").update(scope={"region": ["EU"]}), "takes no scope or conditions", src)
 case("analyte not covered by evidence", e6, lambda d: prop(d, "basis-ag")["evidence"][0].update(supports=["/value", "/unit"]), "no evidence covers /analyte", src)
 case("quote does not name the analyte", e6, lambda d: (prop(d, "basis-ag").update(value={"limit": {"op": "<=", "value": 2.5}}), prop(d, "basis-ag")["evidence"][0].update(quote="max. 2.5 %")), "the analyte element.ag", src)
+case("ISO 16128 index above 100 % (158 % is 1.58 in the canonical unit 1)", e1, lambda d: prop(d, "noi").update(unit="%", value={"exact": 158}), "plausible")
 print()
 m, x, c = e1, e4, e5
 m2 = copy.deepcopy(m); m2["version"] += 1
