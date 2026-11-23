@@ -5,6 +5,24 @@ Within 1.x both only add (SPEC.md sections 13.2 and 13.3).
 
 ## Standard
 
+### 1.0 — public draft 6, 2026-11-23
+
+Tag `v1.0.0-draft.6`. The evidence check of extracted dossiers (SPEC 7.3 rules 1 to 4) reads documents as they are
+printed; keys and examples are unchanged. Every quote that proved a value before still proves it, except a positive
+number offered for a negative one.
+
+- Rule 1: "º" and "˚" read as "°"; invisible characters are removed; dashes, the minus sign, curly quotation marks
+  and primes read as their ASCII character. End-of-line hyphenation is only a hyphen between two letters, and the
+  quote may join the word or keep the hyphen; a line break after "1 -" is a space, no longer deleted.
+- Rule 2: a `-` directly before a number makes it negative ("-5 °C" proves -5, not 5; "PEG-40", "5-10" and
+  "10 -20" are not signs). A one-separator token with three digits after it (`1,461`, `2,500`, `2.500`) takes the
+  reading inside the key's plausible range, else the page's decimal mark decides. Groups of three
+  (`1,500,000`, `1.234,56`, `15 000`) are read as one number.
+- Rule 3: the unit `1` needs no covering quote; aliases are compared after the rule 1 normalisation ("℃", "20 ºC").
+- Rule 4: wordings in German, French, Hungarian and Italian, "not exceeding", "higher than", "lower than", "⩽",
+  "⩾"; a wording of letters stands alone also next to accented letters.
+- One conformance case: a positive value is not proven by a negative number (51 expectations in all).
+
 ### 1.0 — public draft 5, 2026-11-23
 
 Tag `v1.0.0-draft.5`. The rules and examples are unchanged; one dimension is added (see Vocabularies, 2026-11-23).
@@ -127,6 +145,12 @@ relative forms that stoichiometry decides are left out on purpose). `property-ke
 `origin.organic_index`, `origin.organic_origin_index`) move from `dimensionless` to `fraction`; their meaning and
 their bounds 0 to 1 are unchanged. `dimensionless` itself takes no percent (HLB, SPF, refractive index). Now 24
 vocabulary files, 896 terms.
+
+2026-11-23 (draft 6): `units` `aliases` add spellings documents print: `c°`, `degree c` (Cel); `cfu / g`, `ufc/g`,
+`kbe/g` and the mL forms; `tage`, `nap`, `jour`, `giorni` (d), `monat`, `hónap`, `mois`, `mesi` (mo), `jahr`, `ans`,
+`anni` (a); `°`, `deg`, `degree` (deg); `mgkoh/g`; `g / ml`, `gm/ml`; `méq/kg`, `meq o/kg`; `meq o2/kg`,
+`meqo2/kg` (meq{O2}/kg); `gi2/100g`, `g j/100 g` (g{I2}/(100.g)); `μs/cm`, `us/cm`; `mpa*s`, `mpa∙s`, `pa*s`;
+`mg/kg bw/d`, `mg/kg/day` (mg/kg/d). No term changes: 24 vocabulary files, 896 terms.
 
 2026-11-15 fact check against primary sources:
 

@@ -1,6 +1,6 @@
 # Design notes — Rubedyne Material Dossier 1.0
 
-Date: 2026-11-14, updated 2026-11-23. Status: 1.0, public draft 5 for feedback (tag v1.0.0-draft.5).
+Date: 2026-11-14, updated 2026-11-23. Status: 1.0, public draft 6 for feedback (tag v1.0.0-draft.6).
 
 These notes are not normative. They record why the standard looks the way it does, what was rejected, how
 Rubedyne's v1 material playbook maps onto it, what is still open, and how the files were verified.
@@ -225,7 +225,7 @@ strongest candidate become active (8.2 rule 8).
 | 8 Signature | Optional in 1.0; planned to be required for the manufacturer route from 1.1. | SPEC 9.5 |
 | 9 Thresholds | The proposed values stay (24 months, 5 years, 12 months, the size limits). | SPEC 14.4, 15 |
 | 10 Storage | Storage, serving and the curator's approval are outside the standard. Rubedyne's implementation is designed separately. | — |
-| 11 Publication | A public landing page at `rubedyne.com/material-dossier`: the specification, the publisher guide, the examples and a downloadable ZIP of the release (spec, schemas, vocabularies, examples, checker, licences). The standard also gets a **public repository**, which becomes its source of truth; releases are tags, and the ZIP, the `$id` files and the copy in Rubedyne's implementation are all built from a tag. The full licence texts and the fact re-check (issue 4) were completed first. The repository is public as public draft 5, tag `v1.0.0-draft.5`, and the landing page is at `rubedyne.com/material-dossier`. | README, LICENSE.md |
+| 11 Publication | A public landing page at `rubedyne.com/material-dossier`: the specification, the publisher guide, the examples and a downloadable ZIP of the release (spec, schemas, vocabularies, examples, checker, licences). The standard also gets a **public repository**, which becomes its source of truth; releases are tags, and the ZIP, the `$id` files and the copy in Rubedyne's implementation are all built from a tag. The full licence texts and the fact re-check (issue 4) were completed first. The repository is public as public draft 6, tag `v1.0.0-draft.6`, and the landing page is at `rubedyne.com/material-dossier`. | README, LICENSE.md |
 | 12 Regulated basis content | **Decided 2026-11-16.** A property `key: "composition.regulated_basis_content"` (dimension `mass_fraction`, forms `exact`/`range`/`limit`, `subject.kind: "neat"`, basis `specification`, `declared`, `typical` or `measured`, no `scope` or `conditions`) with a new member `analyte: {"code": …}` whose code comes from the new vocabulary `vocab/regulated-bases.json` (eight elements and silver chloride; `kind`, `symbol`, `cas`, `aliases`, `annex_examples`). An element code is the total of the element in the material as supplied, from all sources; narrowing to a species is the calculation's job. The relative forms ("as acid", "as free base", "as hydrochloride", "H2O2 present or released", "Retinol Equivalent" …) have no code, because a consumer computes them from the molecular formula. SPEC 7.3 gets rule 6: a quote covering `/analyte` names the analyte by its symbol or an alias. The 43 basis phrases of the Annexes are mapped in `tools/conformance/regulated_basis_phrases.json`. **Why a member, not a condition with `code`** (the idiom of `endpoint` and `sensory_attribute`): whether the analyte is required is decided per key, by the key's term, and a consumer's projection reads it from one fixed place. A condition is an optional qualifier from an open list that no key can make required, and a reader would have to search the list for it. **Why not a composition component:** component contents take part in the composition sums (SPEC 5.4, rule R5 of the checker). Silver counted as Ag is not a separate part of silver chloride on titanium dioxide; as a component it would be counted twice and break the minimum and maximum sums. The projection per material and code, and manual declarations for materials without a dossier, belong to the implementation, not to the standard. | SPEC 5.5.1, 5.5.6, 6.3, 7.3; `vocab/regulated-bases.json`, `vocab/property-keys.json`; example 06; checker |
 
 ### The list as written on 2026-11-14
@@ -360,8 +360,8 @@ PASS conformance cases
 PASS: 0 failed check(s)
 ```
 
-Step 4 runs 42 mutations of the valid examples, each of which must be refused with the expected message, and 8
-precedence cases: 50 expectations. The mutations include: unknown top-level member; numeric value without unit; two
+Step 4 runs 43 mutations of the valid examples, each of which must be refused with the expected message, and 8
+precedence cases: 51 expectations. The mutations include: unknown top-level member; numeric value without unit; two
 value forms at once; regulatory limit without region; restricted element in a public representation; misspelled
 property key; unit of the wrong dimension; use level of 500 %; pH 15; nominal code from the wrong set; SPF without a
 test formulation; SPF with a partially disclosed formulation; SPF without a method; SPF boost without comparator;
@@ -369,8 +369,8 @@ efficacy result without outcome; viscosity of a dispersion without shear conditi
 disclosed formulation not adding up to 100 %; composition minima above 100 %; L3 claimed with a figure-only dataset;
 L2 claimed on a minimal dossier; minimal dossier without a phase; `curated: true` in a manufacturer dossier;
 certified attestation without validity; extracted element without evidence; extracted number not in its quote; quote
-not on the page; uncovered leaf; changed limit operator; extracted dataset with points; thousands separator offered
-as proof. Precedence: the eight combinations of section 7 and SPEC 8.2.
+not on the page; uncovered leaf; changed limit operator; extracted dataset with points; a positive value offered
+for a negative number; thousands separator offered as proof. Precedence: the eight combinations of section 7 and SPEC 8.2.
 
 On 2026-11-14 the usage views of the six examples that existed then were also checked against the v1 playbook
 validator, which is not part of this repository, and every round trip from a v1 playbook to an L1 dossier and

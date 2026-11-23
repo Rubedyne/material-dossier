@@ -1,6 +1,6 @@
 # Rubedyne Material Dossier — rövid áttekintés
 
-Állapot: **1.0, véleményezésre bocsátott 5. nyilvános tervezet (tag: v1.0.0-draft.5).**
+Állapot: **1.0, véleményezésre bocsátott 6. nyilvános tervezet (tag: v1.0.0-draft.6).**
 
 ## Mi ez
 

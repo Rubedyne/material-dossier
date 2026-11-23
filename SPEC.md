@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Standard version | 1.0 (public draft 5 for feedback, 2026-11-23; tag v1.0.0-draft.5) |
+| Standard version | 1.0 (public draft 6 for feedback, 2026-11-23; tag v1.0.0-draft.6) |
 | Vocabulary version | 1.0 |
 | Schema | `schema/dossier.schema.json`, `$id` `https://rubedyne.com/schemas/material-dossier/1.0/dossier.schema.json` |
 | Licence | This text: CC BY 4.0. Schemas, vocabularies and tools: Apache-2.0. See `LICENSE.md`. |
@@ -606,14 +606,34 @@ are the extractor's classification.
 
 **Deterministic checks.** A consumer MUST verify, without any model:
 
-1. each `quote` occurs on the stated page of the source document, after normalising Unicode (NFKC), whitespace,
-   letter case and end-of-line hyphenation;
-2. each covered **number** occurs in at least one of its quotes. A decimal comma is accepted (`0,945` proves
-   `0.945`). A token that can be read as a thousands group (`2,500`) proves nothing;
+1. each `quote` occurs on the stated page of the source document, after normalisation: "º" and "˚" read as "°",
+   then Unicode NFKC; invisible characters (soft hyphen, zero-width space, joiners, byte order mark) removed;
+   dashes and the minus sign (U+2010 to U+2015, U+2212 and their small and full-width forms) read as "-", curly
+   quotation marks and primes as `'` and `"`; whitespace collapsed; letter case folded. A hyphen between two
+   letters at a line end is end-of-line hyphenation: the quote may join the word ("antiaging") or keep the hyphen
+   ("anti-aging"). Any other line break is a space ("1 -" at a line end before "20 %" reads "1 - 20 %");
+2. each covered **number** occurs in at least one of its quotes, read as follows (after the folding of rule 1):
+   - a number is a run of digits with `.` or `,` between groups. A `-` directly before it makes it negative,
+     unless a letter or digit stands directly before the `-` ("PEG-40", "5-10") or a digit is the last character
+     before it across spaces ("10 -20" is a range). So "-5 °C" proves -5 and not 5;
+   - one separator followed by other than three digits is a decimal mark (`0,945` and `0.945` prove `0.945`);
+   - one separator followed by exactly three digits, after one to three digits not starting with 0 (`1,461`,
+     `2,500`, `2.500`), has two readings, decimal and thousands. For a number of a property's `value`, a reading
+     inside the plausible range of its key (in the property's unit) is taken when the other reading is not. Else
+     the decimal mark of the quote's page decides: the page shows a comma before one or two digits and never a
+     point so (a comma page), or the reverse (a point page); the separator that is the page's decimal mark is
+     read as decimal, the other as thousands. Else a point is decimal and a comma proves nothing;
+   - several equal separators between groups of three (`1,500,000`, `1.500.000`) are thousands; two kinds
+     (`1.234,56`, `1,234.56`) make the last one decimal;
+   - groups of three digits after a space (`15 000`, `1 500 000`, also with a no-break or thin space) are also
+     read as one number;
 3. each covered **unit** occurs in at least one of its quotes, in a spelling listed in `vocab/units.json`
-   (`aliases`); the unit `1` is exempt;
-4. each covered **limit operator** is matched by a wording of its direction in a quote ("max", "up to", "≤" for
-   `<=`; "min", "at least", "≥" for `>=`; and so on).
+   (`aliases`, compared after the normalisation of rule 1); the unit `1` is exempt, also from coverage;
+4. each covered **limit operator** is matched by a wording of its direction in a quote, after the normalisation of
+   rule 1: "max", "up to", "≤", "höchstens", "legfeljebb" for `<=`; "below", "unter", "alatt" for `<`; "min",
+   "at least", "≥", "mindestens" for `>=`; "above", "über", "felett" for `>`; and so on, in English, German,
+   French, Hungarian and Italian (the constant `LIMIT_WORDS` in `tools/check_dossier.py`). A wording made of
+   letters stands alone: no letter directly before or after it.
 5. each covered **identifier** of `identity` (`trade_name`, `product_code`, `grade`, `family.name`, `family.id`,
    `manufacturer.name`, `chemical_name`, `molecular_formula`, and each item of `inci`, `inci_variants[].names`,
    `cas`, `ec` and `synonyms`) and of a composition component (`inci`, `name`, each item of `cas` and `ec`,
