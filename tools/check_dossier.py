@@ -62,6 +62,24 @@ LIMIT_WORDS = {
           "größer als", "supérieur à", "plus de", "felett", "több mint", "nagyobb mint", "superiore a", "più di",
           "oltre"),
 }
+# Numbers written as words (SPEC 7.3 rule 2), one to twelve, English, German, French, Hungarian and Italian, in the
+# folded, case-folded form `norm` gives; a word stands alone. Left out: the indefinite articles that also mean one
+# (ein, un, uno, egy) and words with another
+# common meaning (due, hat, hét, neuf, sept).
+NUMBER_WORDS = {
+    1: ("one",),
+    2: ("two", "zwei", "deux", "két", "kettő"),
+    3: ("three", "drei", "trois", "három", "tre"),
+    4: ("four", "vier", "quatre", "négy", "quattro"),
+    5: ("five", "fünf", "cinq", "öt", "cinque"),
+    6: ("six", "sechs", "sei"),
+    7: ("seven", "sieben", "sette"),
+    8: ("eight", "acht", "huit", "nyolc", "otto"),
+    9: ("nine", "neun", "kilenc", "nove"),
+    10: ("ten", "zehn", "dix", "tíz", "dieci"),
+    11: ("eleven", "elf", "onze", "tizenegy", "undici"),
+    12: ("twelve", "zwölf", "douze", "tizenkét", "tizenkettő", "dodici"),
+}
 
 
 # ----------------------------------------------------------------- loading
@@ -319,11 +337,22 @@ def number_readings(quote: str, *, page: str | None = None, plausible=None) -> l
         out += [_signed(text, m.start(), v) for v in values]
     for m in _SPACE_GROUPS.finditer(text):  # "15 000", "1 500 000"
         out.append(_signed(text, m.start(), float(re.sub(r"\D", "", m.group()))))
+    words = norm(quote)
+    for n, spellings in NUMBER_WORDS.items():  # "TWO years", "drei Monate"
+        if any(re.search(rf"(?<![^\W\d_]){re.escape(w)}(?![^\W\d_])", words) for w in spellings):
+            out.append(float(n))
     return out
 
 
 def number_in_quote(n, quote: str, *, page: str | None = None, plausible=None) -> bool:
     return any(abs(v - float(n)) < 1e-9 for v in number_readings(quote, page=page, plausible=plausible))
+
+
+def unit_after_number(quote: str, spelling: str) -> bool:
+    """A unit `spelling` that is a unit only after a number ("66-72 C", ">70 oC"): in the normalised quote directly
+    after a digit or one space after it, with no letter or digit directly after it."""
+    pattern = rf"\d ?{re.escape(norm(spelling))}(?![^\W_])"
+    return re.search(pattern, norm(quote)) is not None
 
 
 def has_word(quote: str, word: str) -> bool:
@@ -388,6 +417,7 @@ def check_evidence(where, el, V, media, sources, R):
         return
     ev = el.get("evidence", [])
     aliases = V["units"].get("aliases", {})
+    after_number = V["units"].get("aliases_after_number", {})
     page_of = {}
     for i, e in enumerate(ev):
         m = media.get(e["source"])
@@ -423,7 +453,8 @@ def check_evidence(where, el, V, media, sources, R):
                 R.err(where, f"the number {val} at {ptr} is in none of its quotes")
         elif last == "unit":
             words = [norm(w) for w in aliases.get(val, [val])]
-            if not any(w in norm(q) for q in quotes for w in words):
+            if not any(w in norm(q) for q in quotes for w in words) \
+                    and not any(unit_after_number(q, w) for q in quotes for w in after_number.get(val, ())):
                 R.err(where, f"the unit {val} at {ptr} is in none of its quotes")
         elif last == "op":
             if not any(has_word(q, w) for q in quotes for w in LIMIT_WORDS.get(val, ())):

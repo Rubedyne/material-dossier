@@ -5,6 +5,19 @@ Within 1.x both only add (SPEC.md sections 13.2 and 13.3).
 
 ## Standard
 
+### 1.0 — public draft 7, 2026-11-27
+
+Tag `v1.0.0-draft.7`. The evidence check of extracted dossiers (SPEC 7.3 rules 2 and 3) accepts two more ways
+documents print a number or a unit; keys and examples are unchanged. Every quote that proved a value before still
+proves it.
+
+- Rule 2: a number from one to twelve written as a word proves that number ("TWO years", "drei Monate"), in English,
+  German, French, Hungarian and Italian (the constant `NUMBER_WORDS`). Indefinite articles that also mean one and
+  words with another common meaning ("due", "hat", "hét", "neuf", "sept") prove nothing.
+- Rule 3: a spelling in the new `units` member `aliases_after_number` counts only directly after a number: "c" and
+  "oc" for `Cel` ("66-72 C", ">70 oC"), never "Vitamin C" or "C14-C16".
+- One conformance case: a bare "C" that does not follow a number proves no degree (52 expectations in all).
+
 ### 1.0 — public draft 6, 2026-11-23
 
 Tag `v1.0.0-draft.6`. The evidence check of extracted dossiers (SPEC 7.3 rules 1 to 4) reads documents as they are
@@ -144,6 +157,10 @@ relative forms that stoichiometry decides are left out on purpose). `property-ke
 `property-keys`: the four ISO 16128 indexes (`origin.natural_index`, `origin.natural_origin_index`,
 `origin.organic_index`, `origin.organic_origin_index`) move from `dimensionless` to `fraction`; their meaning and
 their bounds 0 to 1 are unchanged. `dimensionless` itself takes no percent (HLB, SPF, refractive index). Now 24
+vocabulary files, 896 terms.
+
+2026-11-27 (draft 7): `units`: `aliases` add `germs/g`, `germes/g` ([CFU]/g) and `germs/ml`, `germes/ml`
+([CFU]/mL); the new member `aliases_after_number` holds `c` and `oc` for `Cel` (SPEC 7.3 rule 3). No term changes: 24
 vocabulary files, 896 terms.
 
 2026-11-23 (draft 6): `units` `aliases` add spellings documents print: `c°`, `degree c` (Cel); `cfu / g`, `ufc/g`,

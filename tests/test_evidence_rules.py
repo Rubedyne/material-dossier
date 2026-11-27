@@ -84,6 +84,22 @@ def test_the_range_overrides_the_page():
     assert cd.number_readings("1,461", page="pH 5.5", plausible=ri) == [1.461]
 
 
+@pytest.mark.parametrize("quote, n", [
+    ("Shelf life: TWO years after manufacturing", 2), ("Shelf life : Three years", 3), ("drei Monate", 3),
+    ("deux ans", 2), ("két év", 2), ("dodici mesi", 12), ("one year", 1),
+])
+def test_number_words_prove_their_number(quote, n):
+    assert cd.number_in_quote(n, quote)
+
+
+@pytest.mark.parametrize("quote, n", [
+    ("ein Jahr", 1), ("un an", 1), ("egy év", 1), ("due to its structure", 2), ("Sept 2023", 7),
+    ("network", 1), ("someone", 1), ("twofold", 2), ("4 hét", 7), ("produit neuf", 9),
+])
+def test_articles_other_meanings_and_parts_of_words_are_no_number(quote, n):
+    assert not cd.number_in_quote(n, quote)
+
+
 def test_a_key_without_a_range_gives_no_plausible_test():
     assert cd.plausible_range(V, {"key": "use.phase"}) is None
 
@@ -109,6 +125,20 @@ def _errors(el):
 ])
 def test_unit_spellings(unit, quote):
     assert not [e for e in _errors(_el(quote, unit=unit, value={"exact": 1})) if "unit" in e]
+
+
+@pytest.mark.parametrize("unit, quote", [
+    ("[CFU]/g", "Total mesophilic aerobic germs MOP-0314 < 100 germs/g"), ("[CFU]/mL", "< 10 germes/ml"),
+    ("Cel", "Melting Point: 66-72 C"), ("Cel", "Flashpoint >70 oC (> 158 oF)"), ("Cel", "store below 25C."),
+])
+def test_unit_spellings_of_draft_7(unit, quote):
+    assert not [e for e in _errors(_el(quote, unit=unit, value={"exact": 1})) if "unit" in e]
+
+
+@pytest.mark.parametrize("quote", ["Vitamin C 10 %", "process at 70", "Protocol 12", "C14-C16 alkyl, 25 %",
+                                   "70 cP", "20 Cal"])
+def test_a_bare_c_or_oc_is_a_degree_only_directly_after_a_number(quote):
+    assert [e for e in _errors(_el(quote, unit="Cel", value={"exact": 1})) if "unit" in e]
 
 
 def test_the_unit_1_needs_no_covering_quote():
