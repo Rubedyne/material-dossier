@@ -50,6 +50,7 @@ case("extracted dataset with points", e4, lambda d: d["datasets"][0].update(poin
 case("extracted CAS number not in its quote", e4, lambda d: d["identity"].update(cas=["9999-99-9"]), "identifier '9999-99-9'", src)
 case("extracted trade name not in its quote", e4, lambda d: d["identity"].update(trade_name="Exaester GX"), "identifier 'Exaester GX'", src)
 case("a positive value is not proven by a negative number", e4, lambda d: prop(d, "typ-visc")["evidence"][0].update(quote="Viscosity (20 °C) -25 - 33 mPa·s"), "the number 25 at /value/range/min")
+case("a bare C not after a number is no degree", e4, lambda d: prop(d, "use-temp")["evidence"][0].update(quote="Phase C: can be heated up to 80 during processing"), "the unit Cel at /unit")
 case("thousands separator proves nothing", e4, lambda d: (prop(d, "typ-spread")["value"].update(exact=2.5), prop(d, "typ-spread")["evidence"][0].update(quote="approx. 2,500 mm²/10 min")), "in none of its quotes")
 e6 = L("06-extracted-silver-chloride-tio2.json")
 case("basis content without analyte", e6, lambda d: prop(d, "basis-ag").pop("analyte"), "composition.regulated_basis_content needs analyte", src)

@@ -12,7 +12,7 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 IGNORE = shutil.ignore_patterns(".git", ".venv", "__pycache__", ".pytest_cache", "*.pyc")
-VERSION = "1.0.0-draft.6"
+VERSION = "1.0.0-draft.7"
 TOP = f"material-dossier-{VERSION}"
 ID_PREFIX = "https://rubedyne.com/"
 

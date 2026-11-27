@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Standard version | 1.0 (public draft 6 for feedback, 2026-11-23; tag v1.0.0-draft.6) |
+| Standard version | 1.0 (public draft 7 for feedback, 2026-11-27; tag v1.0.0-draft.7) |
 | Vocabulary version | 1.0 |
 | Schema | `schema/dossier.schema.json`, `$id` `https://rubedyne.com/schemas/material-dossier/1.0/dossier.schema.json` |
 | Licence | This text: CC BY 4.0. Schemas, vocabularies and tools: Apache-2.0. See `LICENSE.md`. |
@@ -627,8 +627,14 @@ are the extractor's classification.
      (`1.234,56`, `1,234.56`) make the last one decimal;
    - groups of three digits after a space (`15 000`, `1 500 000`, also with a no-break or thin space) are also
      read as one number;
+   - a number from one to twelve written as a word, standing alone, proves that number ("TWO years" proves 2), in
+     English, German, French, Hungarian and Italian (the constant `NUMBER_WORDS` in `tools/check_dossier.py`).
+     Indefinite articles that also mean one ("ein", "un", "uno", "egy") and words with another common meaning
+     ("due", "hat", "hét", "neuf", "sept") prove nothing;
 3. each covered **unit** occurs in at least one of its quotes, in a spelling listed in `vocab/units.json`
-   (`aliases`, compared after the normalisation of rule 1); the unit `1` is exempt, also from coverage;
+   (`aliases`, compared after the normalisation of rule 1); the unit `1` is exempt, also from coverage. A spelling
+   in `aliases_after_number` counts only directly after a digit or one space after it, with no letter or digit
+   directly after it: "66-72 C" and ">70 oC" prove `Cel`, "Vitamin C" and "C14-C16" do not;
 4. each covered **limit operator** is matched by a wording of its direction in a quote, after the normalisation of
    rule 1: "max", "up to", "≤", "höchstens", "legfeljebb" for `<=`; "below", "unter", "alatt" for `<`; "min",
    "at least", "≥", "mindestens" for `>=`; "above", "über", "felett" for `>`; and so on, in English, German,
